@@ -27,6 +27,11 @@
         }
     });
 
+    $('#man').on('click', function() {
+        $(".loader").fadeIn();
+        $("#preloder").show();
+    });
+
     /*------------------
         Background Set
     --------------------*/

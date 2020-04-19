@@ -52,29 +52,31 @@
             </div>
             <div class="header-right">
                 <img src="shop/img/icons/search.png" alt="" class="search-trigger">
-                <img src="shop/img/icons/man.png" alt="">
+                <img id="man" src="shop/img/icons/man.png" alt="">
                 <a href="cart">
                     <img src="shop/img/icons/bag.png" alt="">
                     <span>2</span>
                 </a>
             </div>
             <div class="user-access">
-                <a href="#">Register</a>
-                <a href="#" class="in">Sign in</a>
+                <a href="register">Đăng ký</a>
+                <a href="login" class="in">Đăng nhập</a>
+                <a href="logout" class="in">Đăng xuất</a>
             </div>
+
             <nav class="main-menu mobile-menu">
                 <ul>
-                    <li><a class="active" href="/">Home</a></li>
-                    <li><a href="categories">Shop</a>
+                    <li><a class="active" href="/">Trang chủ</a></li>
+                    <li><a href="categories">Sản phẩm</a>
                         <ul class="sub-menu">
                             <li><a href="product">Product Page</a></li>
                             <li><a href="cart">Shopping Card</a></li>
                             <li><a href="checkout">Check out</a></li>
                         </ul>
                     </li>
-                    <li><a href="product">About</a></li>
+                    <li><a href="product">Về chúng tôi</a></li>
                     <li><a href="checkout">Blog</a></li>
-                    <li><a href="contact">Contact</a></li>
+                    <li><a href="contact">Liên lạc</a></li>
                 </ul>
             </nav>
         </div>
@@ -87,19 +89,19 @@
             <div class="col-md-4">
                 <div class="header-item">
                     <img src="shop/img/icons/delivery.png" alt="">
-                    <p>Free shipping on orders over $30 in USA</p>
+                    <p>Miễn phí vận chuyển cho đơn hàng 1 triệu ở nội thành Hà Nội</p>
                 </div>
             </div>
             <div class="col-md-4 text-left text-lg-center">
                 <div class="header-item">
                     <img src="shop/img/icons/voucher.png" alt="">
-                    <p>20% Student Discount</p>
+                    <p>Giảm giá 20% cho học sinh, sinh viên</p>
                 </div>
             </div>
             <div class="col-md-4 text-left text-xl-right">
                 <div class="header-item">
                     <img src="shop/img/icons/sales.png" alt="">
-                    <p>30% off on dresses. Use code: 30OFF</p>
+                    <p>Giảm giá 30% cho tất cả đơn hàng. Mã code: 30OFF</p>
                 </div>
             </div>
         </div>

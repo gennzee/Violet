@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!-- Footer Section Begin -->
 <footer class="footer-section spad">
     <div class="container">
