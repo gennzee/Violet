@@ -91,7 +91,6 @@
 </header>
 
 <!-- Header Info Begin -->
-<br>
 <div class="header-info">
     <div class="container-fluid">
         <div class="row">
