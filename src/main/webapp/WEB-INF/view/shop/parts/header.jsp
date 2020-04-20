@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="shop/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="shop/css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="shop/css/slicknav.min.css" type="text/css">
+    <%--Custom sidebar--%>
+    <link rel="stylesheet" href="shop/css/sidebar.css" type="text/css">
+    <%--Custom style--%>
     <link rel="stylesheet" href="shop/css/style.css" type="text/css">
 </head>
 
@@ -53,7 +56,9 @@
             <div class="header-right">
                 <img src="shop/img/icons/search.png" alt="" class="search-trigger">
                 <c:if test="${sessionScope.user != null}">
-                    <img id="man" src="shop/img/icons/man.png" alt="">
+                    <a href="customerManagement" style="margin-right: 20px;">
+                        <img src="shop/img/icons/man.png" alt="">
+                    </a>
                 </c:if>
                 <a href="cart">
                     <img src="shop/img/icons/bag.png" alt="">
@@ -84,7 +89,9 @@
         </div>
     </div>
 </header>
+
 <!-- Header Info Begin -->
+<br>
 <div class="header-info">
     <div class="container-fluid">
         <div class="row">

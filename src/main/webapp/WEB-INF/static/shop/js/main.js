@@ -27,9 +27,9 @@
         }
     });
 
-    $('#man').on('click', function() {
-        $(".loader").fadeIn();
-        $("#preloder").show();
+    $('#sidebarCollapse').on('click', function (e){
+        e.preventDefault();
+        $('#sidebar').toggleClass('active');
     });
 
     /*------------------
