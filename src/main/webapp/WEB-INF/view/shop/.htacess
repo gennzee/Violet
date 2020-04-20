@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{HTTP_REFERER} !^http://thanhlung.herokuapp\.com/ [NC]
+RewriteRule .*\.(js|css)$ - [F]
