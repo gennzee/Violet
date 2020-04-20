@@ -1,5 +1,3 @@
-RewriteEngine on
-RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^http://(www\.)?wsabstract.com/.*$ [NC]
-RewriteCond %{HTTP_REFERER} !^http://(www\.)?javascriptkit.com/.*$ [NC]
-RewriteRule \.(js|gif|jpg)$ - [F]
+RewriteEngine On
+RewriteCond %{HTTP_REFERER} !^http://thanhlung.herokuapp\.com/ [NC]
+RewriteRule .*\.(js|css)$ - [F]
