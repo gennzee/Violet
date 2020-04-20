@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- ============================================================== -->
 <!-- Topbar header - style you can find in pages.scss -->
 <!-- ============================================================== -->
@@ -181,7 +182,7 @@
                         <img src="admin/assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
                              width="40">
                         <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
-                                class="text-dark">Jason Doe</span> <i data-feather="chevron-down"
+                                class="text-dark">${sessionScope.user.name}</span> <i data-feather="chevron-down"
                                                                       class="svg-icon"></i></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">

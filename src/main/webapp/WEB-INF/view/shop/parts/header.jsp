@@ -52,7 +52,9 @@
             </div>
             <div class="header-right">
                 <img src="shop/img/icons/search.png" alt="" class="search-trigger">
-                <img id="man" src="shop/img/icons/man.png" alt="">
+                <c:if test="${sessionScope.user != null}">
+                    <img id="man" src="shop/img/icons/man.png" alt="">
+                </c:if>
                 <a href="cart">
                     <img src="shop/img/icons/bag.png" alt="">
                     <span>2</span>
@@ -89,7 +91,7 @@
             <div class="col-md-4">
                 <div class="header-item">
                     <img src="shop/img/icons/delivery.png" alt="">
-                    <p>Miễn phí vận chuyển cho đơn hàng 1 triệu ở nội thành Hà Nội</p>
+                    <p>Freeship đơn hàng 1 triệu tại Hà nội</p>
                 </div>
             </div>
             <div class="col-md-4 text-left text-lg-center">
