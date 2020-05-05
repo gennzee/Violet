@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
     <jsp:include page="parts/header.jsp"/>
 
     <!-- Page Add Section Begin -->
@@ -49,150 +51,26 @@
                 </div>
             </div>
             <div class="row">
+                <c:forEach var="p" items="${listProducts}">
                 <div class="col-lg-3 col-md-6">
                     <div class="single-product-item">
                         <figure>
-                            <img src="shop/img/products/img-5.jpg" alt="">
+                            <img src="images/${p.image}" width="260" height="360" alt="">
                             <div class="p-status">new</div>
                             <div class="hover-icon">
-                                <a href="shop/img/products/img-5.jpg" class="pop-up"><img src="shop/img/icons/zoom-plus.png"
+                                <a href="images/${p.image}" class="pop-up"><img src="shop/img/icons/zoom-plus.png"
                                                                                           alt=""></a>
                             </div>
                         </figure>
                         <div class="product-text">
                             <a href="#">
-                                <h6>Green Dress with details</h6>
+                                <h6>${p.name}</h6>
                             </a>
-                            <p>$22.90</p>
+                            <p><fmt:formatNumber value = "${p.price}" type = "number"/> VNĐ</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="shop/img/products/img-4.jpg" alt="">
-                            <div class="p-status popular">popular</div>
-                            <div class="hover-icon">
-                                <a href="shop/img/products/img-4.jpg" class="pop-up"><img src="shop/img/icons/zoom-plus.png"
-                                                                                          alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Blue Dress with details</h6>
-                            </a>
-                            <p>$35.50</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="shop/img/products/img-8.jpg" alt="">
-                            <div class="p-status popular">popular</div>
-                            <div class="hover-icon">
-                                <a href="shop/img/products/img-8.jpg" class="pop-up"><img src="shop/img/icons/zoom-plus.png"
-                                                                                          alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Blue Dress with details</h6>
-                            </a>
-                            <p>$35.50</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="shop/img/products/img-10.jpg" alt="">
-                            <div class="p-status popular">popular</div>
-                            <div class="hover-icon">
-                                <a href="shop/img/products/img-10.jpg" class="pop-up"><img src="shop/img/icons/zoom-plus.png"
-                                                                                           alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Blue Dress with details</h6>
-                            </a>
-                            <p>$35.50</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="shop/img/products/img-5.jpg" alt="">
-                            <div class="p-status">new</div>
-                            <div class="hover-icon">
-                                <a href="shop/img/products/img-5.jpg" class="pop-up"><img src="shop/img/icons/zoom-plus.png"
-                                        alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Green Dress with details</h6>
-                            </a>
-                            <p>$22.90</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="shop/img/products/img-4.jpg" alt="">
-                            <div class="p-status popular">popular</div>
-                            <div class="hover-icon">
-                                <a href="shop/img/products/img-4.jpg" class="pop-up"><img src="shop/img/icons/zoom-plus.png"
-                                        alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Blue Dress with details</h6>
-                            </a>
-                            <p>$35.50</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="shop/img/products/img-8.jpg" alt="">
-                            <div class="p-status popular">popular</div>
-                            <div class="hover-icon">
-                                <a href="shop/img/products/img-8.jpg" class="pop-up"><img src="shop/img/icons/zoom-plus.png"
-                                        alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Blue Dress with details</h6>
-                            </a>
-                            <p>$35.50</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="shop/img/products/img-10.jpg" alt="">
-                            <div class="p-status popular">popular</div>
-                            <div class="hover-icon">
-                                <a href="shop/img/products/img-10.jpg" class="pop-up"><img src="shop/img/icons/zoom-plus.png"
-                                        alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Blue Dress with details</h6>
-                            </a>
-                            <p>$35.50</p>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
             <div class="more-product">
                 <div class="row">
