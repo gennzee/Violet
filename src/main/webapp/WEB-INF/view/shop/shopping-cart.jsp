@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <img src="shop/shop/img/add.jpg" alt="">
+                    <img src="shop/img/add.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
                     <tbody>
                         <tr>
                             <td class="product-col">
-                                <img src="shop/shop/img/product/product-1.jpg" alt="">
+                                <img src="shop/img/product/product-1.jpg" alt="">
                                 <div class="p-title">
                                     <h5>Blue Dotted Shirt</h5>
                                 </div>

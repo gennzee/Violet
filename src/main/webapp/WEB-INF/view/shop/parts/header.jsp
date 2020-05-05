@@ -56,20 +56,26 @@
             <div class="header-right">
                 <img src="shop/img/icons/search.png" alt="" class="search-trigger">
                 <c:if test="${sessionScope.user != null}">
-                    <a href="customerManagement" style="margin-right: 20px;">
+                    <a href="#" id="dropdownMenuButton" data-toggle="dropdown" style="margin-right: 20px;">
                         <img src="shop/img/icons/man.png" alt="">
                     </a>
                 </c:if>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="customerManagement">Quản lý tài khoản</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="logout">Đăng xuất</a>
+                </div>
                 <a href="cart">
                     <img src="shop/img/icons/bag.png" alt="">
                     <span>2</span>
                 </a>
             </div>
+            <c:if test="${sessionScope.user == null}">
             <div class="user-access">
                 <a href="register">Đăng ký</a>
                 <a href="login" class="in">Đăng nhập</a>
-                <a href="logout" class="in">Đăng xuất</a>
             </div>
+            </c:if>
 
             <nav class="main-menu mobile-menu">
                 <ul>
