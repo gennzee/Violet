@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
     <jsp:include page="parts/header.jsp"/>
 
     <!-- Page Add Section Begin -->
@@ -14,7 +16,7 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <img src="shop/img/add.jpg" alt="">
+                    <img src="/shop/img/add.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -33,13 +35,13 @@
                     <div class="product-slider owl-carousel">
                         <div class="product-img">
                             <figure>
-                                <img src="shop/img/product/product-1.jpg" alt="">
+                                <img src="/images/${product.image}" alt="">
                                 <div class="p-status">new</div>
                             </figure>
                         </div>
                         <div class="product-img">
                             <figure>
-                                <img src="shop/img/product/product-1.jpg" alt="">
+                                <img src="/images/${product.image}" alt="">
                                 <div class="p-status">new</div>
                             </figure>
                         </div>
@@ -48,9 +50,9 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="product-content">
-                        <h2>Dotted Blue Shirt</h2>
+                        <h2>${product.name}</h2>
                         <div class="pc-meta">
-                            <h5>$22.90</h5>
+                            <h5><fmt:formatNumber value = "${product.price}" type = "number"/> VNĐ</h5>
                             <div class="rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -59,11 +61,9 @@
                                 <i class="fa fa-star"></i>
                             </div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-                            viverra maecenas accumsan lacus vel facilisis.</p>
+                        <p>${product.description}</p>
                         <ul class="tags">
-                            <li><span>Category :</span> Men’s Wear</li>
+                            <li><span>Category :</span> ${category.name}</li>
                             <li><span>Tags :</span> man, shirt, dotted, elegant, cool</li>
                         </ul>
                         <div class="product-quantity">
@@ -98,7 +98,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-product-item">
                         <figure>
-                            <a href="#"><img src="shop/img/products/img-1.jpg" alt=""></a>
+                            <a href="#"><img src="/shop/img/products/img-1.jpg" alt=""></a>
                             <div class="p-status">new</div>
                         </figure>
                         <div class="product-text">
@@ -110,7 +110,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-product-item">
                         <figure>
-                            <a href="#"><img src="shop/img/products/img-2.jpg" alt=""></a>
+                            <a href="#"><img src="/shop/img/products/img-2.jpg" alt=""></a>
                             <div class="p-status sale">sale</div>
                         </figure>
                         <div class="product-text">
@@ -122,7 +122,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-product-item">
                         <figure>
-                            <a href="#"><img src="shop/img/products/img-3.jpg" alt=""></a>
+                            <a href="#"><img src="/shop/img/products/img-3.jpg" alt=""></a>
                             <div class="p-status">new</div>
                         </figure>
                         <div class="product-text">
@@ -134,7 +134,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-product-item">
                         <figure>
-                            <a href="#"><img src="shop/img/products/img-4.jpg" alt=""></a>
+                            <a href="#"><img src="/shop/img/products/img-4.jpg" alt=""></a>
                             <div class="p-status popular">popular</div>
                         </figure>
                         <div class="product-text">

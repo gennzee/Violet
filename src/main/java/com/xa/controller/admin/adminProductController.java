@@ -1,6 +1,8 @@
 package com.xa.controller.admin;
 
+import com.xa.model.Categories;
 import com.xa.model.Products;
+import com.xa.repository.CategoriesJpaRepo;
 import com.xa.repository.ProductsJpaRepo;
 import com.xa.service.FileUploaderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +35,17 @@ public class adminProductController {
     private ProductsJpaRepo productsJpaRepo;
 
     @Autowired
+    private CategoriesJpaRepo categoriesJpaRepo;
+
+    @Autowired
     private FileUploaderService fileUploaderService;
 
     @GetMapping(value = {"/productManagement"})
     public String producManagement(ModelMap model){
-
         List<Products> listProducts = productsJpaRepo.findAll();
+        List<Categories> listCategories = categoriesJpaRepo.findAll();
         model.addAttribute("listProducts", listProducts);
+        model.addAttribute("listCategories", listCategories);
         return adminPage + "product";
     }
 
@@ -53,8 +59,9 @@ public class adminProductController {
         p.setPrice(Float.parseFloat(m.get("price")));
         p.setDiscounts(Float.parseFloat(m.get("discounts")));
         p.setSold(0);
-        p.setRemoved_flag(false);
-        p.setCreated_date(new Date());
+        p.setCategoryId(Integer.parseInt(m.get("category")));
+        p.setRemovedFlag(false);
+        p.setCreatedDate(new Date());
         productsJpaRepo.save(p);
         return "redirect:/productManagement";
     }
