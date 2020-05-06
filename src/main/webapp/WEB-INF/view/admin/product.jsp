@@ -98,6 +98,7 @@
                                     <table id="zero_config" class="table table-striped table-bordered no-wrap">
                                         <thead>
                                             <tr>
+                                                <th>Danh mục</th>
                                                 <th>Tên</th>
                                                 <th>Hình</th>
                                                 <th>Giá</th>
@@ -110,18 +111,26 @@
                                         <tbody>
                                         <c:forEach var="p" items="${listProducts}">
                                             <tr>
+                                                <td>
+                                                    <c:forEach var="c" items="${listCategories}">
+                                                        <c:if test="${c.id eq p.categoryId}">
+                                                            ${c.name}
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </td>
                                                 <td>${p.name}</td>
                                                 <td><img src="/images/${p.image}" style="height: 60px;"/></td>
                                                 <td><fmt:formatNumber value = "${p.price}" type = "number"/> VNĐ</td>
                                                 <td><fmt:formatNumber value = "${p.discounts}" type = "number"/> VNĐ</td>
                                                 <td>${p.sold}</td>
-                                                <td><a href="deleteProduct/${p.id}"><i class="fas fa-trash-alt"></i></a></td>
+                                                <td><a href="/deleteProduct/${p.id}"><i class="fas fa-trash-alt"></i></a></td>
                                                 <td><a href="#"><i class="fas fa-pencil-alt"></i></a></td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>
                                         <tfoot>
                                             <tr>
+                                                <th>Danh mục</th>
                                                 <th>Tên</th>
                                                 <th>Hình</th>
                                                 <th>Giá</th>
@@ -151,6 +160,15 @@
                                     <div class="form-group">
                                         <label>Tên sản phẩm</label>
                                         <input type="search" class="form-control" value="" name="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mr-sm-2" for="inlineFormCustomSelect">Danh mục</label>
+                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="category">
+                                            <option selected="">Choose...</option>
+                                            <c:forEach var="c" items="${listCategories}">
+                                            <option value="${c.id}">${c.name}</option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Giá</label>

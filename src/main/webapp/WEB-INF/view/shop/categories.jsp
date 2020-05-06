@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
+<%@taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
     <jsp:include page="parts/header.jsp"/>
 
     <!-- Page Add Section Begin -->
@@ -16,7 +17,7 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <img src="shop/img/add.jpg" alt="">
+                    <img src="/shop/img/add.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -41,10 +42,10 @@
                                 </form>
                             </div>
                             <div class="cf-right">
-                                <span>20 Products</span>
-                                <a href="#">2</a>
+                                <span>${fn:length(listProducts)} Products</span>
+<%--                                <a href="#">2</a>
                                 <a href="#" class="active">4</a>
-                                <a href="#">6</a>
+                                <a href="#">6</a>--%>
                             </div>
                         </div>
                     </div>
@@ -55,15 +56,15 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="single-product-item">
                         <figure>
-                            <img src="images/${p.image}" width="260" height="360" alt="">
+                            <img src="/images/${p.image}" width="260" height="360" alt="">
                             <div class="p-status">new</div>
                             <div class="hover-icon">
-                                <a href="images/${p.image}" class="pop-up"><img src="shop/img/icons/zoom-plus.png"
+                                <a href="/images/${p.image}" class="pop-up"><img src="/shop/img/icons/zoom-plus.png"
                                                                                           alt=""></a>
                             </div>
                         </figure>
                         <div class="product-text">
-                            <a href="#">
+                            <a href="/product/${p.id}">
                                 <h6>${p.name}</h6>
                             </a>
                             <p><fmt:formatNumber value = "${p.price}" type = "number"/> VNĐ</p>
@@ -75,7 +76,11 @@
             <div class="more-product">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <a href="#" class="primary-btn">Load More</a>
+                        <a href="#" class="primary-btn"><</a>
+                        <c:forEach var="page" items="${pageList}">
+                        <a href="/category/${currentCategory}/${page}" class="primary-btn">${page}</a>
+                        </c:forEach>
+                        <a href="#" class="primary-btn">></a>
                     </div>
                 </div>
             </div>
