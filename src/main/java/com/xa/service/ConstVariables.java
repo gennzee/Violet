@@ -7,4 +7,5 @@ public class ConstVariables {
 
     public static final String shopPage = "shop/";
     public static final String adminPage = "admin/";
+    public static final String errorPage = "error/";
 }

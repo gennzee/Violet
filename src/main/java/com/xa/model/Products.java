@@ -25,28 +25,31 @@ public class Products {
     private float discounts;
     @Column
     private int sold;
-    @Column
-    private boolean removed_flag;
-    @Column
+    @Column(name = "category_id")
+    private int categoryId;
+    @Column(name = "removed_flag")
+    private boolean removedFlag;
+    @Column(name = "created_date")
     @Temporal(TemporalType.DATE)
-    private Date created_date;
-    @Column
+    private Date createdDate;
+    @Column(name = "updated_date")
     @Temporal(TemporalType.DATE)
-    private Date updated_date;
+    private Date updatedDate;
 
     public Products() {
     }
 
-    public Products(String name, String image, String description, float price, float discounts, int sold, boolean removed_flag, Date created_date, Date updated_date) {
+    public Products(String name, String image, String description, float price, float discounts, int sold, int categoryId, boolean removedFlag, Date createdDate, Date updatedDate) {
         this.name = name;
         this.image = image;
         this.description = description;
         this.price = price;
         this.discounts = discounts;
         this.sold = sold;
-        this.removed_flag = removed_flag;
-        this.created_date = created_date;
-        this.updated_date = updated_date;
+        this.categoryId = categoryId;
+        this.removedFlag = removedFlag;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
     }
 
     public int getId() {
@@ -105,27 +108,35 @@ public class Products {
         this.sold = sold;
     }
 
-    public boolean isRemoved_flag() {
-        return removed_flag;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setRemoved_flag(boolean removed_flag) {
-        this.removed_flag = removed_flag;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public Date getCreated_date() {
-        return created_date;
+    public boolean isRemovedFlag() {
+        return removedFlag;
     }
 
-    public void setCreated_date(Date created_date) {
-        this.created_date = created_date;
+    public void setRemovedFlag(boolean removedFlag) {
+        this.removedFlag = removedFlag;
     }
 
-    public Date getUpdated_date() {
-        return updated_date;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setUpdated_date(Date updated_date) {
-        this.updated_date = updated_date;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
 }

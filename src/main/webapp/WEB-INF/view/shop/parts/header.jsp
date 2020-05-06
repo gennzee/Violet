@@ -17,16 +17,16 @@
           rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="shop/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="shop/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="shop/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="shop/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="shop/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="shop/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/shop/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/shop/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/shop/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/shop/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/shop/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="/shop/css/slicknav.min.css" type="text/css">
     <%--Custom sidebar--%>
-    <link rel="stylesheet" href="shop/css/sidebar.css" type="text/css">
+    <link rel="stylesheet" href="/shop/css/sidebar.css" type="text/css">
     <%--Custom style--%>
-    <link rel="stylesheet" href="shop/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/shop/css/style.css" type="text/css">
 </head>
 
 <body>
@@ -51,45 +51,45 @@
     <div class="container-fluid">
         <div class="inner-header">
             <div class="logo">
-                <a href="/"><img src="shop/img/logo.png" alt=""></a>
+                <a href="/"><img src="/shop/img/logo.png" alt=""></a>
             </div>
             <div class="header-right">
-                <img src="shop/img/icons/search.png" alt="" class="search-trigger">
+                <img src="/shop/img/icons/search.png" alt="" class="search-trigger">
                 <c:if test="${sessionScope.user != null}">
                     <a href="#" id="dropdownMenuButton" data-toggle="dropdown" style="margin-right: 20px;">
-                        <img src="shop/img/icons/man.png" alt="">
+                        <img src="/shop/img/icons/man.png" alt="">
                     </a>
                 </c:if>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="customerManagement">Quản lý tài khoản</a>
+                    <a class="dropdown-item" href="/customerManagement">Quản lý tài khoản</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="logout">Đăng xuất</a>
+                    <a class="dropdown-item" href="/logout">Đăng xuất</a>
                 </div>
-                <a href="cart">
-                    <img src="shop/img/icons/bag.png" alt="">
+                <a href="/cart">
+                    <img src="/shop/img/icons/bag.png" alt="">
                     <span>2</span>
                 </a>
             </div>
             <c:if test="${sessionScope.user == null}">
             <div class="user-access">
-                <a href="register">Đăng ký</a>
-                <a href="login" class="in">Đăng nhập</a>
+                <a href="/register">Đăng ký</a>
+                <a href="/login" class="in">Đăng nhập</a>
             </div>
             </c:if>
 
             <nav class="main-menu mobile-menu">
                 <ul>
                     <li><a class="active" href="/">Trang chủ</a></li>
-                    <li><a href="categories">Sản phẩm</a>
+                    <li><a href="#">Danh mục</a>
                         <ul class="sub-menu">
-                            <li><a href="product">Product Page</a></li>
-                            <li><a href="cart">Shopping Card</a></li>
-                            <li><a href="checkout">Check out</a></li>
+                            <c:forEach var="c" items="${sessionScope.listCategories}">
+                                <li><a href="/category/${c.id}/1">${c.name}</a></li>
+                            </c:forEach>
                         </ul>
                     </li>
-                    <li><a href="product">Về chúng tôi</a></li>
-                    <li><a href="checkout">Blog</a></li>
-                    <li><a href="contact">Liên lạc</a></li>
+                    <%--<li><a href="/product">Về chúng tôi</a></li>--%>
+                    <li><a href="/checkout">Blog</a></li>
+                    <li><a href="/contact">Liên lạc</a></li>
                 </ul>
             </nav>
         </div>
@@ -102,19 +102,19 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="header-item">
-                    <img src="shop/img/icons/delivery.png" alt="">
+                    <img src="/shop/img/icons/delivery.png" alt="">
                     <p>Freeship đơn hàng 1 triệu tại Hà nội</p>
                 </div>
             </div>
             <div class="col-md-4 text-left text-lg-center">
                 <div class="header-item">
-                    <img src="shop/img/icons/voucher.png" alt="">
+                    <img src="/shop/img/icons/voucher.png" alt="">
                     <p>Giảm giá 20% cho học sinh, sinh viên</p>
                 </div>
             </div>
             <div class="col-md-4 text-left text-xl-right">
                 <div class="header-item">
-                    <img src="shop/img/icons/sales.png" alt="">
+                    <img src="/shop/img/icons/sales.png" alt="">
                     <p>Giảm giá 30% cho tất cả đơn hàng. Mã code: 30OFF</p>
                 </div>
             </div>
