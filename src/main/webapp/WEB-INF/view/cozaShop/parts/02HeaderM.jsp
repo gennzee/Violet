@@ -87,11 +87,11 @@
 
     <ul class="main-menu-m">
         <li>
-            <a href="/">Home</a>
+            <a href="/">Trang chủ</a>
         </li>
 
         <li>
-            <a href="#">Shop</a>
+            <a href="#">Danh mục</a>
             <ul class="sub-menu-m">
                 <li><a href="/category/1/1">Áo dài</a></li>
                 <li><a href="/category/1/1">Tranh thêu</a></li>
@@ -101,16 +101,20 @@
 					</span>
         </li>
 
+        <%--<li class="label1" data-label1="hot">
+            <a href="shoping-cart.html">Features</a>
+        </li>--%>
+
         <li>
             <a href="/blog">Blog</a>
         </li>
 
         <li>
-            <a href="/about">About</a>
+            <a href="/about">Về chúng tôi</a>
         </li>
 
         <li>
-            <a href="contact.html">Contact</a>
+            <a href="/contact">Liên hệ</a>
         </li>
     </ul>
 </div>

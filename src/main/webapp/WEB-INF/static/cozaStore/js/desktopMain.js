@@ -17,10 +17,12 @@
     $("#loginForm").on( "submit", function( event ) {
         event.preventDefault();
         $.post('/postLoginAjax',{uname: $("#uname").val(), pwd: $("#pwd").val()},function (data, status, jqXHR) {
-            if(status === "success"){
+            if(data !== "" && status === "success"){
                 $("#iconHeaderDesktop").load(" #iconHeaderDesktop");
                 swal($("#uname").val(), "đã đăng nhập thành công !", "success");
                 $('.js-modal2').removeClass('show-modal1');
+            }else{
+                swal("", "Thông tin tài khoản hoặc mật khẩu không đúng !", "error");
             }
         });
     });

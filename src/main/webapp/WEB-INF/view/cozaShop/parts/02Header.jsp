@@ -35,7 +35,7 @@
         </li>
 
         <li>
-            <a href="contact.html">Liên hệ</a>
+            <a href="/contact">Liên hệ</a>
         </li>
     </ul>
 </div>

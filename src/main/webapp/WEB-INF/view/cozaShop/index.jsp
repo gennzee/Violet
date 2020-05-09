@@ -260,93 +260,157 @@
 		</div>
 	</section>
 
-	<!-- Banner -->
-	<div class="sec-banner bg0">
-		<div class="flex-w flex-c-m">
-			<div class="size-202 m-lr-auto respon4">
-				<!-- Block1 -->
-				<div class="block1 wrap-pic-w">
-					<img src="/coza/images/banner-04.jpg" alt="IMG-BANNER">
-
-					<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-						<div class="block1-txt-child1 flex-col-l">
-							<span class="block1-name ltext-102 trans-04 p-b-8">
-								Women
-							</span>
-
-							<span class="block1-info stext-102 trans-04">
-								Spring 2018
-							</span>
-						</div>
-
-						<div class="block1-txt-child2 p-b-4 trans-05">
-							<div class="block1-link stext-101 cl0 trans-09">
-								Shop Now
-							</div>
-						</div>
-					</a>
-				</div>
+	<!-- Blog -->
+	<section class="sec-product bg0 p-t-100 p-b-50">
+		<div class="container">
+			<div class="p-b-66">
+				<h3 class="ltext-105 cl5 txt-center respon1">
+					Tin tức thời trang
+				</h3>
 			</div>
 
-			<div class="size-202 m-lr-auto respon4">
-				<!-- Block1 -->
-				<div class="block1 wrap-pic-w">
-					<img src="/coza/images/banner-05.jpg" alt="IMG-BANNER">
-
-					<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-						<div class="block1-txt-child1 flex-col-l">
-							<span class="block1-name ltext-102 trans-04 p-b-8">
-								Men
-							</span>
-
-							<span class="block1-info stext-102 trans-04">
-								Spring 2018
-							</span>
+			<div class="row">
+				<div class="col-sm-6 col-md-4 p-b-40">
+					<div class="blog-item">
+						<div class="hov-img0">
+							<a href="blog-detail.html">
+								<img src="/coza/images/blog-01.jpg" alt="IMG-BLOG">
+							</a>
 						</div>
 
-						<div class="block1-txt-child2 p-b-4 trans-05">
-							<div class="block1-link stext-101 cl0 trans-09">
-								Shop Now
+						<div class="p-t-15">
+							<div class="stext-107 flex-w p-b-14">
+								<span class="m-r-3">
+									<span class="cl4">
+										By
+									</span>
+
+									<span class="cl5">
+										Nancy Ward
+									</span>
+								</span>
+
+								<span>
+									<span class="cl4">
+										on
+									</span>
+
+									<span class="cl5">
+										July 22, 2017
+									</span>
+								</span>
 							</div>
+
+							<h4 class="p-b-12">
+								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
+									8 Inspiring Ways to Wear Dresses in the Winter
+								</a>
+							</h4>
+
+							<p class="stext-108 cl6">
+								Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames
+							</p>
 						</div>
-					</a>
+					</div>
 				</div>
-			</div>
 
-			<div class="size-202 m-lr-auto respon4">
-				<!-- Block1 -->
-				<div class="block1 wrap-pic-w">
-					<img src="/coza/images/banner-06.jpg" alt="IMG-BANNER">
-
-					<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-						<div class="block1-txt-child1 flex-col-l">
-							<span class="block1-name ltext-102 trans-04 p-b-8">
-								Bags
-							</span>
-
-							<span class="block1-info stext-102 trans-04">
-								New Trend
-							</span>
+				<div class="col-sm-6 col-md-4 p-b-40">
+					<div class="blog-item">
+						<div class="hov-img0">
+							<a href="blog-detail.html">
+								<img src="/coza/images/blog-02.jpg" alt="IMG-BLOG">
+							</a>
 						</div>
 
-						<div class="block1-txt-child2 p-b-4 trans-05">
-							<div class="block1-link stext-101 cl0 trans-09">
-								Shop Now
+						<div class="p-t-15">
+							<div class="stext-107 flex-w p-b-14">
+								<span class="m-r-3">
+									<span class="cl4">
+										By
+									</span>
+
+									<span class="cl5">
+										Nancy Ward
+									</span>
+								</span>
+
+								<span>
+									<span class="cl4">
+										on
+									</span>
+
+									<span class="cl5">
+										July 18, 2017
+									</span>
+								</span>
 							</div>
+
+							<h4 class="p-b-12">
+								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
+									The Great Big List of Men’s Gifts for the Holidays
+								</a>
+							</h4>
+
+							<p class="stext-108 cl6">
+								Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
+							</p>
 						</div>
-					</a>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-4 p-b-40">
+					<div class="blog-item">
+						<div class="hov-img0">
+							<a href="blog-detail.html">
+								<img src="/coza/images/blog-03.jpg" alt="IMG-BLOG">
+							</a>
+						</div>
+
+						<div class="p-t-15">
+							<div class="stext-107 flex-w p-b-14">
+								<span class="m-r-3">
+									<span class="cl4">
+										By
+									</span>
+
+									<span class="cl5">
+										Nancy Ward
+									</span>
+								</span>
+
+								<span>
+									<span class="cl4">
+										on
+									</span>
+
+									<span class="cl5">
+										July 2, 2017
+									</span>
+								</span>
+							</div>
+
+							<h4 class="p-b-12">
+								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
+									5 Winter-to-Spring Fashion Trends to Try Now
+								</a>
+							</h4>
+
+							<p class="stext-108 cl6">
+								Proin nec vehicula lorem, a efficitur ex. Nam vehicula nulla vel erat tincidunt, sed hendrerit ligula porttitor. Fusce sit amet maximus nunc
+							</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
+	</section>
 
 	<!-- Product -->
-	<section class="sec-product bg0 p-t-100 p-b-50">
+	<section class="sec-blog bg0 p-t-60 p-b-90">
 		<div class="container">
 			<div class="p-b-32">
 				<h3 class="ltext-105 cl5 txt-center respon1">
-					Store Overview
+					Sản phẩm hot
 				</h3>
 			</div>
 
@@ -1464,153 +1528,6 @@
 			</div>
 		</div>
 	</section>
-
-
-	<!-- Blog -->
-	<section class="sec-blog bg0 p-t-60 p-b-90">
-		<div class="container">
-			<div class="p-b-66">
-				<h3 class="ltext-105 cl5 txt-center respon1">
-					Our Blogs
-				</h3>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-6 col-md-4 p-b-40">
-					<div class="blog-item">
-						<div class="hov-img0">
-							<a href="blog-detail.html">
-								<img src="/coza/images/blog-01.jpg" alt="IMG-BLOG">
-							</a>
-						</div>
-
-						<div class="p-t-15">
-							<div class="stext-107 flex-w p-b-14">
-								<span class="m-r-3">
-									<span class="cl4">
-										By
-									</span>
-
-									<span class="cl5">
-										Nancy Ward
-									</span>
-								</span>
-
-								<span>
-									<span class="cl4">
-										on
-									</span>
-
-									<span class="cl5">
-										July 22, 2017 
-									</span>
-								</span>
-							</div>
-
-							<h4 class="p-b-12">
-								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									8 Inspiring Ways to Wear Dresses in the Winter
-								</a>
-							</h4>
-
-							<p class="stext-108 cl6">
-								Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 p-b-40">
-					<div class="blog-item">
-						<div class="hov-img0">
-							<a href="blog-detail.html">
-								<img src="/coza/images/blog-02.jpg" alt="IMG-BLOG">
-							</a>
-						</div>
-
-						<div class="p-t-15">
-							<div class="stext-107 flex-w p-b-14">
-								<span class="m-r-3">
-									<span class="cl4">
-										By
-									</span>
-
-									<span class="cl5">
-										Nancy Ward
-									</span>
-								</span>
-
-								<span>
-									<span class="cl4">
-										on
-									</span>
-
-									<span class="cl5">
-										July 18, 2017
-									</span>
-								</span>
-							</div>
-
-							<h4 class="p-b-12">
-								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									The Great Big List of Men’s Gifts for the Holidays
-								</a>
-							</h4>
-
-							<p class="stext-108 cl6">
-								Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 p-b-40">
-					<div class="blog-item">
-						<div class="hov-img0">
-							<a href="blog-detail.html">
-								<img src="/coza/images/blog-03.jpg" alt="IMG-BLOG">
-							</a>
-						</div>
-
-						<div class="p-t-15">
-							<div class="stext-107 flex-w p-b-14">
-								<span class="m-r-3">
-									<span class="cl4">
-										By
-									</span>
-
-									<span class="cl5">
-										Nancy Ward
-									</span>
-								</span>
-
-								<span>
-									<span class="cl4">
-										on
-									</span>
-
-									<span class="cl5">
-										July 2, 2017 
-									</span>
-								</span>
-							</div>
-
-							<h4 class="p-b-12">
-								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									5 Winter-to-Spring Fashion Trends to Try Now
-								</a>
-							</h4>
-
-							<p class="stext-108 cl6">
-								Proin nec vehicula lorem, a efficitur ex. Nam vehicula nulla vel erat tincidunt, sed hendrerit ligula porttitor. Fusce sit amet maximus nunc
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
 
 	<!-- Footer -->
 	<<jsp:include page="parts/footer.jsp"/>

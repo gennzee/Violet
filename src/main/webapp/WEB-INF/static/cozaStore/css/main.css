@@ -736,7 +736,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .main-menu-m > li > a {
-  font-family: Poppins-Medium;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 14px;
   color: white;
   line-height: 2.8;
@@ -1680,7 +1680,7 @@ button.mfp-close {
 }
 
 .swal-text {
-  font-family: Poppins-Regular;
+  font-family: 'Noto Sans', sans-serif;
   color: #555555;
   font-size: 16px;
   line-height: 1.666667;
@@ -2139,7 +2139,7 @@ input.num-product::-webkit-inner-spin-button {
 /*//////////////////////////////////////////////////////////////////
 [ S-Text 0 - 15 ]*/
 .stext-101 {
-  font-family: Poppins-Medium;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 15px;
   line-height: 1.466667;
   text-transform: uppercase;
@@ -2201,7 +2201,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .stext-111 {
-  font-family: Poppins-Regular;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 13px;
   line-height: 1.6923;
 }
@@ -2366,7 +2366,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .ltext-105 {
-  font-family: Poppins-Bold;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 50px;
   line-height: 1.1;
 }

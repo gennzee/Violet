@@ -330,14 +330,14 @@
                     </div>
                     <div class="col-sm-8">
                         <div class="bor8 m-b-20 how-pos4-parent">
-                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="uname" id="uname" placeholder="Your Email Address">
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="uname" id="uname" placeholder="Địa chỉ email của bạn">
                             <img class="how-pos4 pointer-none" src="/coza/images/icons/icon-account.png" alt="ICON">
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="bor8 m-b-20 how-pos4-parent">
-                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" name="pwd" id="pwd" placeholder="Your Password">
-                            <img class="how-pos4 pointer-none" src="/coza/images/icons/icon-email.png" alt="ICON">
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" name="pwd" id="pwd" placeholder="Mật khẩu của bạn">
+                            <img class="how-pos4 pointer-none" src="/coza/images/icons/icon-password.png" alt="ICON">
                         </div>
                     </div>
                 </div>
