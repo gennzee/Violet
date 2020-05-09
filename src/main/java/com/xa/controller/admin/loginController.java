@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -51,6 +52,17 @@ public class loginController {
         return adminPage + "login";
     }
 
+    @PostMapping(value = {"/postLoginAjax"})
+    @ResponseBody
+    public Users loginAjax(@Param("uname") String uname, @Param("pwd") String pwd, HttpSession session){
+        Users user = usersJpaRepo.findByUsernameAndPassword(uname, pwd);
+        if(user != null){
+            session.setAttribute("user", user);
+            return user;
+        }
+        return null;
+    }
+
     @GetMapping(value = {"/register"})
     public String register(){
         return adminPage + "register";
@@ -60,5 +72,12 @@ public class loginController {
     public String logout(HttpSession session){
         session.removeAttribute("user");
         return cozaShopPage + "index";
+    }
+
+    @PostMapping(value = {"/postLogoutAjax"})
+    @ResponseBody
+    public boolean logoutAjax(HttpSession session){
+        session.removeAttribute("user");
+        return true;
     }
 }

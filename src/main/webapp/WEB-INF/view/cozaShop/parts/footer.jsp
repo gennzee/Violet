@@ -323,20 +323,20 @@
                 <img src="/coza/images/icons/icon-close.png" alt="CLOSE">
             </button>
 
-            <form action="/postLogin" method="post">
+            <form id="loginForm" action="#">
                 <div class="row justify-content-md-center">
                     <div class="col-sm-8">
                         <h2>Đăng nhập</h2>
                     </div>
                     <div class="col-sm-8">
                         <div class="bor8 m-b-20 how-pos4-parent">
-                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="uname" placeholder="Your Email Address">
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="uname" id="uname" placeholder="Your Email Address">
                             <img class="how-pos4 pointer-none" src="/coza/images/icons/icon-account.png" alt="ICON">
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="bor8 m-b-20 how-pos4-parent">
-                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" name="pwd" placeholder="Your Password">
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" name="pwd" id="pwd" placeholder="Your Password">
                             <img class="how-pos4 pointer-none" src="/coza/images/icons/icon-email.png" alt="ICON">
                         </div>
                     </div>

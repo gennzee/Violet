@@ -105,5 +105,5 @@
     });
 </script>
 <!--===============================================================================================-->
-<script src="/coza/js/main.js"></script>
 <script src="/coza/vendor/sidebarmenu.js"></script>
+<script src="/coza/js/main.js"></script>
