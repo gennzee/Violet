@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,18 +24,18 @@
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
-				Home
+			<a href="/" class="stext-109 cl8 hov-cl1 trans-04">
+				Trang chủ
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
-			<a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
-				Men
+			<a href="/category/${category.id}/1" class="stext-109 cl8 hov-cl1 trans-04">
+				${category.name}
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
 			<span class="stext-109 cl4">
-				Lightweight Jacket
+				${product.name}
 			</span>
 		</div>
 	</div>
@@ -49,11 +52,11 @@
 							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 							<div class="slick3 gallery-lb">
-								<div class="item-slick3" data-thumb="/coza/images/product-detail-01.jpg">
+								<div class="item-slick3" data-thumb="/images/${product.image}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="/coza/images/product-detail-01.jpg" alt="IMG-PRODUCT">
+										<img src="/images/${product.image}" alt="IMG-PRODUCT" width="515" height="635" style="object-fit: cover;">
 
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/images/${product.image}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
@@ -86,15 +89,15 @@
 				<div class="col-md-6 col-lg-5 p-b-30">
 					<div class="p-r-50 p-t-5 p-lr-0-lg">
 						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-							Lightweight Jacket
+							${product.name}
 						</h4>
 
 						<span class="mtext-106 cl2">
-							$58.79
+							<fmt:formatNumber type = "number" value = "${product.price}" /> VNĐ
 						</span>
 
 						<p class="stext-102 cl3 p-t-23">
-							Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+							${product.description}
 						</p>
 						
 						<!--  -->

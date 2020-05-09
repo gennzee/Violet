@@ -47,6 +47,7 @@ public class categoriesController {
         modelMap.addAttribute("listProducts", listProducts);
         modelMap.addAttribute("pageList", pageList);
         modelMap.addAttribute("currentCategory", categoryId);
+        modelMap.addAttribute("currentPage", page);
         return cozaShopPage + "product";
     }
 

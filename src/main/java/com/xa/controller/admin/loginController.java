@@ -71,7 +71,7 @@ public class loginController {
     @GetMapping(value = {"/logout"})
     public String logout(HttpSession session){
         session.removeAttribute("user");
-        return cozaShopPage + "index";
+        return "redirect:/";
     }
 
     @PostMapping(value = {"/postLogoutAjax"})

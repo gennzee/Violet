@@ -93,8 +93,9 @@
         <li>
             <a href="#">Danh mục</a>
             <ul class="sub-menu-m">
-                <li><a href="/category/1/1">Áo dài</a></li>
-                <li><a href="/category/1/1">Tranh thêu</a></li>
+                <c:forEach var="c" items="${listCategories}">
+                    <li><a href="/category/${c.id}/1">${c.name}</a></li>
+                </c:forEach>
             </ul>
             <span class="arrow-main-menu-m" style="width: 100%;padding-left: 100%;">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
