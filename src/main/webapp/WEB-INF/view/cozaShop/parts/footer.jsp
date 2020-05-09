@@ -318,7 +318,7 @@
     <div class="js-hide-modal2 overlay-modal1"></div>
 
     <div class="container" style="max-width: 600px;">
-        <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+        <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent" style="padding-top: 0px;">
             <button class="js-hide-modal2 how-pos3 hov3 trans-04">
                 <img src="/coza/images/icons/icon-close.png" alt="CLOSE">
             </button>
@@ -326,7 +326,7 @@
             <form id="loginForm" action="#">
                 <div class="row justify-content-md-center">
                     <div class="col-sm-8">
-                        <h2>Đăng nhập</h2>
+                        <h2 style="text-align: center;margin: 30px;">Đăng nhập</h2>
                     </div>
                     <div class="col-sm-8">
                         <div class="bor8 m-b-20 how-pos4-parent">

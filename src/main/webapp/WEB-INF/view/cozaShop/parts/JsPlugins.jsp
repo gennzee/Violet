@@ -106,4 +106,9 @@
 </script>
 <!--===============================================================================================-->
 <script src="/coza/vendor/sidebarmenu.js"></script>
+<!--========================main script that both mobile and desktop can use=======================================================================-->
 <script src="/coza/js/main.js"></script>
+<!--========================desktopMain.js that only desktop mode can use thí=======================================================================-->
+<script src="/coza/js/desktopMain.js"></script>
+<!--========================mobileMain.js that only mobile mode can use thí=======================================================================-->
+<script src="/coza/js/mobileMain.js"></script>

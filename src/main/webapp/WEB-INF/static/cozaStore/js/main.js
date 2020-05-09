@@ -278,8 +278,8 @@
         $('.js-modal1').removeClass('show-modal1');
     });
 
-    /*when ajax load() called, DOM cannot understand class .js-show-modal2. so have to add parent into it.*/
-    $('#iconHeader').on('click', '.js-show-modal2', function(e){
+    /*login modal*/
+    $('.js-show-modal2').on('click',function(e){
         e.preventDefault();
         $('.js-modal2').addClass('show-modal1');
     });
@@ -287,28 +287,5 @@
     $('.js-hide-modal2').on('click',function(){
         $('.js-modal2').removeClass('show-modal1');
     });
-
-
-    /*==================================================================
-     [ AJAX ]*/
-    /*login using ajax*/
-    $("#loginForm").on( "submit", function( event ) {
-        event.preventDefault();
-        $.post('/postLoginAjax',{uname: $("#uname").val(), pwd: $("#pwd").val()},function (data, status, jqXHR) {
-            if(status === "success"){
-                $("#iconHeader").load(" #iconHeader");
-                swal($("#uname").val(), "đã đăng nhập thành công !", "success");
-                $('.js-modal2').removeClass('show-modal1');
-            }
-        });
-    });
-    /*logout using ajax*/
-    $('#iconHeader').on('click', '#logoutBtn', function(){
-        $.post('/postLogoutAjax',{},function (data, status, jqXHR) {
-            if(status === "success"){
-                $("#iconHeader").load("  #iconHeader");
-                swal("", "Đã đăng xuất thành công !", "success");
-            }
-        });
-    });
+    
 })(jQuery);
