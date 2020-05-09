@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static com.xa.service.ConstVariables.adminPage;
-import static com.xa.service.ConstVariables.shopPage;
+import static com.xa.service.ConstVariables.cozaShopPage;
 
 /**
  * Created by anhnx on 13/04/2020.
@@ -30,7 +31,7 @@ public class loginController {
             if(user.getRole().equals("admin")){
                 return adminPage + "index";
             }else{
-                return shopPage + "index";
+                return cozaShopPage + "index";
             }
         }
         return adminPage + "login";
@@ -44,7 +45,7 @@ public class loginController {
             if(user.getRole().equals("admin")){
                 return adminPage + "index";
             }else{
-                return shopPage + "index";
+                return cozaShopPage + "index";
             }
         }
         return adminPage + "login";
@@ -58,6 +59,6 @@ public class loginController {
     @GetMapping(value = {"/logout"})
     public String logout(HttpSession session){
         session.removeAttribute("user");
-        return shopPage + "index";
+        return cozaShopPage + "index";
     }
 }

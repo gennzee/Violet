@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.xa.service.ConstVariables.shopPage;
+import static com.xa.service.ConstVariables.cozaShopPage;
 
 /**
  * Created by anhnx on 13/04/2020.
@@ -47,7 +47,7 @@ public class categoriesController {
         modelMap.addAttribute("listProducts", listProducts);
         modelMap.addAttribute("pageList", pageList);
         modelMap.addAttribute("currentCategory", categoryId);
-        return shopPage + "categories";
+        return cozaShopPage + "product";
     }
 
 }

@@ -10,7 +10,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import static com.xa.service.ConstVariables.shopPage;
+import static com.xa.service.ConstVariables.cozaShopPage;
+import static com.xa.service.ConstVariables.errorPage;
 
 /**
  * Created by anhnx on 13/04/2020.
@@ -29,11 +30,16 @@ public class productPageController {
         Products product = productsJpaRepo.findById(id);
         Categories category = categoriesJpaRepo.findById(product.getCategoryId());
         if(product == null){
-            return shopPage + "error-404";
+            return errorPage + "error-404";
         }
         modelMap.addAttribute("product", product);
         modelMap.addAttribute("category", category);
-        return shopPage + "product-page";
+        return cozaShopPage + "product-detail";
+    }
+
+    @GetMapping(value = {"/product-detail"})
+    public String productDetail(){
+        return cozaShopPage + "product-detail";
     }
 
 }

@@ -5,7 +5,7 @@ package com.xa.service;
  */
 public class ConstVariables {
 
-    public static final String shopPage = "shop/";
     public static final String adminPage = "admin/";
     public static final String errorPage = "error/";
+    public static final String cozaShopPage = "cozaShop/";
 }

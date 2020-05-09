@@ -7,14 +7,14 @@ package com.xa.controller.shop;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import static com.xa.service.ConstVariables.shopPage;
+import static com.xa.service.ConstVariables.cozaShopPage;
 
 @Controller
 public class shoppingCartController {
 
-    @GetMapping(value = {"/cart"})
+    @GetMapping(value = {"/shoping-cart"})
     public String cart(){
-        return shopPage + "shopping-cart";
+        return cozaShopPage + "shoping-cart";
     }
 
 }

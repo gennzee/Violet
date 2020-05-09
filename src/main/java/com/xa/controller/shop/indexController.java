@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-import static com.xa.service.ConstVariables.shopPage;
+import static com.xa.service.ConstVariables.cozaShopPage;
 
 /**
  * Created by anhnx on 13/04/2020.
@@ -27,7 +27,7 @@ public class indexController {
     public String index(HttpSession session){
         List<Categories> listCategories = categoriesJpaRepo.findAll();
         session.setAttribute("listCategories", listCategories);
-        return shopPage+"index";
+        return cozaShopPage+"index";
     }
 
 }
