@@ -10,7 +10,6 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
 import static com.xa.service.ConstVariables.errorPage;
-import static com.xa.service.ConstVariables.shopPage;
 
 /**
  * Created by anhnx on 05/05/2020.
