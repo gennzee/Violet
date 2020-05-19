@@ -24,7 +24,7 @@
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+			<a href="/" class="stext-109 cl8 hov-cl1 trans-04">
 				Trang chủ
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
@@ -56,7 +56,7 @@
 								<tr class="table_row">
 									<input type="hidden" name="id" value="${cart.value.productStorage.id}"/>
 									<td class="column-1">
-										<div class="how-itemcart1">
+										<div id="${cart.value.productStorage.id}" class="how-itemcart1">
 											<img src="/images/${cart.value.productImage}" width="60" height="80" style="object-fit: cover;" alt="IMG">
 										</div>
 									</td>
@@ -190,3 +190,6 @@
 	<jsp:include page="parts/footer.jsp"/>
 
 	<jsp:include page="parts/JsPlugins.jsp"/>
+
+</body>
+</html>

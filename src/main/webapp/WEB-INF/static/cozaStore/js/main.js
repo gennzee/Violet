@@ -228,12 +228,12 @@
 
     /*==================================================================
     [ +/- num product ]*/
-    $('.btn-num-product-down').on('click', function(){
+    $("body").on("click", ".btn-num-product-down", function (event) {
         var numProduct = Number($(this).next().val());
         if(numProduct > 0) $(this).next().val(numProduct - 1);
     });
 
-    $('.btn-num-product-up').on('click', function(){
+    $("body").on("click", ".btn-num-product-up", function (event) {
         var numProduct = Number($(this).prev().val());
         $(this).prev().val(numProduct + 1);
     });
@@ -310,9 +310,9 @@
     $(".addProductToCart").on( "submit", function( event ) {
         event.preventDefault();
         var id = event.target.id.value;
-        var formData = jQFormSerializeArrToJson($(this).serializeArray());
+        var formData = $(this).serializeArray();
         console.log(formData);
-        $.post('/addProductToCartAjax',{data: formData},function (data, status, jqXHR) {
+        $.post('/addProductToCartAjax',formData,function (data, status, jqXHR) {
             if(data !== "" && data != 0 && status === "success"){
                 $("#productCart").load(" #productCartDetail");
                 $("#iconHeaderDesktop").load(" #iconHeaderDesktop");
@@ -334,18 +334,25 @@
                 $("#subTotalPrice").load(" #subTotalPrice");
                 $("#iconHeaderDesktop").load(" #iconHeaderDesktop");
                 $("#iconHeaderMobile").load(" #iconHeaderMobile");
+                $(".table-shopping-cart").load(" .table-shopping-cart");
                 swal("", "Thành công cập nhật giỏ hàng !", "success");
             }
         });
     });
 
-    function jQFormSerializeArrToJson(formSerializeArr){
-        var jsonObj = {};
-        jQuery.map( formSerializeArr, function( n, i ) {
-            jsonObj[n.name] = n.value;
+    $("body").on("click", ".how-itemcart1", function (event) {
+        var id = event.target.id;
+        $.post("/deleteProductFromCartAjax/"+id, {}, function (data, status, jqXHR) {
+            if(data !== "" && data != 0 && status === "success"){
+                $("#productCart").load(" #productCartDetail");
+                $("#totalPrice").load(" #totalPrice");
+                $("#subTotalPrice").load(" #subTotalPrice");
+                $("#iconHeaderDesktop").load(" #iconHeaderDesktop");
+                $("#iconHeaderMobile").load(" #iconHeaderMobile");
+                $(".table-shopping-cart").load(" .table-shopping-cart");
+                swal("", "Xóa sản phẩm thành công !", "success");
+            }
         });
+    });
 
-        return jsonObj;
-    }
-    
 })(jQuery);

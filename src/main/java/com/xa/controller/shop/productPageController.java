@@ -1,6 +1,5 @@
 package com.xa.controller.shop;
 
-import com.xa.model.Categories;
 import com.xa.model.Products;
 import com.xa.repository.CategoriesJpaRepo;
 import com.xa.repository.ProductsJpaRepo;

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static com.xa.service.ConstVariables.cozaShopPage;
@@ -41,10 +40,10 @@ public class shoppingCartController {
     @PostMapping(value = {"/addProductToCartAjax"})
     @ResponseBody
     public boolean addProductToCartAjax(HttpSession session, @RequestParam Map<String, String> m, HttpServletRequest request){
-        int id = Integer.parseInt(m.get("data[id]"));
-        int color = Integer.parseInt(m.get("data[color]"));
-        int size = Integer.parseInt(m.get("data[size]"));
-        int quantity = Integer.parseInt(m.get("data[num-product]"));
+        int id = Integer.parseInt(m.get("id"));
+        int color = Integer.parseInt(m.get("color"));
+        int size = Integer.parseInt(m.get("size"));
+        int quantity = Integer.parseInt(m.get("num-product"));
 
         ProductStorage productStorage = productStorageJpaRepo.findByProductIdAndColorIdAndSizeId(id, color, size);
         if(productStorage == null){

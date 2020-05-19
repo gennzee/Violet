@@ -2,13 +2,11 @@ package com.xa.controller.admin;
 
 import com.xa.model.Categories;
 import com.xa.model.ProductStorage;
-import com.xa.model.Products;
 import com.xa.repository.CategoriesJpaRepo;
 import com.xa.repository.ProductStorageJpaRepo;
 import com.xa.repository.ProductsJpaRepo;
 import com.xa.service.FileUploaderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
