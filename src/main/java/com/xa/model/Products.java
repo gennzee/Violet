@@ -18,7 +18,7 @@ import java.util.List;
 public class Products {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     @Column
     private String name;

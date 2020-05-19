@@ -101,10 +101,9 @@
                                                 <th>Danh mục</th>
                                                 <th>Tên</th>
                                                 <th>Hình</th>
-                                                <th>Giá</th>
-                                                <th>Giảm giá</th>
-                                                <th>Đã bán ra</th>
-                                                <th>Trong kho</th>
+                                                <%--<th>Đã bán ra</th>--%>
+                                                <%--<th>Trong kho</th>--%>
+                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                             </tr>
@@ -112,13 +111,12 @@
                                         <tbody>
                                         <c:forEach var="p" items="${listProducts}">
                                             <tr>
-                                                <td>${p.products.categories.name}</td>
-                                                <td>${p.products.name}</td>
-                                                <td><img src="/images/${p.products.productImage.name}" style="height: 60px;"/></td>
-                                                <td><fmt:formatNumber value = "${p.price}" type = "number"/> VNĐ</td>
-                                                <td><fmt:formatNumber value = "${p.discount}" type = "number"/> VNĐ</td>
-                                                <td>${p.sold}</td>
-                                                <td>${p.quantity}</td>
+                                                <td>${p.categories.name}</td>
+                                                <td>${p.name}</td>
+                                                <td><img src="/images/${p.productImageList[0].name}" style="height: 60px;"/></td>
+                                                <%--<td>${p.sold}</td>--%>
+                                                <%--<td>${p.quantity}</td>--%>
+                                                <td><a href="#">Chi tiết</a> </td>
                                                 <td><a href="/deleteProduct/${p.id}"><i class="fas fa-trash-alt"></i></a></td>
                                                 <td><a href="#"><i class="fas fa-pencil-alt"></i></a></td>
                                             </tr>
@@ -129,10 +127,9 @@
                                                 <th>Danh mục</th>
                                                 <th>Tên</th>
                                                 <th>Hình</th>
-                                                <th>Giá</th>
-                                                <th>Giảm giá</th>
-                                                <th>Đã bán ra</th>
-                                                <th>Trong kho</th>
+                                                <%--<th>Đã bán ra</th>--%>
+                                                <%--<th>Trong kho</th>--%>
+                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                             </tr>
@@ -153,7 +150,7 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <form id="addProductForm" class="mt-4" action="addProduct" method="post" enctype="multipart/form-data">
+                                <form id="addProductForm" class="mt-4" action="/addProduct" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label>Tên sản phẩm</label>
                                         <input type="search" class="form-control" value="" name="name">
@@ -175,14 +172,9 @@
                                         <label>Giảm giá</label>
                                         <input type="search" class="form-control" value="" name="discounts">
                                     </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Hình ảnh</span>
-                                        </div>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile01" name="image">
-                                            <label class="custom-file-label" for="inputGroupFile01">Chọn hình ảnh</label>
-                                        </div>
+                                    <div class="form-group">
+                                        <label>Hình ảnh</label>
+                                        <input type="file" name="image" id="upload" multiple>
                                     </div>
                                     <div class="form-group">
                                         <label>Mô tả</label>

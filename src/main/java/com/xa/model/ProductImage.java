@@ -11,7 +11,7 @@ import java.util.Date;
 public class ProductImage {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "product_id")
     private int productId;

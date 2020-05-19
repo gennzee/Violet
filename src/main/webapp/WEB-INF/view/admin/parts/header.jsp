@@ -229,20 +229,20 @@
             <ul id="sidebarnav">
                 <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="dashboard"
                                              aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                        class="hide-menu">Dashboard</span></a></li>
+                        class="hide-menu">Thống kê</span></a></li>
                 <li class="list-divider"></li>
                 <li class="nav-small-cap"><span class="hide-menu">Quản lý khách hàng</span></li>
 
                 <li class="sidebar-item"> <a class="sidebar-link" href="listClient"
                                              aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span
-                        class="hide-menu">Danh sách
+                        class="hide-menu">Khách hàng
                                 </span></a>
                 </li>
                 <li class="nav-small-cap"><span class="hide-menu">Quản lý sản phẩm</span></li>
 
                 <li class="sidebar-item"> <a class="sidebar-link" href="productManagement"
                                              aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span
-                        class="hide-menu">Danh sách
+                        class="hide-menu">Sản phẩm
                                 </span></a>
                 </li>
                 <li class="list-divider"></li>
