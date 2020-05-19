@@ -5,15 +5,18 @@
   Time: 06:13
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- Cart -->
-<div class="wrap-header-cart js-panel-cart">
+<div id="productCart" class="wrap-header-cart js-panel-cart">
     <div class="s-full js-hide-cart"></div>
 
-    <div class="header-cart flex-col-l p-l-65 p-r-25">
+    <div id="productCartDetail" class="header-cart flex-col-l p-l-65 p-r-25">
         <div class="header-cart-title flex-w flex-sb-m p-b-8">
 				<span class="mtext-103 cl2">
-					Your Cart
+					Giỏ hàng
 				</span>
 
             <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
@@ -21,72 +24,57 @@
             </div>
         </div>
 
-        <div class="header-cart-content flex-w js-pscroll">
+        <div id="test333" class="header-cart-content flex-w js-pscroll">
             <ul class="header-cart-wrapitem w-full">
-                <li class="header-cart-item flex-w flex-t m-b-12">
-                    <div class="header-cart-item-img">
-                        <img src="/coza/images/item-cart-01.jpg" alt="IMG">
-                    </div>
+                <c:choose>
+                    <c:when test="${not empty shoppingCarts}">
+                        <c:forEach var="cart" items="${shoppingCarts}">
+                            <li class="header-cart-item flex-w flex-t m-b-12">
+                                <div class="header-cart-item-img" id="${cart.value.productStorage.id}">
+                                    <img src="/images/${cart.value.productImage}" width="60" height="80" style="object-fit: cover;" alt="IMG">
+                                </div>
 
-                    <div class="header-cart-item-txt p-t-8">
-                        <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                            White Shirt Pleat
-                        </a>
+                                <div class="header-cart-item-txt">
+                                    <strong><a href="/product/${cart.value.productStorage.productId}" class="header-cart-item-name hov-cl1 trans-04">
+                                        ${cart.value.productName}
+                                    </a></strong>
 
-                        <span class="header-cart-item-info">
-								1 x $19.00
-							</span>
-                    </div>
-                </li>
+                                    <p>Màu: ${cart.value.productStorage.productColor.name}</p>
 
-                <li class="header-cart-item flex-w flex-t m-b-12">
-                    <div class="header-cart-item-img">
-                        <img src="/coza/images/item-cart-02.jpg" alt="IMG">
-                    </div>
+                                    <p>Kích cỡ: ${cart.value.productStorage.productSize.name}</p>
 
-                    <div class="header-cart-item-txt p-t-8">
-                        <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                            Converse All Star
-                        </a>
+                                    <span class="header-cart-item-info">
+								        ${cart.value.quantity} x <fmt:formatNumber type = "number" value = "${cart.value.productStorage.price}" /> VNĐ
+							        </span>
 
-                        <span class="header-cart-item-info">
-								1 x $39.00
-							</span>
-                    </div>
-                </li>
+                                </div>
+                            </li>
+                        </c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                        <h2>Không có sản phẩm</h2>
+                    </c:otherwise>
+                </c:choose>
 
-                <li class="header-cart-item flex-w flex-t m-b-12">
-                    <div class="header-cart-item-img">
-                        <img src="/coza/images/item-cart-03.jpg" alt="IMG">
-                    </div>
-
-                    <div class="header-cart-item-txt p-t-8">
-                        <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                            Nixon Porter Leather
-                        </a>
-
-                        <span class="header-cart-item-info">
-								1 x $17.00
-							</span>
-                    </div>
-                </li>
             </ul>
 
+            <c:if test="${not empty shoppingCarts}">
             <div class="w-full">
                 <div class="header-cart-total w-full p-tb-40">
-                    Total: $75.00
+                    Tổng: <fmt:formatNumber type = "number" value = "${cartTotalPrice}" /> VNĐ
                 </div>
 
                 <div class="header-cart-buttons flex-w w-full">
                     <a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-                        View Cart
+                        Chi tiết
                     </a>
 
                     <a href="/shoping-cart" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-                        Check Out
+                        Thanh toán
                     </a>
                 </div>
             </div>
+            </c:if>
         </div>
     </div>
 </div>

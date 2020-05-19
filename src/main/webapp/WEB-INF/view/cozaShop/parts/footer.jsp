@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <footer class="bg3 p-t-75 p-b-32">
     <div class="container">
         <div class="row">
@@ -160,13 +161,14 @@
 </div>
 
 <!-- Modal1 -->
-<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
-    <div class="overlay-modal1 js-hide-modal1"></div>
+<c:forEach var="p" items="${listProducts}">
+<div class="wrap-modal1 js-modal${p.id} p-t-60 p-b-20">
+    <div class="overlay-modal1 js-hide-modal1" data-id="${p.id}"></div>
 
     <div class="container">
         <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
             <button class="how-pos3 hov3 trans-04 js-hide-modal1">
-                <img src="/coza/images/icons/icon-close.png" alt="CLOSE">
+                <img src="/coza/images/icons/icon-close.png" alt="CLOSE" data-id="${p.id}">
             </button>
 
             <div class="row">
@@ -177,35 +179,32 @@
                             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                             <div class="slick3 gallery-lb">
-                                <div class="item-slick3" data-thumb="/coza/images/product-detail-01.jpg">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="/coza/images/product-detail-01.jpg" alt="IMG-PRODUCT">
+                                <c:choose>
+                                    <c:when test="${not empty p.productImageList}">
+                                        <c:forEach var="image" items="${p.productImageList}">
+                                            <div class="item-slick3" style="" data-thumb="/images/${image.name}">
+                                                <div class="wrap-pic-w pos-relative">
+                                                    <img src="/images/${image.name}" style="object-fit: cover;width: 600px;height: 742px;" alt="IMG-PRODUCT">
 
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/coza/images/product-detail-01.jpg">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/images/${image.name}">
+                                                        <i class="fa fa-expand"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </c:forEach>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="item-slick3" data-thumb="/coza/images/product-detail-01.jpg">
+                                            <div class="wrap-pic-w pos-relative">
+                                                <img src="/coza/images/product-detail-01.jpg" alt="IMG-PRODUCT">
 
-                                <div class="item-slick3" data-thumb="/coza/images/product-detail-02.jpg">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="/coza/images/product-detail-02.jpg" alt="IMG-PRODUCT">
-
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/coza/images/product-detail-02.jpg">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="item-slick3" data-thumb="/coza/images/product-detail-03.jpg">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="/coza/images/product-detail-03.jpg" alt="IMG-PRODUCT">
-
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/coza/images/product-detail-03.jpg">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/coza/images/product-detail-01.jpg">
+                                                    <i class="fa fa-expand"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                     </div>
@@ -213,33 +212,37 @@
 
                 <div class="col-md-6 col-lg-5 p-b-30">
                     <div class="p-r-50 p-t-5 p-lr-0-lg">
-                        <h4 class="mtext-105 cl2 js-name-detail p-b-14">
-                            Lightweight Jacket
+                        <h4 id="productModalName" class="mtext-105 cl2 js-name-detail p-b-14">
+                                ${p.name}
                         </h4>
 
-                        <span class="mtext-106 cl2">
-								$58.79
-							</span>
+                        <span id="productModalPrice" class="mtext-106 cl2">
+                            <fmt:formatNumber type = "number" value = "${p.productStorageList[0].price}" /> VNĐ
+                        </span>
 
-                        <p class="stext-102 cl3 p-t-23">
-                            Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+                        <p id="productModalDescription" class="stext-102 cl3 p-t-23">
+                            ${p.description}
                         </p>
 
                         <!--  -->
+                        <form class="addProductToCart" action="#" method="get" id="${p.id}">
                         <div class="p-t-33">
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-203 flex-c-m respon6">
-                                    Size
+                                    Kích cỡ
                                 </div>
 
                                 <div class="size-204 respon6-next">
                                     <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2" name="time">
-                                            <option>Choose an option</option>
-                                            <option>Size S</option>
-                                            <option>Size M</option>
-                                            <option>Size L</option>
-                                            <option>Size XL</option>
+                                        <select class="js-select2" name="size">
+                                            <option value="0">Chọn cỡ</option>
+                                            <c:forEach var="size" items="${productSizeList}">
+                                                <c:if test="${size.key == p.id}">
+                                                    <c:forEach var="sizeValue" items="${size.value}">
+                                                        <option value="${sizeValue.key}">${sizeValue.value}</option>
+                                                    </c:forEach>
+                                                </c:if>
+                                            </c:forEach>
                                         </select>
                                         <div class="dropDownSelect2"></div>
                                     </div>
@@ -248,17 +251,20 @@
 
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-203 flex-c-m respon6">
-                                    Color
+                                    Màu
                                 </div>
 
                                 <div class="size-204 respon6-next">
                                     <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2" name="time">
-                                            <option>Choose an option</option>
-                                            <option>Red</option>
-                                            <option>Blue</option>
-                                            <option>White</option>
-                                            <option>Grey</option>
+                                        <select class="js-select2" name="color">
+                                            <option value="0">Chọn màu</option>
+                                            <c:forEach var="color" items="${productColorList}">
+                                                <c:if test="${color.key == p.id}">
+                                                    <c:forEach var="colorValue" items="${color.value}">
+                                                        <option value="${colorValue.key}">${colorValue.value}</option>
+                                                    </c:forEach>
+                                                </c:if>
+                                            </c:forEach>
                                         </select>
                                         <div class="dropDownSelect2"></div>
                                     </div>
@@ -267,6 +273,7 @@
 
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-204 flex-w flex-m respon6-next">
+                                    <input type="hidden" name="id" value="${p.id}"/>
                                     <div class="wrap-num-product flex-w m-r-20 m-tb-10">
                                         <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                             <i class="fs-16 zmdi zmdi-minus"></i>
@@ -279,13 +286,13 @@
                                         </div>
                                     </div>
 
-                                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                        Add to cart
+                                    <button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                        Thêm vào giỏ
                                     </button>
                                 </div>
                             </div>
                         </div>
-
+                        </form>
                         <!--  -->
                         <div class="flex-w flex-m p-l-100 p-t-40 respon7">
                             <div class="flex-m bor9 p-r-10 m-r-11">
@@ -312,14 +319,14 @@
         </div>
     </div>
 </div>
-
+</c:forEach>
 <!-- Login Modal -->
-<div class="js-modal2 wrap-modal1 p-t-60 p-b-20">
-    <div class="js-hide-modal2 overlay-modal1"></div>
+<div class="js-modal0 wrap-modal1 p-t-60 p-b-20">
+    <div class="js-hide-modal0 overlay-modal1"></div>
 
     <div class="container" style="max-width: 600px;">
         <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent" style="padding-top: 0px;">
-            <button class="js-hide-modal2 how-pos3 hov3 trans-04">
+            <button class="js-hide-modal0 how-pos3 hov3 trans-04">
                 <img src="/coza/images/icons/icon-close.png" alt="CLOSE">
             </button>
 
@@ -330,13 +337,13 @@
                     </div>
                     <div class="col-sm-8">
                         <div class="bor8 m-b-20 how-pos4-parent">
-                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="uname" id="uname" placeholder="Địa chỉ email của bạn">
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" autocomplete="username" name="uname" id="uname" placeholder="Địa chỉ email của bạn">
                             <img class="how-pos4 pointer-none" src="/coza/images/icons/icon-account.png" alt="ICON">
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="bor8 m-b-20 how-pos4-parent">
-                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" name="pwd" id="pwd" placeholder="Mật khẩu của bạn">
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" autocomplete="current-password" name="pwd" id="pwd" placeholder="Mật khẩu của bạn">
                             <img class="how-pos4 pointer-none" src="/coza/images/icons/icon-password.png" alt="ICON">
                         </div>
                     </div>
@@ -349,7 +356,7 @@
                         </button>
                     </div>
                     <div class="col-sm-4">
-                        <button class="js-hide-modal2 flex-c-m stext-101 cl0 size-121 bg3 hov-btn3 p-lr-15 trans-04 pointer" type="button">
+                        <button class="js-hide-modal0 flex-c-m stext-101 cl0 size-121 bg3 hov-btn3 p-lr-15 trans-04 pointer" type="button">
                             Đóng
                         </button>
                     </div>

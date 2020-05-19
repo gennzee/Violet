@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by anhnx on 06/05/2020.
+ * Created by anhnx on 12/05/2020.
  */
 @Entity
-@Table(name = "categories")
-public class Categories {
+@Table(name = "product_color")
+public class ProductColor {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -24,10 +24,10 @@ public class Categories {
     @Temporal(TemporalType.DATE)
     private Date updatedDate;
 
-    public Categories() {
+    public ProductColor() {
     }
 
-    public Categories(String name, boolean removedFlag, Date createdDate, Date updatedDate) {
+    public ProductColor(String name, boolean removedFlag, Date createdDate, Date updatedDate) {
         this.name = name;
         this.removedFlag = removedFlag;
         this.createdDate = createdDate;

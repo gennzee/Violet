@@ -1088,7 +1088,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 /*------------------------------------------------------------------
 [ in select ]*/
 .rs1-select2 .select2-container .select2-selection--single .select2-selection__rendered {
-  font-family: Poppins-Regular;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 13px;
   color: #555;
   line-height: 1.2;
@@ -1165,7 +1165,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .rs1-select2 .select2-results__options {
-  font-family: Poppins-Regular;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 13px;
   color: #555;
   line-height: 1.2;
@@ -1744,8 +1744,9 @@ button.mfp-close {
 /*---------------------------------------------*/
 .filter-col1 {width: 27%;}
 .filter-col2 {width: 27%;}
-.filter-col3 {width: 26%;}
-.filter-col4 {width: 20%;}
+.filter-col3 {width: 13%;}
+.filter-col4 {width: 13%;}
+.filter-col5 {width: 20%;}
 
 /*---------------------------------------------*/
 .filter-link {
@@ -1961,13 +1962,14 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .table-shopping-cart .table_head th {
-  font-family: Poppins-Bold;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 13px;
   color: #555;
   text-transform: uppercase;
   line-height: 1.6;
   padding-top: 15px;
   padding-bottom: 15px;
+  text-align: center;
 }
 
 .table-shopping-cart td {
@@ -2158,7 +2160,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .stext-104 {
-  font-family: Poppins-Regular;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 14px;
   line-height: 1.466667;
 }
@@ -2195,7 +2197,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .stext-110 {
-  font-family: Poppins-Medium;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 15px;
   line-height: 1.466667;
 }
@@ -2256,7 +2258,7 @@ input.num-product::-webkit-inner-spin-button {
 /*//////////////////////////////////////////////////////////////////
 [ M-Text 16 - 25 ]*/
 .mtext-101 {
-  font-family: Poppins-Medium;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 18px;
   line-height: 1.333333;
 }
@@ -2268,7 +2270,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .mtext-103 {
-  font-family: Poppins-Bold;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 18px;
   line-height: 1.333333;
   text-transform: uppercase;

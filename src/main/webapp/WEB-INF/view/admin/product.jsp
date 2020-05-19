@@ -103,7 +103,8 @@
                                                 <th>Hình</th>
                                                 <th>Giá</th>
                                                 <th>Giảm giá</th>
-                                                <th>SL bán ra</th>
+                                                <th>Đã bán ra</th>
+                                                <th>Trong kho</th>
                                                 <th></th>
                                                 <th></th>
                                             </tr>
@@ -111,18 +112,13 @@
                                         <tbody>
                                         <c:forEach var="p" items="${listProducts}">
                                             <tr>
-                                                <td>
-                                                    <c:forEach var="c" items="${listCategories}">
-                                                        <c:if test="${c.id eq p.categoryId}">
-                                                            ${c.name}
-                                                        </c:if>
-                                                    </c:forEach>
-                                                </td>
-                                                <td>${p.name}</td>
-                                                <td><img src="/images/${p.image}" style="height: 60px;"/></td>
+                                                <td>${p.products.categories.name}</td>
+                                                <td>${p.products.name}</td>
+                                                <td><img src="/images/${p.products.productImage.name}" style="height: 60px;"/></td>
                                                 <td><fmt:formatNumber value = "${p.price}" type = "number"/> VNĐ</td>
-                                                <td><fmt:formatNumber value = "${p.discounts}" type = "number"/> VNĐ</td>
+                                                <td><fmt:formatNumber value = "${p.discount}" type = "number"/> VNĐ</td>
                                                 <td>${p.sold}</td>
+                                                <td>${p.quantity}</td>
                                                 <td><a href="/deleteProduct/${p.id}"><i class="fas fa-trash-alt"></i></a></td>
                                                 <td><a href="#"><i class="fas fa-pencil-alt"></i></a></td>
                                             </tr>
@@ -135,7 +131,8 @@
                                                 <th>Hình</th>
                                                 <th>Giá</th>
                                                 <th>Giảm giá</th>
-                                                <th>SL bán ra</th>
+                                                <th>Đã bán ra</th>
+                                                <th>Trong kho</th>
                                                 <th></th>
                                                 <th></th>
                                             </tr>
@@ -164,7 +161,7 @@
                                     <div class="form-group">
                                         <label class="mr-sm-2" for="inlineFormCustomSelect">Danh mục</label>
                                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="category">
-                                            <option selected="">Choose...</option>
+                                            <option selected="">Chọn...</option>
                                             <c:forEach var="c" items="${listCategories}">
                                             <option value="${c.id}">${c.name}</option>
                                             </c:forEach>

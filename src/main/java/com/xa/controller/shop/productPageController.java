@@ -10,6 +10,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.xa.controller.shop.categoriesController.loadSizeAndColorList;
 import static com.xa.service.ConstVariables.cozaShopPage;
 import static com.xa.service.ConstVariables.errorPage;
 
@@ -28,12 +32,15 @@ public class productPageController {
     @GetMapping(value = "/product/{id}")
     public String product(@PathVariable int id, ModelMap modelMap){
         Products product = productsJpaRepo.findById(id);
-        Categories category = categoriesJpaRepo.findById(product.getCategoryId());
         if(product == null){
             return errorPage + "error-404";
         }
+
+        List<Products> productsList = new ArrayList<>();
+        productsList.add(product);
+        loadSizeAndColorList(productsList, modelMap);
+
         modelMap.addAttribute("product", product);
-        modelMap.addAttribute("category", category);
         return cozaShopPage + "product-detail";
     }
 

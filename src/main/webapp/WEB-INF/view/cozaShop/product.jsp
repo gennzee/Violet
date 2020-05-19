@@ -174,6 +174,16 @@
 
 							<ul>
 								<li class="p-b-6">
+									<span class="fs-15 lh-12 m-r-6" style="color: transparent;">
+										<i class="zmdi zmdi-circle"></i>
+									</span>
+
+									<a href="#" class="filter-link stext-106 trans-04">
+										All
+									</a>
+								</li>
+
+								<li class="p-b-6">
 									<span class="fs-15 lh-12 m-r-6" style="color: #222;">
 										<i class="zmdi zmdi-circle"></i>
 									</span>
@@ -235,7 +245,51 @@
 							</ul>
 						</div>
 
-						<div class="filter-col4 p-b-27">
+						<div class="filter-col4 p-r-15 p-b-27">
+							<div class="mtext-102 cl2 p-b-15">
+								Size
+							</div>
+
+							<ul>
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04">
+										All
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04">
+										S
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+										M
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04">
+										L
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04">
+										XL
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04">
+										XXL
+									</a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="filter-col5 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
 								Tags
 							</div>
@@ -272,9 +326,9 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="/images/${p.image}" width="270" height="330" alt="IMG-PRODUCT" style="object-fit: cover;">
+							<img src="/images/${p.productImageList[0].name}" width="270" height="330" alt="IMG-PRODUCT" style="object-fit: cover;">
 
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a id="${p.id}" href="#" class="productId block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Xem trước
 							</a>
 						</div>
@@ -286,7 +340,7 @@
 								</a>
 
 								<span class="stext-105 cl3">
-									<fmt:formatNumber type = "number" value = "${p.price}" /> VNĐ
+									<fmt:formatNumber type = "number" value = "${p.productStorageList[0].price}" /> VNĐ
 								</span>
 							</div>
 

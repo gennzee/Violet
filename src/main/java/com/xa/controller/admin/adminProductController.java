@@ -1,8 +1,10 @@
 package com.xa.controller.admin;
 
 import com.xa.model.Categories;
+import com.xa.model.ProductStorage;
 import com.xa.model.Products;
 import com.xa.repository.CategoriesJpaRepo;
+import com.xa.repository.ProductStorageJpaRepo;
 import com.xa.repository.ProductsJpaRepo;
 import com.xa.service.FileUploaderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,11 +40,14 @@ public class adminProductController {
     private CategoriesJpaRepo categoriesJpaRepo;
 
     @Autowired
+    private ProductStorageJpaRepo productStorageJpaRepo;
+
+    @Autowired
     private FileUploaderService fileUploaderService;
 
     @GetMapping(value = {"/productManagement"})
     public String producManagement(ModelMap model){
-        List<Products> listProducts = productsJpaRepo.findAll();
+        List<ProductStorage> listProducts = productStorageJpaRepo.findAll();
         List<Categories> listCategories = categoriesJpaRepo.findAll();
         model.addAttribute("listProducts", listProducts);
         model.addAttribute("listCategories", listCategories);
@@ -51,27 +56,28 @@ public class adminProductController {
 
     @PostMapping(value = {"/addProduct"})
     public String addProduct(HttpServletRequest request, @RequestParam Map<String,String> m, @RequestParam("image") MultipartFile file, RedirectAttributes ra){
-        fileUploaderService.uploadFile(request, file);
-        Products p = new Products();
-        p.setName(m.get("name"));
-        p.setImage(fileUploaderService.getImageName());
-        p.setDescription(m.get("description"));
-        p.setPrice(Float.parseFloat(m.get("price")));
-        p.setDiscounts(Float.parseFloat(m.get("discounts")));
-        p.setSold(0);
-        p.setCategoryId(Integer.parseInt(m.get("category")));
-        p.setRemovedFlag(false);
-        p.setCreatedDate(new Date());
-        productsJpaRepo.save(p);
+//        fileUploaderService.uploadFile(request, file);
+//        Products p = new Products();
+//        p.setName(m.get("name"));
+//        p.setImage(fileUploaderService.getImageName());
+//        p.setDescription(m.get("description"));
+//        p.setPrice(Float.parseFloat(m.get("price")));
+//        p.setDiscounts(Float.parseFloat(m.get("discounts")));
+//        p.setSold(0);
+//        p.setCategoryId(Integer.parseInt(m.get("category")));
+//        p.setRemovedFlag(false);
+//        p.setCreatedDate(new Date());
+//        productsJpaRepo.save(p);
+        System.out.println("test");
         return "redirect:/productManagement";
     }
 
     @GetMapping("deleteProduct/{id}")
     @Transactional
     public String deleteProduct(HttpServletRequest request, @PathVariable int id, RedirectAttributes ra){
-        Products p = productsJpaRepo.findById(id);
-        fileUploaderService.deleteFile(request, p.getImage());
-        productsJpaRepo.deleteById(id);
+//        Products p = productsJpaRepo.findById(id);
+//        fileUploaderService.deleteFile(request, p.getImage());
+//        productsJpaRepo.deleteById(id);
         return "redirect:/productManagement";
     }
 

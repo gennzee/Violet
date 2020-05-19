@@ -29,8 +29,8 @@
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
-			<a href="/category/${category.id}/1" class="stext-109 cl8 hov-cl1 trans-04">
-				${category.name}
+			<a href="/category/${product.categories.id}/1" class="stext-109 cl8 hov-cl1 trans-04">
+				${product.categories.name}
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
@@ -52,35 +52,17 @@
 							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 							<div class="slick3 gallery-lb">
-								<div class="item-slick3" data-thumb="/images/${product.image}">
+								<c:forEach var="p" items="${product.productImageList}">
+								<div class="item-slick3" data-thumb="/images/${p.name}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="/images/${product.image}" alt="IMG-PRODUCT" width="515" height="635" style="object-fit: cover;">
+										<img src="/images/${p.name}" alt="IMG-PRODUCT" width="515" height="635" style="object-fit: cover;">
 
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/images/${product.image}">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/images/${p.name}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
-
-								<div class="item-slick3" data-thumb="/coza/images/product-detail-02.jpg">
-									<div class="wrap-pic-w pos-relative">
-										<img src="/coza/images/product-detail-02.jpg" alt="IMG-PRODUCT">
-
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/coza/images/product-detail-02.jpg">
-											<i class="fa fa-expand"></i>
-										</a>
-									</div>
-								</div>
-
-								<div class="item-slick3" data-thumb="/coza/images/product-detail-03.jpg">
-									<div class="wrap-pic-w pos-relative">
-										<img src="/coza/images/product-detail-03.jpg" alt="IMG-PRODUCT">
-
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/coza/images/product-detail-03.jpg">
-											<i class="fa fa-expand"></i>
-										</a>
-									</div>
-								</div>
+								</c:forEach>
 							</div>
 						</div>
 					</div>
@@ -93,7 +75,7 @@
 						</h4>
 
 						<span class="mtext-106 cl2">
-							<fmt:formatNumber type = "number" value = "${product.price}" /> VNĐ
+							<fmt:formatNumber type = "number" value = "${product.productStorageList[0].price}" /> VNĐ
 						</span>
 
 						<p class="stext-102 cl3 p-t-23">
@@ -101,6 +83,7 @@
 						</p>
 						
 						<!--  -->
+						<form class="addProductToCart" action="#" method="get" id="${p.id}">
 						<div class="p-t-33">
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-203 flex-c-m respon6">
@@ -109,12 +92,15 @@
 
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-										<select class="js-select2" name="time">
-											<option>Choose an option</option>
-											<option>Size S</option>
-											<option>Size M</option>
-											<option>Size L</option>
-											<option>Size XL</option>
+										<select class="js-select2" name="size">
+											<option value="0">Chọn cỡ</option>
+											<c:forEach var="size" items="${productSizeList}">
+												<c:if test="${size.key == product.id}">
+													<c:forEach var="sizeValue" items="${size.value}">
+														<option value="${sizeValue.key}">${sizeValue.value}</option>
+													</c:forEach>
+												</c:if>
+											</c:forEach>
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
@@ -128,12 +114,15 @@
 
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-										<select class="js-select2" name="time">
-											<option>Choose an option</option>
-											<option>Red</option>
-											<option>Blue</option>
-											<option>White</option>
-											<option>Grey</option>
+										<select class="js-select2" name="color">
+											<option value="0">Chọn màu</option>
+											<c:forEach var="color" items="${productColorList}">
+												<c:if test="${color.key == product.id}">
+													<c:forEach var="colorValue" items="${color.value}">
+														<option value="${colorValue.key}">${colorValue.value}</option>
+													</c:forEach>
+												</c:if>
+											</c:forEach>
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
@@ -142,6 +131,7 @@
 
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-204 flex-w flex-m respon6-next">
+									<input type="hidden" name="id" value="${product.id}"/>
 									<div class="wrap-num-product flex-w m-r-20 m-tb-10">
 										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 											<i class="fs-16 zmdi zmdi-minus"></i>
@@ -160,7 +150,7 @@
 								</div>
 							</div>	
 						</div>
-
+						</form>
 						<!--  -->
 						<div class="flex-w flex-m p-l-100 p-t-40 respon7">
 							<div class="flex-m bor9 p-r-10 m-r-11">

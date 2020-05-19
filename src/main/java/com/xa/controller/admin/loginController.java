@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -29,7 +30,7 @@ public class loginController {
     public String login(HttpSession session){
         Users user = (Users) session.getAttribute("user");
         if(user != null){
-            if(user.getRole().equals("admin")){
+            if(user.getRoles().getName().equals("admin")){
                 return adminPage + "index";
             }else{
                 return cozaShopPage + "index";
@@ -43,7 +44,7 @@ public class loginController {
         Users user = usersJpaRepo.findByUsernameAndPassword(uname, pwd);
         if(user != null){
             session.setAttribute("user", user);
-            if(user.getRole().equals("admin")){
+            if(user.getRoles().getName().equals("admin")){
                 return adminPage + "index";
             }else{
                 return cozaShopPage + "index";

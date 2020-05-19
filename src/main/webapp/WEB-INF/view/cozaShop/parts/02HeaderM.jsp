@@ -7,11 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!-- Header Mobile -->
 <div class="wrap-header-mobile">
     <!-- Logo moblie -->
     <div class="logo-mobile">
-        <a href="index.html"><img src="/coza/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+        <a href="/"><img src="/coza/images/icons/logo-01.png" alt="IMG-LOGO"></a>
     </div>
 
     <!-- Icon header -->
@@ -20,7 +21,7 @@
             <i class="zmdi zmdi-search"></i>
         </div>
 
-        <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+        <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="${fn:length(shoppingCarts)}">
             <i class="zmdi zmdi-shopping-cart"></i>
         </div>
 
@@ -30,7 +31,7 @@
 
         <c:choose>
             <c:when test="${sessionScope.user == null}">
-                <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal2">
+                <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal0">
                     <i class="zmdi zmdi-account"></i>
                 </a>
             </c:when>

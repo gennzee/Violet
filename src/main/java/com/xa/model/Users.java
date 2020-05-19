@@ -27,15 +27,22 @@ public class Users {
     private int age;
     @Column
     private String image;
-    @Column
-    private String role;
-    @Column(name = "createdDate")
+    @Column(name = "role_id")
+    private String roleId;
+    @Column(name = "created_date")
     @Temporal(TemporalType.DATE)
     private Date createdDate;
+    @Column(name = "updated_date")
+    @Temporal(TemporalType.DATE)
+    private Date updatedDate;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id", insertable = false, updatable = false)
+    private Roles roles;
 
     public Users(){}
 
-    public Users(String username, String password, String name, String address, boolean gender, int age, String image, String role, Date createdDate) {
+    public Users(String username, String password, String name, String address, boolean gender, int age, String image, String roleId, Date createdDate, Date updatedDate) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -43,8 +50,9 @@ public class Users {
         this.gender = gender;
         this.age = age;
         this.image = image;
-        this.role = role;
+        this.roleId = roleId;
         this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
     }
 
     public int getId() {
@@ -111,12 +119,12 @@ public class Users {
         this.image = image;
     }
 
-    public String getRole() {
-        return role;
+    public String getRoleId() {
+        return roleId;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
 
     public Date getCreatedDate() {
@@ -125,5 +133,21 @@ public class Users {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+    public Roles getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Roles roles) {
+        this.roles = roles;
     }
 }

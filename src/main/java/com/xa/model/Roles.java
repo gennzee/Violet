@@ -4,19 +4,17 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by anhnx on 06/05/2020.
+ * Created by anhnx on 12/05/2020.
  */
 @Entity
-@Table(name = "categories")
-public class Categories {
+@Table(name = "roles")
+public class Roles {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column
     private String name;
-    @Column(name = "removed_flag")
-    private boolean removedFlag;
     @Column(name = "created_date")
     @Temporal(TemporalType.DATE)
     private Date createdDate;
@@ -24,12 +22,11 @@ public class Categories {
     @Temporal(TemporalType.DATE)
     private Date updatedDate;
 
-    public Categories() {
+    public Roles() {
     }
 
-    public Categories(String name, boolean removedFlag, Date createdDate, Date updatedDate) {
+    public Roles(String name, Date createdDate, Date updatedDate) {
         this.name = name;
-        this.removedFlag = removedFlag;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
     }
@@ -48,14 +45,6 @@ public class Categories {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public boolean isRemovedFlag() {
-        return removedFlag;
-    }
-
-    public void setRemovedFlag(boolean removedFlag) {
-        this.removedFlag = removedFlag;
     }
 
     public Date getCreatedDate() {

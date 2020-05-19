@@ -18,7 +18,7 @@ public class customerManagementController {
     @GetMapping(value = {"/customerManagement"})
     public String customerManagement(HttpSession session){
         Users u = (Users) session.getAttribute("user");
-        if(u.getRole().equalsIgnoreCase("admin")){
+        if(u.getRoles().getName().equalsIgnoreCase("admin")){
             return "redirect:/admin";
         }
         return cozaShopPage + "customerManagement";

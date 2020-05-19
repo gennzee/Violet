@@ -6,10 +6,10 @@
     "use strict";
     /*==================================================================
      [ Show modal1 ]*/
-    /*when ajax load() called, DOM cannot understand class .js-show-modal2. so have to add parent into it.*/
-    $('#iconHeaderDesktop').on('click', '.js-show-modal2', function(e){
+    /*when ajax load() called, DOM cannot understand class .js-show-modal0. so have to add parent into it.*/
+    $('#iconHeaderDesktop').on('click', '.js-show-modal0', function(e){
         e.preventDefault();
-        $('.js-modal2').addClass('show-modal1');
+        $('.js-modal0').addClass('show-modal1');
     });
     /*==================================================================
      [ AJAX ]*/
@@ -20,7 +20,7 @@
             if(data !== "" && status === "success"){
                 $("#iconHeaderDesktop").load(" #iconHeaderDesktop");
                 swal($("#uname").val(), "đã đăng nhập thành công !", "success");
-                $('.js-modal2').removeClass('show-modal1');
+                $('.js-modal0').removeClass('show-modal1');
             }else{
                 swal("", "Thông tin tài khoản hoặc mật khẩu không đúng !", "error");
             }
@@ -35,6 +35,11 @@
             }
         });
     });
+
+    /*onClick cart icon*/
+    // $('#iconHeaderDesktop').on('click', '.js-show-cart', function(){
+    //     $('.js-panel-cart').addClass('show-header-cart');
+    // });
 
 
 })(jQuery);

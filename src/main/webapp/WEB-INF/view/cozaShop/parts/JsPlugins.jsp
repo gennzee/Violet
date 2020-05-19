@@ -77,15 +77,6 @@
             $(this).off('click');
         });
     });
-
-    /*---------------------------------------------*/
-
-    $('.js-addcart-detail').each(function(){
-        var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-        $(this).on('click', function(){
-            swal(nameProduct, "is added to cart !", "success");
-        });
-    });
 </script>
 <!--===============================================================================================-->
 <script src="/coza/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
@@ -112,3 +103,5 @@
 <script src="/coza/js/desktopMain.js"></script>
 <!--========================mobileMain.js that only mobile mode can use thí=======================================================================-->
 <script src="/coza/js/mobileMain.js"></script>
+
+<div id="reloadJS"></div>
