@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 import static com.xa.service.ConstVariables.adminPage;
 
@@ -23,6 +27,12 @@ public class adminContactController {
         Contact c = contactJpaRepo.findFirstByOrderByIdDesc();
         modelMap.addAttribute("contact", c);
         return adminPage + "contact";
+    }
+
+    @PostMapping(value = {"/editContact"})
+    public String editContact(@RequestParam Map<String, String> m){
+        Contact c = contactJpaRepo.save(new Contact(m.get("address"), m.get("mobileNumber"), m.get("email"), m.get("googleMap")));
+        return "redirect:/contactManagement";
     }
 
 }

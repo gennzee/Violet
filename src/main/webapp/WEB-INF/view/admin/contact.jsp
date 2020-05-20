@@ -83,25 +83,25 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <form action="#" method="post">
+                <form action="/editContact" method="post">
                 <div class="form-body">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Địa chỉ</label>
-                                <input type="text" class="form-control" placeholder="Địa chỉ" value="${contact.address}">
+                                <input type="text" class="form-control" placeholder="Địa chỉ" value="${contact.address}" name="address">
                             </div>
                             <div class="form-group">
                                 <label>Điện thoại liên hệ</label>
-                                <input type="text" class="form-control" placeholder="Số điện thoại" value="${contact.mobileNumber}">
+                                <input type="text" class="form-control" placeholder="Số điện thoại" value="${contact.mobileNumber}" name="mobileNumber">
                             </div>
                             <div class="form-group">
                                 <label>Thông tin hỗ trợ</label>
-                                <input type="text" class="form-control" placeholder="ví dụ : xuananh@gmail.com" value="${contact.email}">
+                                <input type="text" class="form-control" placeholder="ví dụ : xuananh@gmail.com" value="${contact.email}" name="email">
                             </div>
                             <div class="form-group">
                                 <label>Bản đồ</label>
-                                <input type="text" class="form-control" placeholder="Bản đồ" value="${contact.googleMap}">
+                                <input type="text" class="form-control" placeholder="Bản đồ" value="${contact.googleMap}" name="googleMap">
                             </div>
                             <div style="text-align: center;">
                                 <button class="btn btn-info">Cập nhật</button>

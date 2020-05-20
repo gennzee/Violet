@@ -99,7 +99,7 @@
                                 <textarea id="textarea" name="content">${ab.content}</textarea>
                                 <script>
                                     CKEDITOR.replace("textarea", {
-                                        height: 400,
+                                        height: 800,
                                         extraAllowedContent: 'section(*)'
                                     });
                                     CKEDITOR.config.contentsCss = [

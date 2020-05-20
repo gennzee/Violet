@@ -113,7 +113,7 @@
                                             <tr>
                                                 <td>${p.categories.name}</td>
                                                 <td>${p.name}</td>
-                                                <td><img src="/images/${p.productImageList[0].name}" style="height: 60px;"/></td>
+                                                <td><img src="/images/${p.productImageList[0].name}" style="height: 185px;width: 105px;object-fit: cover;"/></td>
                                                 <%--<td>${p.sold}</td>--%>
                                                 <%--<td>${p.quantity}</td>--%>
                                                 <td><a href="#">Chi tiết</a> </td>
