@@ -227,22 +227,34 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="dashboard"
+                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/dashboard"
                                              aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                         class="hide-menu">Thống kê</span></a></li>
                 <li class="list-divider"></li>
                 <li class="nav-small-cap"><span class="hide-menu">Quản lý khách hàng</span></li>
 
-                <li class="sidebar-item"> <a class="sidebar-link" href="listClient"
-                                             aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span
+                <li class="sidebar-item"> <a class="sidebar-link" href="/listClient"
+                                             aria-expanded="false"><i class="icon-people"></i><span
                         class="hide-menu">Khách hàng
                                 </span></a>
                 </li>
                 <li class="nav-small-cap"><span class="hide-menu">Quản lý sản phẩm</span></li>
 
-                <li class="sidebar-item"> <a class="sidebar-link" href="productManagement"
-                                             aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span
+                <li class="sidebar-item"> <a class="sidebar-link" href="/productManagement"
+                                             aria-expanded="false"><i data-feather="box" class="feather-icon"></i><span
                         class="hide-menu">Sản phẩm
+                                </span></a>
+                </li>
+                <li class="nav-small-cap"><span class="hide-menu">Thông tin shop</span></li>
+
+                <li class="sidebar-item"> <a class="sidebar-link" href="/contactManagement"
+                                             aria-expanded="false"><i class="icon-location-pin"></i><span
+                        class="hide-menu">Liên hệ
+                                </span></a>
+                </li>
+                <li class="sidebar-item"> <a class="sidebar-link" href="/aboutus"
+                                             aria-expanded="false"><i class="icon-user"></i><span
+                        class="hide-menu">Về chúng tôi
                                 </span></a>
                 </li>
                 <li class="list-divider"></li>

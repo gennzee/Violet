@@ -2216,7 +2216,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .stext-113 {
-  font-family: Poppins-Light;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 14px;
   line-height: 1.7857;
 }
@@ -2283,7 +2283,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .mtext-105 {
-  font-family: Poppins-Regular;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 24px;
   line-height: 1.5;
 }
@@ -2314,13 +2314,13 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .mtext-110 {
-  font-family: Poppins-Regular;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 18px;
   line-height: 1.222222;
 }
 
 .mtext-111 {
-  font-family: Poppins-Bold;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 25px;
   line-height: 1.2;
 }
