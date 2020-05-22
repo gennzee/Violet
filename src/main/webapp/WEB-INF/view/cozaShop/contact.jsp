@@ -64,7 +64,7 @@
 								Địa chỉ
 							</span>
 
-							<p class="stext-115 cl6 size-213 p-t-18">
+							<p class="stext-115 cl6 p-t-18">
 								${contact.address}
 							</p>
 						</div>

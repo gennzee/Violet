@@ -13,7 +13,7 @@ public class checkoutController {
 
     @GetMapping(value = {"/checkout"})
     public String checkout(){
-        return cozaShopPage + "check-out";
+        return cozaShopPage + "checkout";
     }
 
 }
