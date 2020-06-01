@@ -1,6 +1,8 @@
 package com.xa.controller.shop;
 
+import com.xa.interfaces.impl.InitializeSessionImpl;
 import com.xa.model.Users;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -14,8 +16,13 @@ import static com.xa.service.ConstVariables.cozaShopPage;
 @Controller
 public class customerManagementController {
 
+    @Autowired
+    private InitializeSessionImpl initializeSession;
+
     @GetMapping(value = {"/customerManagement"})
     public String customerManagement(HttpSession session){
+        initializeSession.initializeSession(session);
+
         Users u = (Users) session.getAttribute("user");
         if(u.getRoles().getName().equalsIgnoreCase("admin")){
             return "redirect:/admin";

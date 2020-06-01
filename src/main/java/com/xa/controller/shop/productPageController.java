@@ -1,5 +1,6 @@
 package com.xa.controller.shop;
 
+import com.xa.interfaces.impl.InitializeSessionImpl;
 import com.xa.model.Products;
 import com.xa.repository.CategoriesJpaRepo;
 import com.xa.repository.ProductsJpaRepo;
@@ -9,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,13 +25,15 @@ import static com.xa.service.ConstVariables.errorPage;
 public class productPageController {
 
     @Autowired
-    private CategoriesJpaRepo categoriesJpaRepo;
+    private InitializeSessionImpl initializeSession;
 
     @Autowired
     private ProductsJpaRepo productsJpaRepo;
 
     @GetMapping(value = "/product/{id}")
-    public String product(@PathVariable int id, ModelMap modelMap){
+    public String product(@PathVariable int id, ModelMap modelMap, HttpSession session){
+        initializeSession.initializeSession(session);
+
         Products product = productsJpaRepo.findById(id);
         if(product == null){
             return errorPage + "error-404";
@@ -44,7 +48,9 @@ public class productPageController {
     }
 
     @GetMapping(value = {"/product-detail"})
-    public String productDetail(){
+    public String productDetail(HttpSession session){
+        initializeSession.initializeSession(session);
+
         return cozaShopPage + "product-detail";
     }
 

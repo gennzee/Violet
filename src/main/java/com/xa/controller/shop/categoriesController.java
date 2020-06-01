@@ -3,6 +3,7 @@ package com.xa.controller.shop;
 import com.xa.model.ProductStorage;
 import com.xa.model.Products;
 import com.xa.repository.ProductsJpaRepo;
+import com.xa.interfaces.impl.InitializeSessionImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,10 +28,14 @@ public class categoriesController {
     @Autowired
     private ProductsJpaRepo productsJpaRepo;
 
+    @Autowired
+    private InitializeSessionImpl initializeSession;
+
     private int itemPerPage = 12;
 
     @GetMapping(value = {"/category/{categoryId}/{page}"})
-    public String categories(@PathVariable int categoryId, @PathVariable int page, ModelMap modelMap){
+    public String categories(@PathVariable int categoryId, @PathVariable int page, ModelMap modelMap, HttpSession session){
+        initializeSession.initializeSession(session);
 
         int totalProducts = productsJpaRepo.countByCategoryId(categoryId);
 

@@ -4,6 +4,7 @@ package com.xa.controller.shop;
  * Created by anhnx on 13/04/2020.
  */
 
+import com.xa.interfaces.impl.InitializeSessionImpl;
 import com.xa.model.ProductStorage;
 import com.xa.model.Products;
 import com.xa.model.ShoppingCart;
@@ -23,8 +24,8 @@ import static com.xa.service.ConstVariables.cozaShopPage;
 @Controller
 public class shoppingCartController {
 
-//    @Autowired
-//    private ShoppingCart shoppingCart;
+    @Autowired
+    private InitializeSessionImpl initializeSession;
 
     @Autowired
     private ProductStorageJpaRepo productStorageJpaRepo;
@@ -33,7 +34,9 @@ public class shoppingCartController {
     private ProductsJpaRepo productsJpaRepo;
 
     @GetMapping(value = {"/shoping-cart"})
-    public String cart(){
+    public String cart(HttpSession session){
+        initializeSession.initializeSession(session);
+
         return cozaShopPage + "shoping-cart";
     }
 

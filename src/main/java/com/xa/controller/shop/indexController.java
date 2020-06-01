@@ -1,6 +1,8 @@
 package com.xa.controller.shop;
 
+import com.xa.interfaces.impl.InitializeSessionImpl;
 import com.xa.model.Categories;
+import com.xa.model.Favorite;
 import com.xa.model.ShoppingCart;
 import com.xa.repository.CategoriesJpaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +20,12 @@ import static com.xa.service.ConstVariables.cozaShopPage;
 public class indexController {
 
     @Autowired
-    private CategoriesJpaRepo categoriesJpaRepo;
+    private InitializeSessionImpl initializeSession;
 
     @GetMapping(value = {"/"})
     public String index(HttpSession session){
-        List<Categories> listCategories = categoriesJpaRepo.findAll();
-        session.setAttribute("listCategories", listCategories);
-        if(session.getAttribute("shoppingCarts") == null){
-            Map<Integer, ShoppingCart> shoppingCarts = new HashMap<>();
-            session.setAttribute("shoppingCarts", shoppingCarts);
-        }
+        initializeSession.initializeSession(session);
+
         return cozaShopPage+"index";
     }
 

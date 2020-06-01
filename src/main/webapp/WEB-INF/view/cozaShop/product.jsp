@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,27 +28,15 @@
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						All Products
+						Tất cả
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						Women
+						Nữ
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						Men
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						Bag
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-						Shoes
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-						Watches
+						Nam
 					</button>
 				</div>
 
@@ -72,7 +61,7 @@
 							<i class="zmdi zmdi-search"></i>
 						</button>
 
-						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
+						<input id="searchProducts" class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
 					</div>	
 				</div>
 
@@ -245,7 +234,7 @@
 							</ul>
 						</div>
 
-						<div class="filter-col4 p-r-15 p-b-27">
+						<div class="filter-col4 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
 								Size
 							</div>
@@ -288,41 +277,13 @@
 								</li>
 							</ul>
 						</div>
-
-						<div class="filter-col5 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Tags
-							</div>
-
-							<div class="flex-w p-t-4 m-r--5">
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Fashion
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Lifestyle
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Denim
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Streetstyle
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Crafts
-								</a>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="row isotope-grid">
+			<div class="productSection row isotope-grid">
 				<c:forEach var="p" items="${listProducts}">
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+				<div class="product col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
@@ -345,10 +306,27 @@
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/coza/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/coza/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
+								<c:set var="contains" value="false" />
+								<c:forEach var="item" items="${favoriteCarts}">
+									<c:if test="${item.key eq p.id}">
+										<c:set var="contains" value="true" />
+									</c:if>
+								</c:forEach>
+								<c:choose>
+									<c:when test="${contains}">
+										<a id="${p.id}" href="javascript:void(0)" class="addProductToFavorite btn-addwish-b2 dis-block pos-relative js-addwish-b2 js-addedwish-b2">
+											<img class="icon-heart1 dis-block trans-04" src="/coza/images/icons/icon-heart-01.png" alt="ICON">
+											<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/coza/images/icons/icon-heart-02.png" alt="ICON">
+										</a>
+									</c:when>
+									<c:otherwise>
+										<a id="${p.id}" href="javascript:void(0)" class="addProductToFavorite btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+											<img class="icon-heart1 dis-block trans-04" src="/coza/images/icons/icon-heart-01.png" alt="ICON">
+											<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/coza/images/icons/icon-heart-02.png" alt="ICON">
+										</a>
+									</c:otherwise>
+								</c:choose>
+
 							</div>
 						</div>
 					</div>
@@ -361,7 +339,7 @@
 				<c:forEach var="page" items="${pageList}">
 					<c:choose>
 						<c:when test="${page == currentPage}">
-							<a href="/category/${currentCategory}/${page}" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
+							<a href="javascript:void(0)" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1" style="cursor: context-menu;">
 									${page}
 							</a>
 						</c:when>
@@ -381,3 +359,15 @@
 	<jsp:include page="parts/footer.jsp"/>
 
 	<jsp:include page="parts/JsPlugins.jsp"/>
+
+	<%--Search ProductSection--%>
+	<script>
+        $(document).ready(function(){
+            $("#searchProducts").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".productSection .product").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+	</script>

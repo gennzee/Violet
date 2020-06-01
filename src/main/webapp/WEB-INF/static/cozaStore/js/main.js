@@ -195,12 +195,13 @@
 
     /*==================================================================
     [ Cart ]*/
-    // $('.js-show-cart').on('click',function(){
-    //     $('.js-panel-cart').addClass('show-header-cart');
-    // });
 
     $("body").on("click", ".js-show-cart", function(){
         $('.js-panel-cart').addClass('show-header-cart');
+    });
+
+    $("body").on("click", ".js-show-favorite", function(){
+        $('.js-panel-favorite').addClass('show-header-cart');
     });
 
     $("body").on("click", "#productCart", function (event) {
@@ -213,6 +214,19 @@
             });
         }else{
             $('.js-panel-cart').removeClass('show-header-cart');
+        }
+    });
+
+    $("body").on("click", "#productFavorite", function (event) {
+        var id = event.target.id;
+        if(id && !isNaN(parseInt(id))){
+            $.post("/removeFavoriteAjax/"+id,{},function (data, status, jqXHR) {
+                $("#productCartDetail").load(" #productCartDetail");
+                $("#iconHeaderDesktop").load(" #iconHeaderDesktop");
+                $("#iconHeaderMobile").load(" #iconHeaderMobile");
+            });
+        }else{
+            $('.js-panel-favorite').removeClass('show-header-cart');
         }
     });
 
@@ -353,6 +367,36 @@
                 swal("", "Xóa sản phẩm thành công !", "success");
             }
         });
+    });
+
+    /*add-product-to-favorite-handler*/
+    $(".addProductToFavorite").on( "click", function( event ) {
+        var id = event.currentTarget.id;
+        if(!event.currentTarget.classList.contains("js-addedwish-b2")){
+            $.post('/addtoFavoriteAjax/'+id,{},function (data, status, jqXHR) {
+                if(data !== "" && data != 0 && status === "success"){
+                    $("#productFavorite").load(" #productFavoriteDetail");
+                    $("#iconHeaderDesktop").load(" #iconHeaderDesktop");
+                    $("#iconHeaderMobile").load(" #iconHeaderMobile");
+                    event.currentTarget.classList.add("js-addedwish-b2");
+                    swal("", "Đã được thêm vào mục yêu thích !", "success");
+                }else{
+                    swal("", "Lỗi !", "error");
+                }
+            });
+        }else{
+            $.post('/removeFavoriteAjax/'+id,{},function (data, status, jqXHR) {
+                if(data !== "" && data != 0 && status === "success"){
+                    $("#productFavorite").load(" #productFavoriteDetail");
+                    $("#iconHeaderDesktop").load(" #iconHeaderDesktop");
+                    $("#iconHeaderMobile").load(" #iconHeaderMobile");
+                    event.currentTarget.classList.remove("js-addedwish-b2");
+                    swal("", "Ngon !", "success");
+                }else{
+                    swal("", "Lỗi !", "error");
+                }
+            });
+        }
     });
 
 })(jQuery);
