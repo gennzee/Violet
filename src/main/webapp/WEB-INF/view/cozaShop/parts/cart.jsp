@@ -101,7 +101,7 @@
                         <c:forEach var="cart" items="${favoriteCarts}">
                             <li class="header-cart-item flex-w flex-t m-b-12">
                                 <div class="header-cart-item-img" id="${cart.value.products.id}">
-                                    <img src="#" width="60" height="80" style="object-fit: cover;" alt="IMG">
+                                    <img src="/images/${cart.key}" width="60" height="80" style="object-fit: cover;" alt="IMG">
                                 </div>
 
                                 <div class="header-cart-item-txt">

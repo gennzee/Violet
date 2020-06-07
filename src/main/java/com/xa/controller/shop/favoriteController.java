@@ -45,8 +45,8 @@ public class favoriteController {
             f = new Favorite(0, p.getId());
             f.setProducts(p);
         }
-        Map<Integer, Favorite> favoriteCarts = (Map<Integer, Favorite>) session.getAttribute("favoriteCarts");
-        favoriteCarts.put(p.getId(), f);
+        Map<String, Favorite> favoriteCarts = (Map<String, Favorite>) session.getAttribute("favoriteCarts");
+        favoriteCarts.put(p.getProductImageList().get(0).getName(), f);
         session.setAttribute("favoriteCarts", favoriteCarts);
 
         return true;

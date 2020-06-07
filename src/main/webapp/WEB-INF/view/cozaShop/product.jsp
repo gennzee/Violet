@@ -308,7 +308,7 @@
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<c:set var="contains" value="false" />
 								<c:forEach var="item" items="${favoriteCarts}">
-									<c:if test="${item.key eq p.id}">
+									<c:if test="${item.value.products.id eq p.id}">
 										<c:set var="contains" value="true" />
 									</c:if>
 								</c:forEach>

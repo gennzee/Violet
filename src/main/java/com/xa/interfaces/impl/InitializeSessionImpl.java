@@ -33,7 +33,7 @@ public class InitializeSessionImpl implements InitializeSession {
             session.setAttribute("shoppingCarts", shoppingCarts);
         }
         if(session.getAttribute("favoriteCarts") == null){
-            Map<Integer, Favorite> favoriteCarts = new HashMap<>();
+            Map<String, Favorite> favoriteCarts = new HashMap<>();
             session.setAttribute("favoriteCarts", favoriteCarts);
         }
     }
