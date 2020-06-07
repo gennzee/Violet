@@ -37,7 +37,7 @@ public class checkoutController {
     public String postCheckout(@RequestParam Map<String, String> m, HttpSession session) {
         initializeSession.initializeSession(session);
 
-        System.out.println("test");
+        System.out.println("test commit with intellij");
         
         return "redirect:/";
     }
