@@ -27,10 +27,10 @@ public class ProductStorage {
     private int quantity;
     @Column
     private int sold;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "product_id", insertable = false, updatable = false)
-//    private Products products;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    private Products products;
 
     @ManyToOne
     @JoinColumn(name = "color_id", referencedColumnName = "id", insertable = false, updatable = false)
@@ -117,13 +117,13 @@ public class ProductStorage {
         this.sold = sold;
     }
 
-//    public Products getProducts() {
-//        return products;
-//    }
-//
-//    public void setProducts(Products products) {
-//        this.products = products;
-//    }
+    public Products getProducts() {
+        return products;
+    }
+
+    public void setProducts(Products products) {
+        this.products = products;
+    }
 
     public ProductColor getProductColor() {
         return productColor;

@@ -399,4 +399,16 @@
         }
     });
 
+    /*login-from-checkout-page*/
+    $("#loginFormOnCheckout").on("click", function (event) {
+        event.preventDefault();
+        $.post('/postLoginAjax',{uname: $("#uname").val(), pwd: $("#pwd").val()},function (data, status, jqXHR) {
+            if(data !== "" && data != 0 && status === "success"){
+                location.reload();
+            }else{
+                swal("", "Thông tin tài khoản hoặc mật khẩu không đúng !", "error");
+            }
+        });
+    });
+
 })(jQuery);

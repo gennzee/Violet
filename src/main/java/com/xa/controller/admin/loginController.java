@@ -44,7 +44,7 @@ public class loginController {
             if(user.getRoles().getName().equals("admin")){
                 return adminPage + "index";
             }else{
-                return cozaShopPage + "index";
+                return "redirect:/checkout";
             }
         }
         return adminPage + "login";

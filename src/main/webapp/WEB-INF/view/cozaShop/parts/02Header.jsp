@@ -67,6 +67,10 @@
                 <i class="zmdi zmdi-account"></i>
             </a>
             <div class="dropdown-menu">
+                <a class="dropdown-item" href="/order_history">Lịch sử đặt hàng</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Tra cứu đơn hàng</a>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/customerManagement">Quản lý tài khoản</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" id="logoutBtn" href="javascript:void(0)">Đăng xuất</a>

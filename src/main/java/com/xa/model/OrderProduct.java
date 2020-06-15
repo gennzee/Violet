@@ -1,6 +1,7 @@
 package com.xa.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by anhnx on 12/05/2020.
@@ -20,6 +21,10 @@ public class OrderProduct {
     private int quantity;
     @Column
     private float price;
+
+    @ManyToOne
+    @JoinColumn(name = "product_storage_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private ProductStorage productStorage;
 
     public OrderProduct() {
     }
@@ -69,5 +74,13 @@ public class OrderProduct {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public ProductStorage getProductStorage() {
+        return productStorage;
+    }
+
+    public void setProductStorage(ProductStorage productStorage) {
+        this.productStorage = productStorage;
     }
 }
