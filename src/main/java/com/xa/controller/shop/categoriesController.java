@@ -1,15 +1,23 @@
 package com.xa.controller.shop;
 
+import com.xa.model.ProductColor;
+import com.xa.model.ProductSize;
 import com.xa.model.ProductStorage;
 import com.xa.model.Products;
+import com.xa.repository.ProductColorJpaRepo;
+import com.xa.repository.ProductSizeJpaRepo;
 import com.xa.repository.ProductsJpaRepo;
 import com.xa.interfaces.impl.InitializeSessionImpl;
+import com.xa.repository.Specification.ProductSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -31,10 +39,17 @@ public class categoriesController {
     @Autowired
     private InitializeSessionImpl initializeSession;
 
+    @Autowired
+    private ProductColorJpaRepo productColorJpaRepo;
+
+    @Autowired
+    private ProductSizeJpaRepo productSizeJpaRepo;
+
     private int itemPerPage = 12;
 
     @GetMapping(value = {"/category/{categoryId}/{page}"})
-    public String categories(@PathVariable int categoryId, @PathVariable int page, ModelMap modelMap, HttpSession session){
+    public String categories(ModelMap modelMap, HttpSession session, @PathVariable int categoryId, @PathVariable int page, @RequestParam(defaultValue = "") String sortBy,
+                             @RequestParam(defaultValue = "") String price, @RequestParam(defaultValue = "") String color, @RequestParam(defaultValue = "") String size){
         initializeSession.initializeSession(session);
 
         int totalProducts = productsJpaRepo.countByCategoryId(categoryId);
@@ -51,14 +66,24 @@ public class categoriesController {
         for (int i = 1; i <= totalPage; i++) {
             pageList.add(i);
         }
-        List<Products> listProducts = productsJpaRepo.findAllByCategoryId(categoryId, PageRequest.of((page - 1), itemPerPage));
+        Specification condition = Specification.where(ProductSpecification.hasCategoryId(categoryId)).and(ProductSpecification.hasPrice(1000));
+        Page<Products> listProducts = productsJpaRepo.findAll(condition, PageRequest.of((page - 1), itemPerPage));
+        modelMap.addAttribute("sortBy", "");
+        modelMap.addAttribute("price", "");
+        modelMap.addAttribute("color", "");
+        modelMap.addAttribute("size", "");
 
-        modelMap.addAttribute("listProducts", listProducts);
+        List<ProductColor> productColorList = productColorJpaRepo.findAll();
+        List<ProductSize> productSizeList = productSizeJpaRepo.findAll();
+        modelMap.addAttribute("colorList", productColorList);
+        modelMap.addAttribute("sizeList", productSizeList);
+
+        modelMap.addAttribute("listProducts", listProducts.getContent());
         modelMap.addAttribute("pageList", pageList);
         modelMap.addAttribute("currentCategory", categoryId);
         modelMap.addAttribute("currentPage", page);
 
-        loadSizeAndColorList(listProducts, modelMap);
+        loadSizeAndColorList(listProducts.getContent(), modelMap);
 
         return cozaShopPage + "product";
     }

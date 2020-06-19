@@ -15,6 +15,8 @@ public class ProductColor {
     private int id;
     @Column
     private String name;
+    @Column
+    private String hex;
     @Column(name = "removed_flag")
     private boolean removedFlag;
     @Column(name = "created_date")
@@ -27,8 +29,9 @@ public class ProductColor {
     public ProductColor() {
     }
 
-    public ProductColor(String name, boolean removedFlag, Date createdDate, Date updatedDate) {
+    public ProductColor(String name, String hex, boolean removedFlag, Date createdDate, Date updatedDate) {
         this.name = name;
+        this.hex = hex;
         this.removedFlag = removedFlag;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
@@ -72,5 +75,13 @@ public class ProductColor {
 
     public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public String getHex() {
+        return hex;
+    }
+
+    public void setHex(String hex) {
+        this.hex = hex;
     }
 }
