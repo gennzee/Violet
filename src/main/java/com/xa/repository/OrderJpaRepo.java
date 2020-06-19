@@ -12,7 +12,7 @@ import java.util.List;
 @Component
 public interface OrderJpaRepo extends JpaRepository<Order, Integer> {
 
-    List<Order> findAllByUserId(int id);
+    List<Order> findAllByUserIdOrderByIdDesc(int id);
 
     Order findById(int id);
 

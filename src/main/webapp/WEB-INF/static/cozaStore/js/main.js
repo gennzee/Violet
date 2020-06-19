@@ -381,6 +381,7 @@
                     event.currentTarget.classList.add("js-addedwish-b2");
                     swal("", "Đã được thêm vào mục yêu thích !", "success");
                 }else{
+                    $('.js-modal0').addClass('show-modal1');
                     swal("", "Lỗi !", "error");
                 }
             });

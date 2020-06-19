@@ -83,7 +83,7 @@ public class checkoutController {
         initializeSession.initializeSession(session);
         Users u = (Users) session.getAttribute("user");
 
-        List<Order> orderList = orderJpaRepo.findAllByUserId(u.getId());
+        List<Order> orderList = orderJpaRepo.findAllByUserIdOrderByIdDesc(u.getId());
         modelMap.addAttribute("ESD", "ESD");
         modelMap.addAttribute("orderList", orderList);
 

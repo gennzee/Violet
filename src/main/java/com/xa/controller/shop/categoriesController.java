@@ -20,10 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.xa.service.ConstVariables.cozaShopPage;
 
@@ -48,8 +45,11 @@ public class categoriesController {
     private int itemPerPage = 12;
 
     @GetMapping(value = {"/category/{categoryId}/{page}"})
-    public String categories(ModelMap modelMap, HttpSession session, @PathVariable int categoryId, @PathVariable int page, @RequestParam(defaultValue = "") String sortBy,
-                             @RequestParam(defaultValue = "") String price, @RequestParam(defaultValue = "") String color, @RequestParam(defaultValue = "") String size){
+    public String categories(ModelMap modelMap, HttpSession session, @PathVariable int categoryId, @PathVariable int page,
+                             @RequestParam(defaultValue = "") String sortBy,
+                             @RequestParam(defaultValue = "0-9999999") String price,
+                             @RequestParam(defaultValue = "") String color,
+                             @RequestParam(defaultValue = "") String size){
         initializeSession.initializeSession(session);
 
         int totalProducts = productsJpaRepo.countByCategoryId(categoryId);
@@ -66,12 +66,13 @@ public class categoriesController {
         for (int i = 1; i <= totalPage; i++) {
             pageList.add(i);
         }
-        Specification condition = Specification.where(ProductSpecification.hasCategoryId(categoryId)).and(ProductSpecification.hasPrice(1000));
+        String[] prices = price.split("-");
+        Specification condition = Specification.where(ProductSpecification.filterConditions(categoryId, sortBy, prices[0], prices[1], color, size));
         Page<Products> listProducts = productsJpaRepo.findAll(condition, PageRequest.of((page - 1), itemPerPage));
-        modelMap.addAttribute("sortBy", "");
-        modelMap.addAttribute("price", "");
-        modelMap.addAttribute("color", "");
-        modelMap.addAttribute("size", "");
+        modelMap.addAttribute("sortBy", sortBy);
+        modelMap.addAttribute("price", price);
+        modelMap.addAttribute("color", color);
+        modelMap.addAttribute("size", size);
 
         List<ProductColor> productColorList = productColorJpaRepo.findAll();
         List<ProductSize> productSizeList = productSizeJpaRepo.findAll();

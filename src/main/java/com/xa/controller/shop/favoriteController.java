@@ -42,8 +42,7 @@ public class favoriteController {
             f.setProducts(p);
             favoriteJpaRepo.save(f);
         }else{
-            f = new Favorite(0, p.getId());
-            f.setProducts(p);
+            return false;
         }
         Map<String, Favorite> favoriteCarts = (Map<String, Favorite>) session.getAttribute("favoriteCarts");
         favoriteCarts.put(p.getProductImageList().get(0).getName(), f);

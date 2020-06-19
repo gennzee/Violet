@@ -75,28 +75,17 @@
 
 							<ul>
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+									<a href="/category/${currentCategory}/${currentPage}?price=${price}&color=${color}&size=${size}" class="filter-link stext-106 trans-04 <c:if test="${empty sortBy}">filter-link-active</c:if>">
 										Tất cả
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/category/${currentCategory}/${currentPage}?sortBy=newest&price=${price}&color=${color}&size=${size}" class="filter-link stext-106 trans-04 <c:if test="${sortBy eq 'newest'}">filter-link-active</c:if>">
 										Mới ra
 									</a>
 								</li>
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Giá thấp tới cao
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Giá cao tới thấp
-									</a>
-								</li>
 
 							</ul>
 						</div>
@@ -108,31 +97,31 @@
 
 							<ul>
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+									<a href="/category/${currentCategory}/${currentPage}?sortBy=${sortBy}&color=${color}&size=${size}" class="filter-link stext-106 trans-04 <c:if test="${price eq '0-9999999'}">filter-link-active</c:if>">
 										Tất cả
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/category/${currentCategory}/${currentPage}?sortBy=${sortBy}&price=0-250000&color=${color}&size=${size}" class="filter-link stext-106 trans-04 <c:if test="${price eq '0-250000'}">filter-link-active</c:if>">
 										0 ~ 250,000 VNĐ
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/category/${currentCategory}/${currentPage}?sortBy=${sortBy}&price=250000-400000&color=${color}&size=${size}" class="filter-link stext-106 trans-04 <c:if test="${price eq '250000-400000'}">filter-link-active</c:if>">
 										250,000 ~ 400,000 VNĐ
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/category/${currentCategory}/${currentPage}?sortBy=${sortBy}&price=400000-550000&color=${color}&size=${size}" class="filter-link stext-106 trans-04 <c:if test="${price eq '400000-550000'}">filter-link-active</c:if>">
 										400,000 ~ 550,000 VNĐ
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/category/${currentCategory}/${currentPage}?sortBy=${sortBy}&price=550000-9999999&color=${color}&size=${size}" class="filter-link stext-106 trans-04 <c:if test="${price eq '550000-9999999'}">filter-link-active</c:if>">
 										550,000 VNĐ trở đi
 									</a>
 								</li>
@@ -150,7 +139,7 @@
 										<i class="zmdi zmdi-circle"></i>
 									</span>
 
-									<a href="#" class="filter-link stext-106 trans-04 <c:if test="${empty color}">filter-link-active</c:if>">
+									<a href="/category/${currentCategory}/${currentPage}?sortBy=${sortBy}&price=${price}&size=${size}" class="filter-link stext-106 trans-04 <c:if test="${empty color}">filter-link-active</c:if>">
 										Tất cả
 									</a>
 								</li>
@@ -162,7 +151,7 @@
 										<i class="zmdi zmdi-circle"></i>
 									</span>
 
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="/category/${currentCategory}/${currentPage}?sortBy=${sortBy}&price=${price}&color=${c.id}&size=${size}" class="filter-link stext-106 trans-04 <c:if test="${color eq c.id}">filter-link-active</c:if>">
 										${c.name}
 									</a>
 								</li>
@@ -177,14 +166,14 @@
 
 							<ul>
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 <c:if test="${empty size}">filter-link-active</c:if>">
+									<a href="/category/${currentCategory}/${currentPage}?sortBy=${sortBy}&price=${price}&color=${color}" class="filter-link stext-106 trans-04 <c:if test="${empty size}">filter-link-active</c:if>">
 										Tất cả
 									</a>
 								</li>
 
 								<c:forEach var="s" items="${sizeList}">
 									<li class="p-b-6">
-										<a href="#" class="filter-link stext-106 trans-04">
+										<a href="/category/${currentCategory}/${currentPage}?sortBy=${sortBy}&price=${price}&color=${color}&size=${s.id}" class="filter-link stext-106 trans-04 <c:if test="${size eq s.id}">filter-link-active</c:if>">
 											${s.name}
 										</a>
 									</li>
