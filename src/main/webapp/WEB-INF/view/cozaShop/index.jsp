@@ -183,72 +183,72 @@
 	<section class="section-slide">
 		<div class="wrap-slick1 rs2-slick1">
 			<div class="slick1">
-				<div class="item-slick1 bg-overlay1" style="background-image: url(/coza/images/slide-02.jpg);" data-thumb="/coza/images/slide-02.jpg" data-caption="Women Collection 2018">
+				<div class="item-slick1 bg-overlay1" style="background-image: url(/coza/images/slide_aodai_1.jpg);" data-thumb="/coza/images/slide_aodai_1.jpg" data-caption="">
 					<div class="container h-full">
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
 								<span class="ltext-202 txt-center cl0 respon2">
-									Women Collection 2018
+									Chuyên thiết kế áo dài thời trang cao cấp.
 								</span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
 								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
-									New arrivals
+									Minh Thư
 								</h2>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
 								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-									Shop Now
+									Xem ngay
 								</a>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="item-slick1 bg-overlay1" style="background-image: url(/coza/images/slide-03.jpg);" data-thumb="/coza/images/slide-03.jpg" data-caption="Men New-Season">
+				<div class="item-slick1 bg-overlay1" style="background-image: url(/coza/images/slide_aodai_2.jpg);" data-thumb="/coza/images/slide_aodai_2.jpg" data-caption="">
 					<div class="container h-full">
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
 								<span class="ltext-202 txt-center cl0 respon2">
-									Men New-Season
+									Mẫu áo dài thời trang cách tân.
 								</span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
 								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
-									Jackets & Coats
+									Minh Thư
 								</h2>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
 								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-									Shop Now
+									Xem ngay
 								</a>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="item-slick1 bg-overlay1" style="background-image: url(/coza/images/slide-04.jpg);" data-thumb="/coza/images/slide-04.jpg" data-caption="Men Collection 2018">
+				<div class="item-slick1 bg-overlay1" style="background-image: url(/coza/images/slide_aodai_3.jpg);" data-thumb="/coza/images/slide_aodai_3.jpg" data-caption="">
 					<div class="container h-full">
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 								<span class="ltext-202 txt-center cl0 respon2">
-									Men Collection 2018
+									Nhiều mẫu áo dài đa dạng.
 								</span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
 								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
-									NEW SEASON
+									Minh Thư
 								</h2>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
 								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-									Shop Now
+									Xem ngay
 								</a>
 							</div>
 						</div>
