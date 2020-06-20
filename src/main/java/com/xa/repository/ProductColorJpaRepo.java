@@ -11,4 +11,7 @@ import java.util.List;
  */
 @Component
 public interface ProductColorJpaRepo extends JpaRepository<ProductColor, Integer> {
+
+    List<ProductColor> findAllByCategoryId(int categoryId);
+
 }

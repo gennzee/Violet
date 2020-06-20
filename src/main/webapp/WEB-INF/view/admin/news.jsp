@@ -26,6 +26,17 @@
         <![endif]-->
     <%--jquery --%>
     <script src="admin/assets/libs/jquery/dist/jquery.min.js"></script>
+    <!--=============================    CKEDITOR    ============================================-->
+    <script src="/libs/ckeditor/ckeditor.js"></script>
+    <!--=============================    END    ============================================-->
+    <style>
+        .ellipsis-text {
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
 </head>
 
 <body>
@@ -89,109 +100,115 @@
                 <!-- basic table -->
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="btn-list" style="margin-bottom: 5px;">
-                                    <button type="button" class="btn waves-effect waves-light btn-primary" data-toggle="modal" data-target="#addProductModal">Thêm</button>
-                                </div>
-                                <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-bordered no-wrap">
-                                        <thead>
-                                            <tr>
-                                                <th>Danh mục</th>
-                                                <th>Tên</th>
-                                                <th>Hình</th>
-                                                <%--<th>Đã bán ra</th>--%>
-                                                <%--<th>Trong kho</th>--%>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <c:forEach var="p" items="${listProducts}">
-                                            <tr>
-                                                <td>${p.categories.name}</td>
-                                                <td>${p.name}</td>
-                                                <td><img src="/images/${p.productImageList[0].name}" style="height: 185px;width: 105px;object-fit: cover;"/></td>
-                                                <%--<td>${p.sold}</td>--%>
-                                                <%--<td>${p.quantity}</td>--%>
-                                                <td><a href="#">Chi tiết</a> </td>
-                                                <td><a href="/deleteProduct/${p.id}"><i class="fas fa-trash-alt"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pencil-alt"></i></a></td>
-                                            </tr>
-                                        </c:forEach>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Danh mục</th>
-                                                <th>Tên</th>
-                                                <th>Hình</th>
-                                                <%--<th>Đã bán ra</th>--%>
-                                                <%--<th>Trong kho</th>--%>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                            </div>
+                        <div class="btn-list" style="margin-bottom: 5px;">
+                            <button type="button" class="btn waves-effect waves-light btn-primary" data-toggle="modal" data-target="#addNewsModal">Thêm</button>
                         </div>
+                        <!-- Row -->
+                        <div class="row">
+                            <c:forEach var="n" items="${newsList}">
+                            <!-- column -->
+                            <div class="col-lg-3 col-md-6 img-fluid">
+                                <!-- Card -->
+                                <div class="card">
+                                    <img class="card-img-top img-fluid" src="/images/${n.thumbImage}"
+                                         alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title ellipsis-text">${n.name}</h4>
+                                        <a href="javascript:void(0)" class="btn btn-primary">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                                <!-- Card -->
+                            </div>
+                            <!-- column -->
+                            </c:forEach>
+                        </div>
+                        <!-- Row -->
                     </div>
                 </div>
-
                 <%--modal--%>
-                <div id="addProductModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                    <div class="modal-dialog">
+                <div id="addNewsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="myModalLabel">Thêm sản phẩm mới</h4>
+                                <h4 class="modal-title" id="myModalLabel">Thêm tin tức mới</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <form id="addProductForm" class="mt-4" action="/addProduct" method="post" enctype="multipart/form-data">
-                                    <div class="form-group">
-                                        <label>Tên sản phẩm</label>
-                                        <input type="search" class="form-control" value="" name="name">
-                                    </div>
+                                <form class="mt-4" id="addNewsForm" action="/addNews" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label class="mr-sm-2" for="inlineFormCustomSelect">Danh mục</label>
                                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="category">
-                                            <option selected="">Chọn...</option>
+                                            <option value="" selected="">Chọn...</option>
                                             <c:forEach var="c" items="${listCategories}">
                                             <option value="${c.id}">${c.name}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>Giá</label>
-                                        <input type="search" class="form-control" value="" name="price">
+                                        <label>Tiêu đề</label>
+                                        <input type="text" class="form-control" value="" name="title">
                                     </div>
                                     <div class="form-group">
-                                        <label>Giảm giá</label>
-                                        <input type="search" class="form-control" value="" name="discounts">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Hình ảnh trước</span>
+                                            </div>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="inputGroupFile01" name="thumb_image">
+                                                <label class="custom-file-label" for="inputGroupFile01">Chọn hình ảnh</label>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Hình ảnh</label>
-                                        <input type="file" name="image" id="upload" multiple>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Hình ảnh nội dung</span>
+                                            </div>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="inputGroupFile02" name="content_image">
+                                                <label class="custom-file-label" for="inputGroupFile02">Chọn hình ảnh</label>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Mô tả</label>
-                                        <textarea class="form-control" rows="3" name="description"></textarea>
+                                        <label>Nội dung</label>
+                                        <textarea id="textarea" class="form-control" name="content"></textarea>
+                                        <script>
+                                            CKEDITOR.replace("textarea", {
+                                                height: 400,
+                                                extraAllowedContent: 'section(*)'
+                                            });
+                                            CKEDITOR.config.contentsCss = [
+                                                "/coza/vendor/bootstrap/css/bootstrap.min.css",
+                                                "/coza/fonts/font-awesome-4.7.0/css/font-awesome.min.css",
+                                                "/coza/fonts/iconic/css/material-design-iconic-font.min.css",
+                                                "/coza/fonts/linearicons-v1.0.0/icon-font.min.css",
+                                                "/coza/vendor/animate/animate.css",
+                                                "/coza/vendor/css-hamburgers/hamburgers.min.css",
+                                                "/coza/vendor/animsition/css/animsition.min.css",
+                                                "/coza/vendor/select2/select2.min.css",
+                                                "/coza/vendor/daterangepicker/daterangepicker.css",
+                                                "/coza/vendor/slick/slick.css",
+                                                "/coza/vendor/MagnificPopup/magnific-popup.css",
+                                                "/coza/vendor/perfect-scrollbar/perfect-scrollbar.css",
+                                                "https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap",
+                                                "/coza/css/util.css",
+                                                "/coza/css/main.css"
+                                            ];
+                                        </script>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" id="submitAddProductForm" class="btn btn-primary">Tạo</button>
+                                <button type="submit" id="submitAddNewsForm" class="btn btn-primary">Tạo</button>
                                 <button type="button" class="btn btn-light" data-dismiss="modal">Đóng</button>
                             </div>
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div>
                 <script>
-                    $( "#submitAddProductForm" ).click(function() {
-                        $( "#addProductForm" ).submit();
+                    $( "#submitAddNewsForm" ).click(function() {
+                        $( "#addNewsForm" ).submit();
                     });
                 </script>
                 <%--end modal--%>

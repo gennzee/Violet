@@ -29,7 +29,7 @@
         </li>--%>
 
         <li>
-            <a href="/blog">Blog</a>
+            <a href="/blog/1">Blog</a>
         </li>
 
         <li>

@@ -245,6 +245,11 @@
                         class="hide-menu">Sản phẩm
                                 </span></a>
                 </li>
+                <li class="sidebar-item"> <a class="sidebar-link" href="/newsManagement"
+                                             aria-expanded="false"><i data-feather="box" class="feather-icon"></i><span
+                        class="hide-menu">Tin tức
+                                </span></a>
+                </li>
                 <li class="nav-small-cap"><span class="hide-menu">Thông tin shop</span></li>
 
                 <li class="sidebar-item"> <a class="sidebar-link" href="/contactManagement"

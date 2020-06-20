@@ -15,6 +15,8 @@ public class ProductSize {
     private int id;
     @Column
     private String name;
+    @Column(name = "category_id")
+    private int categoryId;
     @Column(name = "removed_flag")
     private boolean removedFlag;
     @Column(name = "created_date")
@@ -27,8 +29,9 @@ public class ProductSize {
     public ProductSize() {
     }
 
-    public ProductSize(String name, boolean removedFlag, Date createdDate, Date updatedDate) {
+    public ProductSize(String name, int categoryId, boolean removedFlag, Date createdDate, Date updatedDate) {
         this.name = name;
+        this.categoryId = categoryId;
         this.removedFlag = removedFlag;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
@@ -72,5 +75,13 @@ public class ProductSize {
 
     public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 }

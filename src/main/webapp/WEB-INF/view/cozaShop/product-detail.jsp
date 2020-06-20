@@ -181,15 +181,15 @@
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs" role="tablist">
 						<li class="nav-item p-b-10">
-							<a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a>
+							<a class="nav-link active" data-toggle="tab" href="#description" role="tab">Nội dung</a>
 						</li>
 
 						<li class="nav-item p-b-10">
-							<a class="nav-link" data-toggle="tab" href="#information" role="tab">Additional information</a>
+							<a class="nav-link" data-toggle="tab" href="#information" role="tab">Thông tin chi tiết</a>
 						</li>
 
 						<li class="nav-item p-b-10">
-							<a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Reviews (1)</a>
+							<a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Đánh giá (${reviewList.size()})</a>
 						</li>
 					</ul>
 
@@ -199,7 +199,7 @@
 						<div class="tab-pane fade show active" id="description" role="tabpanel">
 							<div class="how-pos2 p-lr-15-md">
 								<p class="stext-102 cl6">
-									Aenean sit amet gravida nisi. Nam fermentum est felis, quis feugiat nunc fringilla sit amet. Ut in blandit ipsum. Quisque luctus dui at ante aliquet, in hendrerit lectus interdum. Morbi elementum sapien rhoncus pretium maximus. Nulla lectus enim, cursus et elementum sed, sodales vitae eros. Ut ex quam, porta consequat interdum in, faucibus eu velit. Quisque rhoncus ex ac libero varius molestie. Aenean tempor sit amet orci nec iaculis. Cras sit amet nulla libero. Curabitur dignissim, nunc nec laoreet consequat, purus nunc porta lacus, vel efficitur tellus augue in ipsum. Cras in arcu sed metus rutrum iaculis. Nulla non tempor erat. Duis in egestas nunc.
+									${product.description}
 								</p>
 							</div>
 						</div>
@@ -211,7 +211,7 @@
 									<ul class="p-lr-28 p-lr-15-sm">
 										<li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Weight
+												Cân nặng
 											</span>
 
 											<span class="stext-102 cl6 size-206">
@@ -221,7 +221,7 @@
 
 										<li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Dimensions
+												Kích cỡ
 											</span>
 
 											<span class="stext-102 cl6 size-206">
@@ -231,7 +231,7 @@
 
 										<li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Materials
+												Chất liệu
 											</span>
 
 											<span class="stext-102 cl6 size-206">
@@ -241,21 +241,35 @@
 
 										<li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Color
+												Màu sắc
 											</span>
 
 											<span class="stext-102 cl6 size-206">
-												Black, Blue, Grey, Green, Red, White
+												<c:forEach var="color" items="${productColorList}">
+													<c:if test="${color.key == product.id}">
+														<c:forEach var="colorValue" items="${color.value}" varStatus="loop">
+															${colorValue.value}
+															<c:if test="${!loop.last}">,</c:if>
+														</c:forEach>
+													</c:if>
+												</c:forEach>
 											</span>
 										</li>
 
 										<li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Size
+												Kích cỡ
 											</span>
 
 											<span class="stext-102 cl6 size-206">
-												XL, L, M, S
+												<c:forEach var="size" items="${productSizeList}">
+													<c:if test="${size.key == product.id}">
+														<c:forEach var="sizeValue" items="${size.value}" varStatus="loop">
+															${sizeValue.value}
+															<c:if test="${!loop.last}">,</c:if>
+														</c:forEach>
+													</c:if>
+												</c:forEach>
 											</span>
 										</li>
 									</ul>
@@ -269,45 +283,54 @@
 								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
 									<div class="p-b-30 m-lr-15-sm">
 										<!-- Review -->
-										<div class="flex-w flex-t p-b-68">
-											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-												<img src="/coza/images/avatar-01.jpg" alt="AVATAR">
-											</div>
+										<c:choose>
+											<c:when test="${empty reviewList}">
+												<p class="m-b-20">Chưa có đánh giá nào.</p>
+											</c:when>
+											<c:otherwise>
+												<c:forEach var="r" items="${reviewList}">
+													<div class="flex-w flex-t p-b-68">
+														<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+															<img src="/coza/images/avatar-01.jpg" alt="AVATAR">
+														</div>
 
-											<div class="size-207">
-												<div class="flex-w flex-sb-m p-b-17">
+														<div class="size-207">
+															<div class="flex-w flex-sb-m p-b-17">
 													<span class="mtext-107 cl2 p-r-20">
-														Ariana Grande
+															${r.name}
 													</span>
 
 													<span class="fs-18 cl11">
-														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star-half"></i>
+														<c:forEach begin="1" end="${r.rating}" varStatus="loop">
+															<i class="zmdi zmdi-star"></i>
+														</c:forEach>
 													</span>
-												</div>
+															</div>
 
-												<p class="stext-102 cl6">
-													Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos
-												</p>
-											</div>
-										</div>
-										
+															<p class="stext-102 cl6">
+																	${r.description}
+															</p>
+														</div>
+													</div>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
+
+
 										<!-- Add review -->
-										<form class="w-full">
+										<form class="w-full" action="/postReview" method="post">
+											<input type="hidden" value="${product.id}" name="productId"/>
 											<h5 class="mtext-108 cl2 p-b-7">
-												Add a review
+												Thêm đánh giá
 											</h5>
 
 											<p class="stext-102 cl6">
-												Your email address will not be published. Required fields are marked *
+												Thông tin địa chỉ email của bạn sẽ được giữ kín.
 											</p>
 
 											<div class="flex-w flex-m p-t-50 p-b-23">
 												<span class="stext-102 cl3 m-r-16">
-													Your Rating
+													Chất lượng
 												</span>
 
 												<span class="wrap-rating fs-18 cl11 pointer">
@@ -322,12 +345,12 @@
 
 											<div class="row p-b-25">
 												<div class="col-12 p-b-5">
-													<label class="stext-102 cl3" for="review">Your review</label>
+													<label class="stext-102 cl3" for="review">Đánh giá</label>
 													<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
 												</div>
 
 												<div class="col-sm-6 p-b-5">
-													<label class="stext-102 cl3" for="name">Name</label>
+													<label class="stext-102 cl3" for="name">Tên</label>
 													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name">
 												</div>
 
@@ -338,7 +361,7 @@
 											</div>
 
 											<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
-												Submit
+												Đánh giá
 											</button>
 										</form>
 									</div>
@@ -352,11 +375,11 @@
 
 		<div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
 			<span class="stext-107 cl6 p-lr-25">
-				SKU: JAK-01
+				Mã sản phẩm: SP-${product.id}
 			</span>
 
 			<span class="stext-107 cl6 p-lr-25">
-				Categories: Jacket, Men
+				Danh mục: ${product.categories.name}
 			</span>
 		</div>
 	</section>
@@ -367,7 +390,7 @@
 		<div class="container">
 			<div class="p-b-45">
 				<h3 class="ltext-106 cl5 txt-center">
-					Related Products
+					Sản phẩm liên quan
 				</h3>
 			</div>
 

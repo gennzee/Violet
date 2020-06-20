@@ -74,8 +74,8 @@ public class categoriesController {
         modelMap.addAttribute("color", color);
         modelMap.addAttribute("size", size);
 
-        List<ProductColor> productColorList = productColorJpaRepo.findAll();
-        List<ProductSize> productSizeList = productSizeJpaRepo.findAll();
+        List<ProductColor> productColorList = productColorJpaRepo.findAllByCategoryId(categoryId);
+        List<ProductSize> productSizeList = productSizeJpaRepo.findAllByCategoryId(categoryId);
         modelMap.addAttribute("colorList", productColorList);
         modelMap.addAttribute("sizeList", productSizeList);
 
