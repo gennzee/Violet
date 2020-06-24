@@ -7,13 +7,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by anhnx on 05/05/2020.
  */
-@Component
+@Repository
 public interface ProductsJpaRepo extends JpaRepository<Products, Integer>, JpaSpecificationExecutor<Products> {
 
     Products findById(int id);
@@ -21,5 +23,7 @@ public interface ProductsJpaRepo extends JpaRepository<Products, Integer>, JpaSp
     List<Products> findAllByCategoryId(int categoryid, Pageable pageable);
 
     int countByCategoryId(int id);
+
+    List<Products> findAllByUpdatedDateAfter(Date date, Pageable pageable);
 
 }

@@ -12,6 +12,20 @@
 	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
 	<jsp:include page="parts/head.jsp"/>
 <!--===============================================================================================-->
+	<style>
+		@media only screen and (min-width: 1025px) {
+			.indexImageFormat {
+				height: 436px;
+				object-fit: cover;
+			}
+		}
+		@media only screen and (min-width: 576px) and (max-width: 1025px) {
+			.indexImageFormat {
+				height: 248px;
+				object-fit: cover;
+			}
+		}
+	</style>
 </head>
 <body class="animsition">
 
@@ -23,7 +37,7 @@
 
 
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/coza/images/bg-02.jpg');">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92 container" style="background-image: url('/coza/images/bg-02.jpg');">
 		<h2 class="ltext-105 cl0 txt-center">
 			Blog
 		</h2>
@@ -40,7 +54,7 @@
 						<!-- item blog -->
 						<div class="p-b-63">
 							<a href="/blog-detail/${n.id}" class="hov-img0 how-pos5-parent">
-								<img src="/images/${n.thumbImage}" alt="IMG-BLOG">
+								<img class="indexImageFormat" src="/images/${n.thumbImage}" alt="IMG-BLOG">
 
 								<div class="flex-col-c-m size-123 bg9 how-pos5">
 									<span class="ltext-107 cl2 txt-center">

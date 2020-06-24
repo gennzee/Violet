@@ -154,7 +154,7 @@
                                                 <span class="input-group-text">Hình ảnh trước</span>
                                             </div>
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="inputGroupFile01" name="thumb_image">
+                                                <input type="image" class="custom-file-input" id="inputGroupFile01" name="thumb_image">
                                                 <label class="custom-file-label" for="inputGroupFile01">Chọn hình ảnh</label>
                                             </div>
                                         </div>

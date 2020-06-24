@@ -95,7 +95,8 @@
 							</h5>
 						</div>
 
-						<div class="flex-w flex-t p-b-68">
+						<c:forEach var="c" items="${n.commentsList}">
+						<div class="flex-w flex-t p-b-30">
 							<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
 								<img src="/coza/images/avatar-01.jpg" alt="AVATAR">
 							</div>
@@ -103,19 +104,20 @@
 							<div class="size-207">
 								<div class="flex-w flex-sb-m p-b-17">
 									<span class="mtext-107 cl2 p-r-20">
-										Xuan Anh
+										${c.name}
 									</span>
 
 									<span class="fs-18 cl11" style="color: grey; font-size: 12px;">
-										20-06-2020
+										<fmt:formatDate value="${c.createdDate}" pattern="dd-MM-yyyy"/>
 									</span>
 								</div>
 
 								<p class="stext-102 cl6">
-									testttt binh luan phat
+									${c.comment}
 								</p>
 							</div>
 						</div>
+						</c:forEach>
 
 						<!--  -->
 						<div class="p-t-40">
@@ -123,9 +125,10 @@
 								Để lại bình luận của bạn tại đây
 							</h5>
 
-							<form>
+							<form action="/blog-detail/comment" method="post">
 								<div class="bor19 m-b-20">
-									<textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="cmt" placeholder="Bình luận..."></textarea>
+									<input type="hidden" name="blogId" value="${n.id}"/>
+									<textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="comment" placeholder="Bình luận..."></textarea>
 								</div>
 
 								<div class="bor19 size-218 m-b-20">
@@ -137,7 +140,7 @@
 								</div>
 
 								<div class="bor19 size-218 m-b-30">
-									<input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="website" placeholder="Website">
+									<input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="mobileNumber" placeholder="Số điện thoại *">
 								</div>
 
 								<button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">

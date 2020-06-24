@@ -33,7 +33,7 @@ public class ProductSpecification {
                     Date date = new Date();
                     Calendar calendar = Calendar.getInstance();
                     calendar.setTime(date);
-                    calendar.add(Calendar.MONDAY, -3);
+                    calendar.add(Calendar.MONTH, -3);
                     Predicate sortByNewestPredicate = criteriaBuilder.greaterThanOrEqualTo(root.get("createdDate"), calendar.getTime());
                     predicates.add(sortByNewestPredicate);
                 }

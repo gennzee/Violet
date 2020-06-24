@@ -2,6 +2,7 @@ package com.xa.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by genn on 6/20/20.
@@ -35,6 +36,13 @@ public class News {
     @ManyToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private Users users;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", insertable = false, updatable = false)
+    private Categories categories;
+
+    @OneToMany(mappedBy = "newId")
+    private List<Comments> commentsList;
 
     public News() {
     }
@@ -128,5 +136,21 @@ public class News {
 
     public void setUsers(Users users) {
         this.users = users;
+    }
+
+    public List<Comments> getCommentsList() {
+        return commentsList;
+    }
+
+    public void setCommentsList(List<Comments> commentsList) {
+        this.commentsList = commentsList;
+    }
+
+    public Categories getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Categories categories) {
+        this.categories = categories;
     }
 }

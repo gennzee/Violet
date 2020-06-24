@@ -1,4 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +11,26 @@
 	<link rel="icon" type="image/png" href="/coza/images/icons/favicon.png"/>
 	<jsp:include page="parts/head.jsp"/>
 <!--===============================================================================================-->
+	<style>
+		.note{
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		@media only screen and (min-width: 1025px) {
+			.indexImageFormat {
+				height: 195px;
+				object-fit: cover;
+			}
+		}
+		@media only screen and (min-width: 576px) and (max-width: 1025px) {
+			.indexImageFormat {
+				height: 117px;
+				object-fit: cover;
+			}
+		}
+	</style>
 </head>
 <body class="animsition">
 	
@@ -270,11 +292,12 @@
 			</div>
 
 			<div class="row">
+				<c:forEach var="n" items="${newsList}">
 				<div class="col-sm-6 col-md-4 p-b-40">
 					<div class="blog-item">
 						<div class="hov-img0">
-							<a href="blog-detail.html">
-								<img src="/coza/images/blog-01.jpg" alt="IMG-BLOG">
+							<a href="/blog-detail/${n.id}">
+								<img class="indexImageFormat" src="/images/${n.thumbImage}" alt="IMG-BLOG">
 							</a>
 						</div>
 
@@ -282,28 +305,38 @@
 							<div class="stext-107 flex-w p-b-14">
 								<span class="m-r-3">
 									<span class="cl4">
-										By
+										đăng bởi
 									</span>
 
 									<span class="cl5">
-										Nancy Ward
+										${n.users.name}
+									</span>
+								</span>
+
+								<span class="m-r-3">
+									<span class="cl4">
+										|
+									</span>
+
+									<span class="cl5">
+										<fmt:formatDate value="${n.createdDate}" pattern="dd-MM-yyyy"/>
 									</span>
 								</span>
 
 								<span>
 									<span class="cl4">
-										on
+										|
 									</span>
 
 									<span class="cl5">
-										July 22, 2017
+										8 bình luận
 									</span>
 								</span>
 							</div>
 
 							<h4 class="p-b-12">
-								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									8 Inspiring Ways to Wear Dresses in the Winter
+								<a href="/blog-detail/${n.id}" class="mtext-101 cl2 hov-cl1 trans-04">
+									${n.name}
 								</a>
 							</h4>
 
@@ -313,94 +346,7 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="col-sm-6 col-md-4 p-b-40">
-					<div class="blog-item">
-						<div class="hov-img0">
-							<a href="blog-detail.html">
-								<img src="/coza/images/blog-02.jpg" alt="IMG-BLOG">
-							</a>
-						</div>
-
-						<div class="p-t-15">
-							<div class="stext-107 flex-w p-b-14">
-								<span class="m-r-3">
-									<span class="cl4">
-										By
-									</span>
-
-									<span class="cl5">
-										Nancy Ward
-									</span>
-								</span>
-
-								<span>
-									<span class="cl4">
-										on
-									</span>
-
-									<span class="cl5">
-										July 18, 2017
-									</span>
-								</span>
-							</div>
-
-							<h4 class="p-b-12">
-								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									The Great Big List of Men’s Gifts for the Holidays
-								</a>
-							</h4>
-
-							<p class="stext-108 cl6">
-								Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 p-b-40">
-					<div class="blog-item">
-						<div class="hov-img0">
-							<a href="blog-detail.html">
-								<img src="/coza/images/blog-03.jpg" alt="IMG-BLOG">
-							</a>
-						</div>
-
-						<div class="p-t-15">
-							<div class="stext-107 flex-w p-b-14">
-								<span class="m-r-3">
-									<span class="cl4">
-										By
-									</span>
-
-									<span class="cl5">
-										Nancy Ward
-									</span>
-								</span>
-
-								<span>
-									<span class="cl4">
-										on
-									</span>
-
-									<span class="cl5">
-										July 2, 2017
-									</span>
-								</span>
-							</div>
-
-							<h4 class="p-b-12">
-								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									5 Winter-to-Spring Fashion Trends to Try Now
-								</a>
-							</h4>
-
-							<p class="stext-108 cl6">
-								Proin nec vehicula lorem, a efficitur ex. Nam vehicula nulla vel erat tincidunt, sed hendrerit ligula porttitor. Fusce sit amet maximus nunc
-							</p>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</section>
@@ -2906,7 +2852,7 @@
 					</div>
 
 					<!-- - -->
-					<div class="tab-pane fade" id="featured" role="tabpanel">
+					<div class="tab-pane fade" role="tabpanel">
 						<!-- Slide2 -->
 						<div class="wrap-slick2">
 							<div class="slick2">
@@ -3170,7 +3116,7 @@
 					</div>
 
 					<!-- - -->
-					<div class="tab-pane fade" id="sale" role="tabpanel">
+					<div class="tab-pane fade" role="tabpanel">
 						<!-- Slide2 -->
 						<div class="wrap-slick2">
 							<div class="slick2">
@@ -3402,7 +3348,7 @@
 					</div>
 
 					<!-- - -->
-					<div class="tab-pane fade" id="top-rate" role="tabpanel">
+					<div class="tab-pane fade" role="tabpanel">
 						<!-- Slide2 -->
 						<div class="wrap-slick2">
 							<div class="slick2">
