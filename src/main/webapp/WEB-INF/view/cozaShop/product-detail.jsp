@@ -189,7 +189,7 @@
 						</li>
 
 						<li class="nav-item p-b-10">
-							<a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Đánh giá (${reviewList.size()})</a>
+							<a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Đánh giá (${product.reviewList.size()})</a>
 						</li>
 					</ul>
 
@@ -284,11 +284,11 @@
 									<div class="p-b-30 m-lr-15-sm">
 										<!-- Review -->
 										<c:choose>
-											<c:when test="${empty reviewList}">
+											<c:when test="${empty product.reviewList}">
 												<p class="m-b-20">Chưa có đánh giá nào.</p>
 											</c:when>
 											<c:otherwise>
-												<c:forEach var="r" items="${reviewList}">
+												<c:forEach var="r" items="${product.reviewList}">
 													<div class="flex-w flex-t p-b-68">
 														<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
 															<img src="/coza/images/avatar-01.jpg" alt="AVATAR">

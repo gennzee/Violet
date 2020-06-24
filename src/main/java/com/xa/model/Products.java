@@ -18,7 +18,7 @@ import java.util.List;
 public class Products {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     @Column
     private String name;
@@ -44,6 +44,9 @@ public class Products {
 
     @OneToMany(mappedBy = "productId")
     private List<ProductStorage> productStorageList;
+
+    @OneToMany(mappedBy = "productId")
+    private List<Review> reviewList;
 
     public Products() {
     }
@@ -135,5 +138,13 @@ public class Products {
 
     public void setProductImageList(List<ProductImage> productImageList) {
         this.productImageList = productImageList;
+    }
+
+    public List<Review> getReviewList() {
+        return reviewList;
+    }
+
+    public void setReviewList(List<Review> reviewList) {
+        this.reviewList = reviewList;
     }
 }

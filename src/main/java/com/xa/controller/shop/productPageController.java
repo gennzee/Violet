@@ -53,9 +53,6 @@ public class productPageController {
         loadSizeAndColorList(productsList, modelMap);
         modelMap.addAttribute("product", product);
 
-        List<Review> reviewList = reviewJpaRepo.findAllByProductId(product.getId());
-        modelMap.addAttribute("reviewList", reviewList);
-
         return cozaShopPage + "product-detail";
     }
 
