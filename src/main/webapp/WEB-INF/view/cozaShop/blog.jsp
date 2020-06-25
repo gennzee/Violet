@@ -9,7 +9,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="/coza/images/icons/favicon.png"/>
 	<jsp:include page="parts/head.jsp"/>
 <!--===============================================================================================-->
 	<style>
@@ -74,6 +74,10 @@
 									</a>
 								</h4>
 
+								<div class="blogContent stext-117 cl6">
+									${n.content}
+								</div>
+
 								<div class="flex-w flex-sb-m p-t-18">
 									<span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
 										<span>
@@ -87,7 +91,7 @@
 										</span>
 
 										<span>
-											8 bình luận
+											${n.commentsList.size()} bình luận
 										</span>
 									</span>
 

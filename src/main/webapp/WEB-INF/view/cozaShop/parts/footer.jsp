@@ -13,57 +13,36 @@
         <div class="row">
             <div class="col-sm-6 col-lg-3 p-b-50">
                 <h4 class="stext-301 cl0 p-b-30">
-                    Categories
+                    Danh mục
                 </h4>
 
                 <ul>
+                    <c:forEach var="c" items="${listCategories}">
                     <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Women
+                        <a href="/category/${c.id}/1" class="stext-107 cl7 hov-cl1 trans-04">
+                            ${c.name}
                         </a>
                     </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Men
-                        </a>
-                    </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Shoes
-                        </a>
-                    </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Watches
-                        </a>
-                    </li>
+                    </c:forEach>
                 </ul>
             </div>
 
             <div class="col-sm-6 col-lg-3 p-b-50">
                 <h4 class="stext-301 cl0 p-b-30">
-                    Help
+                    Dịch vụ
                 </h4>
 
                 <ul>
+
                     <li class="p-b-10">
                         <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Track Order
+                            Trả hàng
                         </a>
                     </li>
 
                     <li class="p-b-10">
                         <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Returns
-                        </a>
-                    </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Shipping
+                            Vận chuyển
                         </a>
                     </li>
 
@@ -77,11 +56,11 @@
 
             <div class="col-sm-6 col-lg-3 p-b-50">
                 <h4 class="stext-301 cl0 p-b-30">
-                    GET IN TOUCH
+                    Liên hệ
                 </h4>
 
                 <p class="stext-107 cl7 size-201">
-                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+                    Bạn cần giúp đỡ? Cho chúng tôi biết thông qua địa chỉ <a href="/contact">liên hệ</a>.
                 </p>
 
                 <div class="p-t-27">
@@ -101,7 +80,7 @@
 
             <div class="col-sm-6 col-lg-3 p-b-50">
                 <h4 class="stext-301 cl0 p-b-30">
-                    Newsletter
+                    Nhận thông báo mới
                 </h4>
 
                 <form>
@@ -112,7 +91,7 @@
 
                     <div class="p-t-18">
                         <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-                            Subscribe
+                            Đăng ký nhận
                         </button>
                     </div>
                 </form>
@@ -330,38 +309,60 @@
                 <img src="/coza/images/icons/icon-close.png" alt="CLOSE">
             </button>
 
-            <form id="loginForm" action="#">
-                <div class="row justify-content-md-center">
-                    <div class="col-sm-8">
-                        <h2 style="text-align: center;margin: 30px;">Đăng nhập</h2>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="bor8 m-b-20 how-pos4-parent">
-                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" autocomplete="username" name="uname" id="uname" placeholder="Địa chỉ email của bạn">
-                            <img class="how-pos4 pointer-none" src="/coza/images/icons/icon-account.png" alt="ICON">
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="bor8 m-b-20 how-pos4-parent">
-                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" autocomplete="current-password" name="pwd" id="pwd" placeholder="Mật khẩu của bạn">
-                            <img class="how-pos4 pointer-none" src="/coza/images/icons/icon-password.png" alt="ICON">
-                        </div>
-                    </div>
-                </div>
+            <div role="tabpanel">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" style="width: 50%">
+                        <a class="nav-link active" style="text-align: center;" href="#loginTab" aria-controls="loginTab" role="tab" data-toggle="tab">Đăng nhập</a>
+                    </li>
 
-                <div class="row justify-content-md-center">
-                    <div class="col-sm-4">
-                        <button class="flex-c-m stext-101 cl0 size-121 bg3 hov-btn3 p-lr-15 trans-04 pointer" type="submit">
-                            Đăng nhập
-                        </button>
+                    <li role="presentation" style="width: 50%">
+                        <a class="nav-link" style="text-align: center;" href="#registerTab" aria-controls="registerTab" role="tab" data-toggle="tab">Đăng ký</a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="loginTab">
+                        <form id="loginForm" action="#">
+                            <div class="row justify-content-md-center">
+                                <div class="col-sm-8">
+                                    <h2 style="text-align: center;margin: 30px;">Đăng nhập</h2>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="bor8 m-b-20 how-pos4-parent">
+                                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" autocomplete="username" name="uname" id="uname" placeholder="Địa chỉ email của bạn">
+                                        <img class="how-pos4 pointer-none" src="/coza/images/icons/icon-account.png" alt="ICON">
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="bor8 m-b-20 how-pos4-parent">
+                                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" autocomplete="current-password" name="pwd" id="pwd" placeholder="Mật khẩu của bạn">
+                                        <img class="how-pos4 pointer-none" src="/coza/images/icons/icon-password.png" alt="ICON">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-md-center">
+                                <div class="col-sm-4">
+                                    <button class="flex-c-m stext-101 cl0 size-121 bg3 hov-btn3 p-lr-15 trans-04 pointer" type="submit">
+                                        Đăng nhập
+                                    </button>
+                                </div>
+                                <div class="col-sm-4">
+                                    <button class="js-hide-modal0 flex-c-m stext-101 cl0 size-121 bg3 hov-btn3 p-lr-15 trans-04 pointer" type="button">
+                                        Đóng
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-sm-4">
-                        <button class="js-hide-modal0 flex-c-m stext-101 cl0 size-121 bg3 hov-btn3 p-lr-15 trans-04 pointer" type="button">
-                            Đóng
-                        </button>
+                    <div role="tabpanel" class="tab-pane" id="registerTab">
+                        Đăng ký
                     </div>
                 </div>
-            </form>
+            </div>
+
+
 
         </div>
     </div>

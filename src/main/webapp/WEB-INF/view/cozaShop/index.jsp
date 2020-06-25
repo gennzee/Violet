@@ -12,10 +12,12 @@
 	<jsp:include page="parts/head.jsp"/>
 <!--===============================================================================================-->
 	<style>
-		.note{
+		.ellipsis_2lines{
 			overflow: hidden;
 			text-overflow: ellipsis;
-			white-space: nowrap;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
 		}
 
 		@media only screen and (min-width: 1025px) {
@@ -329,20 +331,20 @@
 									</span>
 
 									<span class="cl5">
-										8 bình luận
+										${n.commentsList.size()} bình luận
 									</span>
 								</span>
 							</div>
 
 							<h4 class="p-b-12">
-								<a href="/blog-detail/${n.id}" class="mtext-101 cl2 hov-cl1 trans-04">
+								<a href="/blog-detail/${n.id}" class="mtext-101 cl2 hov-cl1 trans-04 ellipsis_2lines">
 									${n.name}
 								</a>
 							</h4>
 
-							<p class="stext-108 cl6">
-								Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames
-							</p>
+							<div class="contentIndex stext-108 cl6">
+								${n.content}
+							</div>
 						</div>
 					</div>
 				</div>

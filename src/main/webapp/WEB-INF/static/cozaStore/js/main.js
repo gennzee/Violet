@@ -412,4 +412,18 @@
         });
     });
 
+    /*set first element content to news to get ellipsis work*/
+    /*blogpage*/
+    var content = $(".blogContent").children(":first-child");
+    $(".blogContent").each(function (i, v) {
+        $(this).html(content[i]);
+        $(this).css({"overflow":"hidden", "text-overflow":"ellipsis", "display":"-webkit-box", "-webkit-line-clamp":"2", "-webkit-box-orient":"vertical"});
+    });
+    /*indexPage*/
+    var contentInIndexPage = $(".contentIndex").children(":first-child");
+    $(".contentIndex").each(function (i, v) {
+        $(this).html(contentInIndexPage[i]);
+        $(this).css({"overflow":"hidden", "text-overflow":"ellipsis", "display":"-webkit-box", "-webkit-line-clamp":"2", "-webkit-box-orient":"vertical"});
+    });
+
 })(jQuery);

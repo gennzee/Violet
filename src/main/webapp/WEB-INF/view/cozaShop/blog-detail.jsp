@@ -12,6 +12,11 @@
 	<link rel="icon" type="image/png" href="/coza/images/icons/favicon.png"/>
 	<jsp:include page="parts/head.jsp"/>
 	<!--===============================================================================================-->
+	<style>
+		img{
+			max-width: 100%;
+		}
+	</style>
 </head>
 <body class="animsition">
 
