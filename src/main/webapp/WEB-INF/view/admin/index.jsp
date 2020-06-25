@@ -55,11 +55,11 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
-                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Good Morning Jason!</h3>
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Chào ngày mới ${user.name} !</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a>
+                                    <li class="breadcrumb-item"><a href="index.html">Thống kê </a>
                                     </li>
                                 </ol>
                             </nav>
@@ -96,7 +96,7 @@
                                         <span
                                             class="badge bg-primary font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">+18.33%</span>
                                     </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">New Clients</h6>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Khách hàng mới</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted"><i data-feather="user-plus"></i></span>
@@ -108,10 +108,11 @@
                         <div class="card-body">
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
-                                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><sup
-                                            class="set-doller">$</sup>18,306</h2>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Earnings of Month
-                                    </h6>
+                                    <div class="d-inline-flex align-items-center">
+                                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><sup class="set-doller">VNĐ </sup>136,500,654</h2>
+                                        <span class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">-18.33%</span>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Thu nhập trong tháng</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted"><i data-feather="dollar-sign"></i></span>
@@ -125,10 +126,9 @@
                                 <div>
                                     <div class="d-inline-flex align-items-center">
                                         <h2 class="text-dark mb-1 font-weight-medium">1538</h2>
-                                        <span
-                                            class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">-18.33%</span>
+                                        <span class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">-18.33%</span>
                                     </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">New Projects</h6>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Sản phẩm mới</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted"><i data-feather="file-plus"></i></span>
@@ -140,8 +140,11 @@
                         <div class="card-body">
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
-                                    <h2 class="text-dark mb-1 font-weight-medium">864</h2>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Projects</h6>
+                                    <div class="d-inline-flex align-items-center">
+                                        <h2 class="text-dark mb-1 font-weight-medium">864</h2>
+                                        <span class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">-18.33%</span>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Sản phẩm trong kho</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted"><i data-feather="globe"></i></span>
@@ -160,23 +163,23 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Total Sales</h4>
+                                <h4 class="card-title">Tổng số bán ra</h4>
                                 <div id="campaign-v2" class="mt-2" style="height:283px; width:100%;"></div>
                                 <ul class="list-style-none mb-0">
                                     <li>
                                         <i class="fas fa-circle text-primary font-10 mr-2"></i>
-                                        <span class="text-muted">Direct Sales</span>
-                                        <span class="text-dark float-right font-weight-medium">$2346</span>
+                                        <span class="text-muted">Áo dài</span>
+                                        <span class="text-dark float-right font-weight-medium">342</span>
                                     </li>
                                     <li class="mt-3">
                                         <i class="fas fa-circle text-danger font-10 mr-2"></i>
-                                        <span class="text-muted">Referral Sales</span>
-                                        <span class="text-dark float-right font-weight-medium">$2108</span>
+                                        <span class="text-muted">Tranh thêu</span>
+                                        <span class="text-dark float-right font-weight-medium">572</span>
                                     </li>
-                                    <li class="mt-3">
-                                        <i class="fas fa-circle text-cyan font-10 mr-2"></i>
-                                        <span class="text-muted">Affiliate Sales</span>
-                                        <span class="text-dark float-right font-weight-medium">$1204</span>
+                                    <li class="mt-3" style="border-top: 1px solid #dfe6f3;">
+                                        <i class="fas fa-circle text-dark font-10 mr-2"></i>
+                                        <span class="text-muted">Tổng</span>
+                                        <span class="text-dark float-right font-weight-medium">914</span>
                                     </li>
                                 </ul>
                             </div>
@@ -185,10 +188,10 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Net Income</h4>
+                                <h4 class="card-title">Thống kê</h4>
                                 <div class="net-income mt-4 position-relative" style="height:294px;"></div>
                                 <ul class="list-inline text-center mt-5 mb-2">
-                                    <li class="list-inline-item text-muted font-italic">Sales for this month</li>
+                                    <li class="list-inline-item text-muted font-italic">Thống kê số lượng bán ra trong nửa năm</li>
                                 </ul>
                             </div>
                         </div>
@@ -196,64 +199,46 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title mb-4">Earning by Location</h4>
-                                <div class="" style="height:180px">
-                                    <div id="visitbylocate" style="height:100%"></div>
-                                </div>
-                                <div class="row mb-3 align-items-center mt-1 mt-5">
-                                    <div class="col-4 text-right">
-                                        <span class="text-muted font-14">India</span>
-                                    </div>
-                                    <div class="col-5">
-                                        <div class="progress" style="height: 5px;">
-                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 100%"
-                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <h4 class="card-title">Hoạt động gần đây từ trang web</h4>
+                                <div class="mt-4 activity">
+                                    <div class="d-flex align-items-start border-left-line pb-3">
+                                        <div>
+                                            <a href="javascript:void(0)" class="btn btn-info btn-circle mb-2 btn-item">
+                                                <i data-feather="shopping-cart"></i>
+                                            </a>
+                                        </div>
+                                        <div class="ml-3 mt-2">
+                                            <h5 class="text-dark font-weight-medium mb-2">1 SP đã được bán</h5>
+                                            <p class="font-14 mb-2 text-muted">xuan anh đã nhận sản phẩm !<br> Khách hàng: xuananh</p>
+                                            <span class="font-weight-light font-14 text-muted">10 phút trước</span>
                                         </div>
                                     </div>
-                                    <div class="col-3 text-right">
-                                        <span class="mb-0 font-14 text-dark font-weight-medium">28%</span>
-                                    </div>
-                                </div>
-                                <div class="row mb-3 align-items-center">
-                                    <div class="col-4 text-right">
-                                        <span class="text-muted font-14">UK</span>
-                                    </div>
-                                    <div class="col-5">
-                                        <div class="progress" style="height: 5px;">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 74%"
-                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="d-flex align-items-start border-left-line pb-3">
+                                        <div>
+                                            <a href="javascript:void(0)"
+                                               class="btn btn-danger btn-circle mb-2 btn-item">
+                                                <i data-feather="message-square"></i>
+                                            </a>
+                                        </div>
+                                        <div class="ml-3 mt-2">
+                                            <h5 class="text-dark font-weight-medium mb-2">1 KH yêu cầu hỗ trợ</h5>
+                                            <p class="font-14 mb-2 text-muted">Khách hàng gửi tin nhắn yêu cầu hỗ trợ <br>Khách hàng: xuananh</p>
+                                            <span class="font-weight-light font-14 text-muted">25 phút trước</span>
                                         </div>
                                     </div>
-                                    <div class="col-3 text-right">
-                                        <span class="mb-0 font-14 text-dark font-weight-medium">21%</span>
-                                    </div>
-                                </div>
-                                <div class="row mb-3 align-items-center">
-                                    <div class="col-4 text-right">
-                                        <span class="text-muted font-14">USA</span>
-                                    </div>
-                                    <div class="col-5">
-                                        <div class="progress" style="height: 5px;">
-                                            <div class="progress-bar bg-cyan" role="progressbar" style="width: 60%"
-                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="d-flex align-items-start border-left-line">
+                                        <div>
+                                            <a href="javascript:void(0)" class="btn btn-cyan btn-circle mb-2 btn-item">
+                                                <i data-feather="bell"></i>
+                                            </a>
                                         </div>
-                                    </div>
-                                    <div class="col-3 text-right">
-                                        <span class="mb-0 font-14 text-dark font-weight-medium">18%</span>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center">
-                                    <div class="col-4 text-right">
-                                        <span class="text-muted font-14">China</span>
-                                    </div>
-                                    <div class="col-5">
-                                        <div class="progress" style="height: 5px;">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 50%"
-                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="ml-3 mt-2">
+                                            <h5 class="text-dark font-weight-medium mb-2">Thông báo đơn hàng mới!
+                                            </h5>
+                                            <p class="font-14 mb-2 text-muted">Có 1 đơn hàng chưa được xử lý <br> Khách hàng: xuananh</p>
+                                            <span class="font-weight-light font-14 mb-1 d-block text-muted">2 tiếng trước</span>
+                                            <a href="javascript:void(0)" class="font-14 border-bottom pb-1 border-info">Xem thêm</a>
                                         </div>
-                                    </div>
-                                    <div class="col-3 text-right">
-                                        <span class="mb-0 font-14 text-dark font-weight-medium">12%</span>
                                     </div>
                                 </div>
                             </div>
@@ -267,11 +252,11 @@
                 <!-- Start Location and Earnings Charts Section -->
                 <!-- *************************************************************** -->
                 <div class="row">
-                    <div class="col-md-6 col-lg-8">
+                    <div class="col-md-12 col-lg-12">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-start">
-                                    <h4 class="card-title mb-0">Earning Statistics</h4>
+                                    <h4 class="card-title mb-0">Thống kê thu nhập trong năm</h4>
                                     <div class="ml-auto">
                                         <div class="dropdown sub-dropdown">
                                             <button class="btn btn-link text-muted dropdown-toggle" type="button"
@@ -291,60 +276,8 @@
                                     <div class="stats ct-charts position-relative" style="height: 315px;"></div>
                                 </div>
                                 <ul class="list-inline text-center mt-4 mb-0">
-                                    <li class="list-inline-item text-muted font-italic">Earnings for this month</li>
+                                    <li class="list-inline-item text-muted font-italic">Thu nhập trong năm</li>
                                 </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Recent Activity</h4>
-                                <div class="mt-4 activity">
-                                    <div class="d-flex align-items-start border-left-line pb-3">
-                                        <div>
-                                            <a href="javascript:void(0)" class="btn btn-info btn-circle mb-2 btn-item">
-                                                <i data-feather="shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                        <div class="ml-3 mt-2">
-                                            <h5 class="text-dark font-weight-medium mb-2">New Product Sold!</h5>
-                                            <p class="font-14 mb-2 text-muted">John Musa just purchased <br> Cannon 5M
-                                                Camera.
-                                            </p>
-                                            <span class="font-weight-light font-14 text-muted">10 Minutes Ago</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-start border-left-line pb-3">
-                                        <div>
-                                            <a href="javascript:void(0)"
-                                                class="btn btn-danger btn-circle mb-2 btn-item">
-                                                <i data-feather="message-square"></i>
-                                            </a>
-                                        </div>
-                                        <div class="ml-3 mt-2">
-                                            <h5 class="text-dark font-weight-medium mb-2">New Support Ticket</h5>
-                                            <p class="font-14 mb-2 text-muted">Richardson just create support <br>
-                                                ticket</p>
-                                            <span class="font-weight-light font-14 text-muted">25 Minutes Ago</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-start border-left-line">
-                                        <div>
-                                            <a href="javascript:void(0)" class="btn btn-cyan btn-circle mb-2 btn-item">
-                                                <i data-feather="bell"></i>
-                                            </a>
-                                        </div>
-                                        <div class="ml-3 mt-2">
-                                            <h5 class="text-dark font-weight-medium mb-2">Notification Pending Order!
-                                            </h5>
-                                            <p class="font-14 mb-2 text-muted">One Pending order from Ryne <br> Doe</p>
-                                            <span class="font-weight-light font-14 mb-1 d-block text-muted">2 Hours
-                                                Ago</span>
-                                            <a href="javascript:void(0)" class="font-14 border-bottom pb-1 border-info">Load More</a>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -360,7 +293,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-4">
-                                    <h4 class="card-title">Top Leaders</h4>
+                                    <h4 class="card-title">Khách hàng mua nhiều</h4>
                                     <div class="ml-auto">
                                         <div class="dropdown sub-dropdown">
                                             <button class="btn btn-link text-muted dropdown-toggle" type="button"
@@ -380,7 +313,7 @@
                                     <table class="table no-wrap v-middle mb-0">
                                         <thead>
                                             <tr class="border-0">
-                                                <th class="border-0 font-14 font-weight-medium text-muted">Team Lead
+                                                <th class="border-0 font-14 font-weight-medium text-muted">Khách hàng
                                                 </th>
                                                 <th class="border-0 font-14 font-weight-medium text-muted px-2">Project
                                                 </th>
