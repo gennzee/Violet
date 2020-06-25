@@ -81,7 +81,7 @@
 								<div class="flex-w flex-sb-m p-t-18">
 									<span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
 										<span>
-											<span class="cl4">đăng bởi</span> ${n.users.name}
+											<span class="cl4">đăng bởi</span> ${n.users.firstName} ${n.users.lastName}
 											<span class="cl12 m-l-4 m-r-6">|</span>
 										</span>
 

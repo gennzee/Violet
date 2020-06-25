@@ -357,7 +357,77 @@
                         </form>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="registerTab">
-                        Đăng ký
+                        <form id="registerForm" action="#" method="post">
+                        <div class="p-l-45 p-r-45 p-t-45 p-b-45 m-r--38 m-lr-0-xl border" style="margin: 0;padding: 20px 40px 0 40px;">
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label for="first_name" class="text-black">Họ <span class="text-danger">*</span></label>
+                                    <div id="first_name" class="bor8 bg0 m-b-12">
+                                        <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="firstName" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="last_name" class="text-black">Tên <span class="text-danger">*</span></label>
+                                    <div id="last_name" class="bor8 bg0 m-b-12">
+                                        <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="lastName" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="username" class="text-black">Tài khoản <span class="text-danger">*</span></label>
+                                <div id="username" class="bor8 bg0 m-b-12">
+                                    <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="username" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-black">Mật khẩu <span class="text-danger">*</span></label>
+                                <div id="password" class="bor8 bg0 m-b-12">
+                                    <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="password" name="password" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender" class="text-black">Giới tính </label>
+                                <div id="gender" class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
+                                    <select class="js-select2" name="gender">
+                                        <option value="">Chọn giới tính...</option>
+                                        <option value="false">Nam</option>
+                                        <option value="true">Nữ</option>
+                                    </select>
+                                    <div class="dropDownSelect2"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address" class="text-black">Địa chỉ</label>
+                                <div id="address" class="bor8 bg0 m-b-12">
+                                    <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="text-black">Email <span class="text-danger">*</span></label>
+                                <div id="email" class="bor8 bg0 m-b-12">
+                                    <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="text-black">Số điện thoại <span class="text-danger">*</span></label>
+                                <div id="phone" class="bor8 bg0 m-b-12">
+                                    <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" placeholder="">
+                                </div>
+                            </div>
+                            <div class="row justify-content-md-center">
+                                <div class="col-sm-4">
+                                    <button class="flex-c-m stext-101 cl0 size-121 bg3 hov-btn3 p-lr-15 trans-04 pointer" type="submit">
+                                        Đăng ký
+                                    </button>
+                                </div>
+                                <div class="col-sm-4">
+                                    <button class="js-hide-modal0 flex-c-m stext-101 cl0 size-121 bg3 hov-btn3 p-lr-15 trans-04 pointer" type="button">
+                                        Đóng
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

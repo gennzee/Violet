@@ -55,7 +55,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
-                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Chào ngày mới ${user.name} !</h3>
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Chào ngày mới ${user.firstName} ${user.lastName} !</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
@@ -109,7 +109,7 @@
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><sup class="set-doller">VNĐ </sup>136,500,654</h2>
+                                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><sup class="set-doller">VNĐ </sup>36,500,654</h2>
                                         <span class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">-18.33%</span>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Thu nhập trong tháng</h6>
@@ -297,11 +297,11 @@
                                     <div class="ml-auto">
                                         <div class="dropdown sub-dropdown">
                                             <button class="btn btn-link text-muted dropdown-toggle" type="button"
-                                                id="dd1" data-toggle="dropdown" aria-haspopup="true"
+                                                id="dd2" data-toggle="dropdown" aria-haspopup="true"
                                                 aria-expanded="false">
                                                 <i data-feather="more-vertical"></i>
                                             </button>
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd1">
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd2">
                                                 <a class="dropdown-item" href="#">Insert</a>
                                                 <a class="dropdown-item" href="#">Update</a>
                                                 <a class="dropdown-item" href="#">Delete</a>

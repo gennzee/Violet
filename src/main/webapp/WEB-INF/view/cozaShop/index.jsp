@@ -311,7 +311,7 @@
 									</span>
 
 									<span class="cl5">
-										${n.users.name}
+										${n.users.firstName} ${n.users.lastName}
 									</span>
 								</span>
 

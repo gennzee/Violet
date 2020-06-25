@@ -426,4 +426,18 @@
         $(this).css({"overflow":"hidden", "text-overflow":"ellipsis", "display":"-webkit-box", "-webkit-line-clamp":"2", "-webkit-box-orient":"vertical"});
     });
 
+    /*register-form*/
+    $("#registerForm").on("submit", function (event) {
+        event.preventDefault();
+        var formData = $(this).serializeArray();
+        $.post('/postRegisterAjax',formData,function (data, status, jqXHR) {
+            if(data !== "" && data != 0 && status === "success"){
+                swal("Thơm", "Vui lòng kiểm tra hòm thư email của bạn !", "success");
+                $('.js-modal0').removeClass('show-modal1');
+            }else{
+                swal("", "Vui lòng điền đầy đủ thông tin yêu cầu !", "error");
+            }
+        });
+    });
+
 })(jQuery);

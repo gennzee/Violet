@@ -11,7 +11,7 @@
  Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 24/06/2020 22:27:57
+ Date: 26/06/2020 00:42:35
 */
 
 SET NAMES utf8mb4;
@@ -144,14 +144,14 @@ CREATE TABLE `hibernate_sequence` (
 -- Records of hibernate_sequence
 -- ----------------------------
 BEGIN;
-INSERT INTO `hibernate_sequence` VALUES (56);
-INSERT INTO `hibernate_sequence` VALUES (56);
-INSERT INTO `hibernate_sequence` VALUES (56);
-INSERT INTO `hibernate_sequence` VALUES (56);
-INSERT INTO `hibernate_sequence` VALUES (56);
-INSERT INTO `hibernate_sequence` VALUES (56);
-INSERT INTO `hibernate_sequence` VALUES (56);
-INSERT INTO `hibernate_sequence` VALUES (56);
+INSERT INTO `hibernate_sequence` VALUES (59);
+INSERT INTO `hibernate_sequence` VALUES (59);
+INSERT INTO `hibernate_sequence` VALUES (59);
+INSERT INTO `hibernate_sequence` VALUES (59);
+INSERT INTO `hibernate_sequence` VALUES (59);
+INSERT INTO `hibernate_sequence` VALUES (59);
+INSERT INTO `hibernate_sequence` VALUES (59);
+INSERT INTO `hibernate_sequence` VALUES (59);
 COMMIT;
 
 -- ----------------------------
@@ -485,7 +485,10 @@ CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `password` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `first_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `last_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
   `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `gender` bit(1) DEFAULT NULL,
   `age` int DEFAULT NULL,
@@ -496,14 +499,14 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `FKp56c1712k691lhsyewcssf40f` (`role_id`) USING BTREE,
   CONSTRAINT `FKp56c1712k691lhsyewcssf40f` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
 BEGIN;
-INSERT INTO `users` VALUES (1, 'admin', 'admin', 'Xuân Anh', '342/9B Thoại Ngọc Hầu', b'0', 22, NULL, 2, NULL, NULL);
-INSERT INTO `users` VALUES (2, 'user', '123', 'Xuann Anhh', '342/9B Thoại Ngọc Hầu', b'0', 22, NULL, 1, NULL, NULL);
+INSERT INTO `users` VALUES (1, 'admin', 'admin', 'Xuân Anh', NULL, NULL, NULL, '342/9B Thoại Ngọc Hầu', b'0', 22, NULL, 2, NULL, NULL);
+INSERT INTO `users` VALUES (2, 'user', '123', 'Xuann Anhh', NULL, NULL, NULL, '342/9B Thoại Ngọc Hầu', b'0', 22, NULL, 1, NULL, NULL);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

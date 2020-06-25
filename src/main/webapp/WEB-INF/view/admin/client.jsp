@@ -88,17 +88,13 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Zero Configuration</h4>
-                                <h6 class="card-subtitle">DataTables has most features enabled by default, so all you
-                                    need to do to use it with your own tables is to call the construction
-                                    function:<code> $().DataTable();</code>. You can refer full documentation from here
-                                    <a href="https://datatables.net/">Datatables</a></h6>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered no-wrap">
                                         <thead>
                                             <tr>
                                                 <th>Tên</th>
                                                 <th>Địa chỉ</th>
+                                                <th>SĐT</th>
                                                 <th>Giới tính</th>
                                                 <th>Tuổi</th>
                                                 <th>Ngày tạo tài khoản</th>
@@ -107,8 +103,9 @@
                                         <tbody>
                                         <c:forEach var="user" items="${listClient}">
                                             <tr>
-                                                <td>${user.name}</td>
+                                                <td>${user.firstName} ${user.lastName}</td>
                                                 <td>${user.address}</td>
+                                                <td>${user.phone}</td>
                                                 <c:choose>
                                                     <c:when test="${user.gender == true}">
                                                         <td>Nữ</td>
@@ -126,6 +123,7 @@
                                             <tr>
                                                 <th>Tên</th>
                                                 <th>Địa chỉ</th>
+                                                <th>SĐT</th>
                                                 <th>Giới tính</th>
                                                 <th>Tuổi</th>
                                                 <th>Ngày tạo tài khoản</th>
