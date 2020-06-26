@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -145,7 +146,7 @@
                                     <div class="d-inline-flex align-items-center">
                                         <h2 class="text-dark mb-1 font-weight-medium">${totalProduct}</h2>
                                     </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Sản phẩm mới</h6>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Mẫu sản phẩm mới</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted"><i data-feather="file-plus"></i></span>
@@ -182,20 +183,20 @@
                                 <h4 class="card-title">Tổng số bán ra</h4>
                                 <div id="campaign-v2" class="mt-2" style="height:283px; width:100%;"></div>
                                 <ul class="list-style-none mb-0">
-                                    <li>
-                                        <i class="fas fa-circle text-primary font-10 mr-2"></i>
-                                        <span class="text-muted">Áo dài</span>
-                                        <span class="text-dark float-right font-weight-medium">342</span>
-                                    </li>
-                                    <li class="mt-3">
-                                        <i class="fas fa-circle text-danger font-10 mr-2"></i>
-                                        <span class="text-muted">Tranh thêu</span>
-                                        <span class="text-dark float-right font-weight-medium">572</span>
-                                    </li>
+                                    <c:set var="totalSoldProductInMonthByCategory" value="${0}"/>
+                                    <c:forEach var="category" items="${totalProductSoldInMonth}">
+                                        <c:set var="c" value="${fn:split(category, ',')}"/>
+                                        <c:set var="totalSoldProductInMonthByCategory" value="${totalSoldProductInMonthByCategory + c[1]}"/>
+                                        <li>
+                                            <i class="fas fa-circle font-10 mr-2" style="color: ${c[2]};"></i>
+                                            <span class="text-muted">${c[0]}</span>
+                                            <span class="text-dark float-right font-weight-medium">${c[1]}</span>
+                                        </li>
+                                    </c:forEach>
                                     <li class="mt-3" style="border-top: 1px solid #dfe6f3;">
                                         <i class="fas fa-circle text-dark font-10 mr-2"></i>
                                         <span class="text-muted">Tổng</span>
-                                        <span class="text-dark float-right font-weight-medium">914</span>
+                                        <span class="text-dark float-right font-weight-medium">${totalSoldProductInMonthByCategory}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -536,8 +537,19 @@
     <%--<script src="admin/dist/js/pages/dashboards/dashboard1.js"></script>--%>
 <script>
     $(function () {
-        alert('<c:out value="${productInStock}"/>');
+        var totalProductSoldInMonth = [];
+        var colorMark = [];
+        <c:forEach var="tt" items="${totalProductSoldInMonth}">
+            totalProductSoldInMonth.push("${tt}");
+        </c:forEach>
 
+        for(var i = 0; i < totalProductSoldInMonth.length; i++){
+            var totalProductSoldInMonthTempArr = totalProductSoldInMonth[i].split(",");
+            totalProductSoldInMonth[i] = totalProductSoldInMonthTempArr;
+            colorMark[i] = totalProductSoldInMonthTempArr[2];
+        }
+        console.log("totalProductSoldInMonth : ",totalProductSoldInMonth);
+        console.log("colorMark : ",colorMark);
         // ==============================================================
         // Campaign
         // ==============================================================
@@ -545,10 +557,7 @@
         var chart1 = c3.generate({
             bindto: '#campaign-v2',
             data: {
-                columns: [
-                    ["Tranh thêu",25],
-                    ["Áo dài",15]
-                ],
+                columns: totalProductSoldInMonth,
 
                 type: 'donut',
                 tooltip: {
@@ -567,10 +576,7 @@
                 hide: true
             },
             color: {
-                pattern: [
-                    '#ff4f70',
-                    '#5f76e8'
-                ]
+                pattern: colorMark
             }
         });
 
@@ -579,10 +585,54 @@
         // ==============================================================
         // income
         // ==============================================================
+        var labels = ['Th.1', 'Th.2', 'Th.3', 'Th.4', 'Th.5', 'Th.6', 'Th.7', 'Th.8', 'Th.9', 'Th.10', 'Th.11', 'Th.12'];
+        var labelsData = [];
+        var data = [];
+        var dataSeries = [];
+        var date = new Date();
+        <c:forEach var="p" items="${getSoldProductInYear}">
+            data.push("${p}");
+        </c:forEach>
+        if(date.getMonth() <= 6 && date.getMonth() !== 0){
+            for(var i = 1; i <= 6; i++){
+                labelsData[i-1] = labels[i-1];
+                for(var ii = 0; ii < data.length; ii++){
+                    var dataTemp = data[ii].split(",");
+                    if(dataTemp[0] == i){
+                        dataSeries[i-1] = dataTemp[1];
+                        break;
+                    }else{
+                        dataSeries[i-1] = 0;
+                    }
+                }
+            }
+            console.log("month", date.getMonth());
+            console.log("data", dataSeries);
+        }else if(date.getMonth() >= 7 || date.getMonth() === 0){
+            var datee = (date.getMonth() === 0) ? 12 : date.getMonth();
+            for(var i = (datee - 5) ; i <= datee; i++){
+                labelsData[i-(datee - 5)] = labels[i-1];
+                for(var ii = 0; ii < data.length; ii++){
+                    var dataTemp = data[ii].split(",");
+                    if(dataTemp[0] == i){
+                        dataSeries[i-(datee - 5)] = dataTemp[1];
+                        break;
+                    }else{
+                        dataSeries[i-(datee - 5)] = 0;
+                    }
+                }
+            }
+            console.log("month", datee);
+            console.log("data", dataSeries);
+        }
+        console.log("labelsData", labelsData);
+
+
+
         var data = {
-            labels: ['Th.1', 'Th.2', 'Th.3', 'Th.4', 'Th.5', 'Th.6'],
+            labels: labelsData,
             series: [
-                [5, 4, 3, 7, 5, 10]
+                dataSeries
             ]
         };
 
@@ -618,10 +668,29 @@
         // ==============================================================
         // Earning Stastics Chart
         // ==============================================================
+        var salaryInYear = [];
+        var salaryInYearSeries = [];
+        <c:forEach var="s" items="${getSalaryInYear}">
+            salaryInYear.push("${s}");
+        </c:forEach>
+
+        for(var i = 1; i <= 12; i++){
+                for(var ii = 1; ii <= salaryInYear.length; ii++){
+                    var salaryInYearTempArr = salaryInYear[ii-1].split(",");
+                    if(salaryInYearTempArr[0] == i){
+                        salaryInYearSeries[i-1] = salaryInYearTempArr[1] / 1000000;
+                        break;
+                    }else{
+                        salaryInYearSeries[i-1] = 0;
+                    }
+                }
+        }
+        console.log("salaryInYearSeries : ",salaryInYearSeries);
+
         var chart = new Chartist.Line('.stats', {
             labels: ["Tháng 1","Tháng 2","Tháng 3","Tháng 4","Tháng 5","Tháng 6","Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
             series: [
-                [11,10,15,21,14,23,12,13,29,30,13,12]
+                salaryInYearSeries
             ]
         }, {
             low: 0,

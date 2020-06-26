@@ -17,7 +17,7 @@ public interface CategoriesJpaRepo extends JpaRepository<Categories, Integer> {
 
     Categories findById(int id);
 
-    @Query(value = "select c.id, c.name, sum(o.quantity)\n" +
+    @Query(value = "select c.name, sum(o.quantity), c.color_mark\n" +
             "from categories c\n" +
             "inner join products p on p.category_id = c.id\n" +
             "inner join product_storage ps on ps.product_id = p.id\n" +

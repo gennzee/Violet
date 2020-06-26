@@ -28,6 +28,9 @@ public interface ProductStorageJpaRepo extends JpaRepository<ProductStorage, Int
             "GROUP BY ps.id", nativeQuery = true)
     List<Integer> findIncomeInMonth(int month, int year);
 
-    @Query(value = "select sum(quantity) as totalProduct from product_storage;", nativeQuery = true)
+    @Query(value = "select sum(ps.quantity) as totalProduct \n" +
+            "from product_storage ps\n" +
+            "inner join products p on p.id = ps.product_id\n" +
+            "where month(p.created_date) = ?1 and year(p.created_date) = ?2", nativeQuery = true)
     int findTotalProduct(int month, int year);
 }

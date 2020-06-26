@@ -11,7 +11,7 @@
  Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 26/06/2020 00:42:35
+ Date: 27/06/2020 03:24:30
 */
 
 SET NAMES utf8mb4;
@@ -47,6 +47,7 @@ CREATE TABLE `categories` (
   `removed_flag` bit(1) DEFAULT NULL,
   `created_date` datetime DEFAULT NULL,
   `updated_date` datetime DEFAULT NULL,
+  `color_mark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
@@ -54,8 +55,8 @@ CREATE TABLE `categories` (
 -- Records of categories
 -- ----------------------------
 BEGIN;
-INSERT INTO `categories` VALUES (1, 'Áo dài', b'0', NULL, NULL);
-INSERT INTO `categories` VALUES (2, 'Tranh thêu', b'0', NULL, NULL);
+INSERT INTO `categories` VALUES (1, 'Áo dài', b'0', NULL, NULL, '#ff4f70');
+INSERT INTO `categories` VALUES (2, 'Tranh thêu', b'0', NULL, NULL, '#5f76e8');
 COMMIT;
 
 -- ----------------------------
@@ -144,14 +145,14 @@ CREATE TABLE `hibernate_sequence` (
 -- Records of hibernate_sequence
 -- ----------------------------
 BEGIN;
-INSERT INTO `hibernate_sequence` VALUES (59);
-INSERT INTO `hibernate_sequence` VALUES (59);
-INSERT INTO `hibernate_sequence` VALUES (59);
-INSERT INTO `hibernate_sequence` VALUES (59);
-INSERT INTO `hibernate_sequence` VALUES (59);
-INSERT INTO `hibernate_sequence` VALUES (59);
-INSERT INTO `hibernate_sequence` VALUES (59);
-INSERT INTO `hibernate_sequence` VALUES (59);
+INSERT INTO `hibernate_sequence` VALUES (60);
+INSERT INTO `hibernate_sequence` VALUES (60);
+INSERT INTO `hibernate_sequence` VALUES (60);
+INSERT INTO `hibernate_sequence` VALUES (60);
+INSERT INTO `hibernate_sequence` VALUES (60);
+INSERT INTO `hibernate_sequence` VALUES (60);
+INSERT INTO `hibernate_sequence` VALUES (60);
+INSERT INTO `hibernate_sequence` VALUES (60);
 COMMIT;
 
 -- ----------------------------
@@ -212,7 +213,7 @@ INSERT INTO `order_product` VALUES (11, 85, 1, 1, 100000);
 INSERT INTO `order_product` VALUES (12, 85, 5, 1, 1000);
 INSERT INTO `order_product` VALUES (13, 86, 1, 1, 100000);
 INSERT INTO `order_product` VALUES (14, 86, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (15, 87, 1, 1, 100000);
+INSERT INTO `order_product` VALUES (15, 87, 1, 2, 100000);
 INSERT INTO `order_product` VALUES (16, 87, 5, 1, 1000);
 INSERT INTO `order_product` VALUES (17, 88, 1, 1, 100000);
 INSERT INTO `order_product` VALUES (18, 88, 5, 1, 1000);
@@ -285,7 +286,7 @@ INSERT INTO `orderr` VALUES (96, 2, '2020-06-15 00:00:00', '123 123', '131', 'H�
 INSERT INTO `orderr` VALUES (97, 2, '2020-06-15 00:00:00', '123 213', '1313', 'Hà Nội', '13', '1313', '131313', 101000);
 INSERT INTO `orderr` VALUES (98, 2, '2020-06-18 00:00:00', '121212 12121212', '121212', 'Hồ Chí Minh', '121212', '121212', '1212121212', 101000);
 INSERT INTO `orderr` VALUES (99, 2, '2020-06-18 00:00:00', '121212 12121212', '121212', 'Hồ Chí Minh', '121212', '121212', '1212121212', 101000);
-INSERT INTO `orderr` VALUES (100, 1, '2020-06-20 00:00:00', '121212 12121212', '123213', 'Hồ Chí Minh', '123123@g', '123123', '12312321313', 505000);
+INSERT INTO `orderr` VALUES (100, 1, '2020-05-20 00:00:00', '121212 12121212', '123213', 'Hồ Chí Minh', '123123@g', '123123', '12312321313', 505000);
 COMMIT;
 
 -- ----------------------------
@@ -499,7 +500,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `FKp56c1712k691lhsyewcssf40f` (`role_id`) USING BTREE,
   CONSTRAINT `FKp56c1712k691lhsyewcssf40f` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of users
@@ -507,6 +508,7 @@ CREATE TABLE `users` (
 BEGIN;
 INSERT INTO `users` VALUES (1, 'admin', 'admin', 'Xuân Anh', NULL, NULL, NULL, '342/9B Thoại Ngọc Hầu', b'0', 22, NULL, 2, NULL, NULL);
 INSERT INTO `users` VALUES (2, 'user', '123', 'Xuann Anhh', NULL, NULL, NULL, '342/9B Thoại Ngọc Hầu', b'0', 22, NULL, 1, NULL, NULL);
+INSERT INTO `users` VALUES (59, 'Admin1', 'admin', 'Xuan', 'Anh', '123123@g', '123123', '123213', b'0', 0, NULL, 1, '2020-06-26 00:00:00', '2020-06-26 00:00:00');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -36,6 +36,9 @@ public class adminController {
     @Autowired
     private CategoriesJpaRepo categoriesJpaRepo;
 
+    @Autowired
+    private OrderJpaRepo orderJpaRepo;
+
     @GetMapping(value = {"/admin", "/dashboard"})
     public String index(ModelMap modelMap){
         Date date = new Date();
@@ -70,7 +73,14 @@ public class adminController {
         int productInStock = totalGetProduct - soldProduct;
         modelMap.addAttribute("productInStock", productInStock);
 
-        List<String> testnhe = categoriesJpaRepo.findSoldProductByCategory(month, year);
+        List<String> totalProductSoldInMonth = categoriesJpaRepo.findSoldProductByCategory(month, year);
+        modelMap.addAttribute("totalProductSoldInMonth", totalProductSoldInMonth);
+
+        List<String> getSalaryInYear = orderJpaRepo.getSalaryInYear(year);
+        modelMap.addAttribute("getSalaryInYear", getSalaryInYear);
+
+        List<String> getSoldProductInYear = orderProductJpaRepo.getSoldProductInYear(year);
+        modelMap.addAttribute("getSoldProductInYear", getSoldProductInYear);
 
         return adminPage+"index";
     }

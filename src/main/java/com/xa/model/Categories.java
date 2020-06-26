@@ -15,6 +15,8 @@ public class Categories {
     private int id;
     @Column
     private String name;
+    @Column(name = "color_mark")
+    private String colorMark;
     @Column(name = "removed_flag")
     private boolean removedFlag;
     @Column(name = "created_date")
@@ -27,8 +29,9 @@ public class Categories {
     public Categories() {
     }
 
-    public Categories(String name, boolean removedFlag, Date createdDate, Date updatedDate) {
+    public Categories(String name, String colorMark, boolean removedFlag, Date createdDate, Date updatedDate) {
         this.name = name;
+        this.colorMark = colorMark;
         this.removedFlag = removedFlag;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
@@ -72,5 +75,13 @@ public class Categories {
 
     public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public String getColorMark() {
+        return colorMark;
+    }
+
+    public void setColorMark(String colorMark) {
+        this.colorMark = colorMark;
     }
 }
