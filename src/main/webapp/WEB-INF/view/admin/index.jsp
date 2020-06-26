@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -92,9 +93,17 @@
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">236</h2>
-                                        <span
-                                            class="badge bg-primary font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">+18.33%</span>
+                                        <h2 class="text-dark mb-1 font-weight-medium">${totalUser}</h2>
+                                        <span class="badge bg-primary font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">
+                                            <c:choose>
+                                                <c:when test="${userPercent >= 0}">
+                                                    +<fmt:formatNumber type = "number" groupingUsed = "false" value = "${userPercent}" />%
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <fmt:formatNumber type = "number" groupingUsed = "false" value = "${userPercent}" />%
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </span>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Khách hàng mới</h6>
                                 </div>
@@ -109,8 +118,17 @@
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><sup class="set-doller">VNĐ </sup>36,500,654</h2>
-                                        <span class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">-18.33%</span>
+                                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><sup class="set-doller">VNĐ </sup><fmt:formatNumber type = "number" value = "${income}" /></h2>
+                                        <span class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">
+                                            <c:choose>
+                                                <c:when test="${incomePercent >= 0}">
+                                                    +<fmt:formatNumber type = "number" groupingUsed = "false" value = "${incomePercent}" />%
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <fmt:formatNumber type = "number" groupingUsed = "false" value = "${incomePercent}" />%
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </span>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Thu nhập trong tháng</h6>
                                 </div>
@@ -125,8 +143,7 @@
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">1538</h2>
-                                        <span class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">-18.33%</span>
+                                        <h2 class="text-dark mb-1 font-weight-medium">${totalProduct}</h2>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Sản phẩm mới</h6>
                                 </div>
@@ -141,8 +158,7 @@
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">864</h2>
-                                        <span class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">-18.33%</span>
+                                        <h2 class="text-dark mb-1 font-weight-medium">${productInStock}</h2>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Sản phẩm trong kho</h6>
                                 </div>
@@ -517,7 +533,145 @@
     <script src="admin/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="admin/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="admin/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="admin/dist/js/pages/dashboards/dashboard1.min.js"></script>
+    <%--<script src="admin/dist/js/pages/dashboards/dashboard1.js"></script>--%>
+<script>
+    $(function () {
+        alert('<c:out value="${productInStock}"/>');
+
+        // ==============================================================
+        // Campaign
+        // ==============================================================
+
+        var chart1 = c3.generate({
+            bindto: '#campaign-v2',
+            data: {
+                columns: [
+                    ["Tranh thêu",25],
+                    ["Áo dài",15]
+                ],
+
+                type: 'donut',
+                tooltip: {
+                    show: true
+                }
+            },
+            donut: {
+                label: {
+                    show: false
+                },
+                title: 'Sản phẩm',
+                width: 18
+            },
+
+            legend: {
+                hide: true
+            },
+            color: {
+                pattern: [
+                    '#ff4f70',
+                    '#5f76e8'
+                ]
+            }
+        });
+
+        d3.select('#campaign-v2 .c3-chart-arcs-title').style('font-family', 'Rubik');
+
+        // ==============================================================
+        // income
+        // ==============================================================
+        var data = {
+            labels: ['Th.1', 'Th.2', 'Th.3', 'Th.4', 'Th.5', 'Th.6'],
+            series: [
+                [5, 4, 3, 7, 5, 10]
+            ]
+        };
+
+        var options = {
+            axisX: {
+                showGrid: false
+            },
+            seriesBarDistance: 1,
+            chartPadding: {
+                top: 15,
+                right: 15,
+                bottom: 5,
+                left: 0
+            },
+            plugins: [
+                Chartist.plugins.tooltip()
+            ],
+            width: '100%'
+        };
+
+        var responsiveOptions = [
+            ['screen and (max-width: 640px)', {
+                seriesBarDistance: 5,
+                axisX: {
+                    labelInterpolationFnc: function (value) {
+                        return value[0];
+                    }
+                }
+            }]
+        ];
+        new Chartist.Bar('.net-income', data, options, responsiveOptions);
+
+        // ==============================================================
+        // Earning Stastics Chart
+        // ==============================================================
+        var chart = new Chartist.Line('.stats', {
+            labels: ["Tháng 1","Tháng 2","Tháng 3","Tháng 4","Tháng 5","Tháng 6","Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+            series: [
+                [11,10,15,21,14,23,12,13,29,30,13,12]
+            ]
+        }, {
+            low: 0,
+            showArea: true,
+            fullWidth: true,
+            plugins: [
+                Chartist.plugins.tooltip()
+            ],
+            axisY: {
+                onlyInteger: true,
+                scaleMinSpace: 40,
+                offset: 40,
+                labelInterpolationFnc: function (value) {
+                    return (value / 1) + 'tr';
+                }
+            }
+        });
+
+        // Offset x1 a tiny amount so that the straight stroke gets a bounding box
+        chart.on('draw', function (ctx) {
+            if (ctx.type === 'area') {
+                ctx.element.attr({
+                    x1: ctx.x1 + 0.001
+                });
+            }
+        });
+
+        // Create the gradient definition on created event (always after chart re-render)
+        chart.on('created', function (ctx) {
+            var defs = ctx.svg.elem('defs');
+            defs.elem('linearGradient', {
+                id: 'gradient',
+                x1: 0,
+                y1: 1,
+                x2: 0,
+                y2: 0
+            }).elem('stop', {
+                offset: 0,
+                'stop-color': 'rgba(255, 255, 255, 1)'
+            }).parent().elem('stop', {
+                offset: 1,
+                'stop-color': 'rgba(80, 153, 255, 1)'
+            });
+        });
+
+        $(window).on('resize', function () {
+            chart.update();
+        });
+    })
+</script>
 </body>
 
 </html>

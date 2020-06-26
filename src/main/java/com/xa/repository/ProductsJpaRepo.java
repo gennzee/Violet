@@ -26,4 +26,7 @@ public interface ProductsJpaRepo extends JpaRepository<Products, Integer>, JpaSp
 
     List<Products> findAllByUpdatedDateAfter(Date date, Pageable pageable);
 
+    @Query(value = "select count(*) from products where month(created_date) = ?1 and year(created_date) = ?2", nativeQuery = true)
+    int findTotalProduct(int month, int year);
+
 }

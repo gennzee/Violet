@@ -16,4 +16,8 @@ import java.util.List;
 public interface OrderProductJpaRepo extends JpaRepository<OrderProduct, Integer> {
 
     List<OrderProduct> findAllByOrderId(int id);
+
+    @Query(value = "select sum(quantity) as soldProduct from order_product;", nativeQuery = true)
+    int findSoldProduct(int month, int year);
+
 }
