@@ -59,12 +59,14 @@ public class adminProductController {
 
     @PostMapping(value = {"/addProduct"})
     public String addProduct(HttpServletRequest request, @RequestParam Map<String,String> m, @RequestParam("image") MultipartFile[] files, RedirectAttributes ra){
+        String referer = request.getHeader("Referer");
+
         Products p = productsJpaRepo.save(new Products(m.get("name"), m.get("description"), Integer.parseInt(m.get("category")), false, new Date(), new Date()));
         for(MultipartFile file : files) {
             fileUploaderService.uploadFile(request, file);
             productImageJpaRepo.save(new ProductImage(p.getId(), fileUploaderService.getImageName(), new Date()));
         }
-        return "redirect:/productManagement";
+        return "redirect:"+referer;
     }
 
     @GetMapping(value = {"/productManagementDetail/{id}"})
@@ -74,13 +76,15 @@ public class adminProductController {
 
     @GetMapping("deleteProduct/{id}")
     public String deleteProduct(HttpServletRequest request, @PathVariable int id, RedirectAttributes ra){
+        String referer = request.getHeader("Referer");
+
         Products p = productsJpaRepo.findById(id);
         productsJpaRepo.deleteById(id);
         List<ProductImage> productImages = productImageJpaRepo.findAllByProductId(id);
         for(ProductImage img : productImages){
             fileUploaderService.deleteFile(request, img.getName());
         }
-        return "redirect:/productManagement";
+        return "redirect:"+referer;
     }
 
 }
