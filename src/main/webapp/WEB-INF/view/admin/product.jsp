@@ -149,7 +149,7 @@
                                     <div class="form-group">
                                         <label class="mr-sm-2" for="inlineFormCustomSelect">Danh mục</label>
                                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="category">
-                                            <option selected="${categories.id}">${categories.name}</option>
+                                            <option selected value="${categories.id}">${categories.name}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">

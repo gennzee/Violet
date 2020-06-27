@@ -78,12 +78,12 @@ public class adminProductController {
     public String deleteProduct(HttpServletRequest request, @PathVariable int id, RedirectAttributes ra){
         String referer = request.getHeader("Referer");
 
-        Products p = productsJpaRepo.findById(id);
-        productsJpaRepo.deleteById(id);
         List<ProductImage> productImages = productImageJpaRepo.findAllByProductId(id);
         for(ProductImage img : productImages){
             fileUploaderService.deleteFile(request, img.getName());
         }
+        productsJpaRepo.deleteById(id);
+
         return "redirect:"+referer;
     }
 

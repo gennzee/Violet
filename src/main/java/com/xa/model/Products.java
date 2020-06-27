@@ -39,13 +39,13 @@ public class Products {
     @JoinColumn(name = "category_id", insertable = false, updatable = false)
     private Categories categories;
 
-    @OneToMany(mappedBy = "productId")
+    @OneToMany(mappedBy = "productId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductImage> productImageList;
 
-    @OneToMany(mappedBy = "productId")
+    @OneToMany(mappedBy = "productId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductStorage> productStorageList;
 
-    @OneToMany(mappedBy = "productId")
+    @OneToMany(mappedBy = "productId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviewList;
 
     public Products() {
