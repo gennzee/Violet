@@ -1,11 +1,13 @@
 package com.xa.controller.admin;
 
+import com.xa.model.Categories;
 import com.xa.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
@@ -40,7 +42,10 @@ public class adminController {
     private OrderJpaRepo orderJpaRepo;
 
     @GetMapping(value = {"/admin", "/dashboard"})
-    public String index(ModelMap modelMap){
+    public String index(ModelMap modelMap, HttpSession session){
+        List<Categories> categoriesList = categoriesJpaRepo.findAll();
+        session.setAttribute("categoriesList", categoriesList);
+
         Date date = new Date();
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         int month = localDate.getMonthValue();

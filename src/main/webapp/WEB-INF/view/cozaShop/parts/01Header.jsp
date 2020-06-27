@@ -25,13 +25,6 @@
                         My Account
                     </a>
 
-                    <a href="#" class="flex-c-m trans-04 p-lr-25">
-                        EN
-                    </a>
-
-                    <a href="#" class="flex-c-m trans-04 p-lr-25">
-                        USD
-                    </a>
                 </div>
             </div>
         </div>
@@ -66,7 +59,7 @@
                 <button class="flex-c-m trans-04">
                     <i class="zmdi zmdi-search"></i>
                 </button>
-                <input class="plh3" type="text" name="search" placeholder="Search...">
+                <input class="plh3" type="text" name="search" placeholder="Tìm kiếm sản phẩm...">
             </form>
         </div>
     </div>

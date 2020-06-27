@@ -36,6 +36,12 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        @media only screen and (min-width: 768px) {
+            .indexImageFormat {
+                height: 137px;
+                object-fit: cover;
+            }
+        }
     </style>
 </head>
 
@@ -76,15 +82,6 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="col-5 align-self-center">
-                        <div class="customize-input float-right">
-                            <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
-                                <option selected>Aug 19</option>
-                                <option value="1">July 19</option>
-                                <option value="2">Jun 19</option>
-                            </select>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -110,7 +107,7 @@
                             <div class="col-lg-3 col-md-6 img-fluid">
                                 <!-- Card -->
                                 <div class="card">
-                                    <img class="card-img-top img-fluid" src="/images/${n.thumbImage}"
+                                    <img class="card-img-top img-fluid indexImageFormat" src="/images/${n.thumbImage}"
                                          alt="Card image cap">
                                     <div class="card-body">
                                         <h4 class="card-title ellipsis-text">${n.name}</h4>
@@ -154,7 +151,7 @@
                                                 <span class="input-group-text">Hình ảnh trước</span>
                                             </div>
                                             <div class="custom-file">
-                                                <input type="image" class="custom-file-input" id="inputGroupFile01" name="thumb_image">
+                                                <input type="file" class="custom-file-input" id="inputGroupFile01" name="thumb_image">
                                                 <label class="custom-file-label" for="inputGroupFile01">Chọn hình ảnh</label>
                                             </div>
                                         </div>

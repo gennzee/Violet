@@ -11,7 +11,7 @@
  Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 27/06/2020 03:24:30
+ Date: 28/06/2020 02:50:38
 */
 
 SET NAMES utf8mb4;
@@ -145,14 +145,14 @@ CREATE TABLE `hibernate_sequence` (
 -- Records of hibernate_sequence
 -- ----------------------------
 BEGIN;
-INSERT INTO `hibernate_sequence` VALUES (60);
-INSERT INTO `hibernate_sequence` VALUES (60);
-INSERT INTO `hibernate_sequence` VALUES (60);
-INSERT INTO `hibernate_sequence` VALUES (60);
-INSERT INTO `hibernate_sequence` VALUES (60);
-INSERT INTO `hibernate_sequence` VALUES (60);
-INSERT INTO `hibernate_sequence` VALUES (60);
-INSERT INTO `hibernate_sequence` VALUES (60);
+INSERT INTO `hibernate_sequence` VALUES (62);
+INSERT INTO `hibernate_sequence` VALUES (62);
+INSERT INTO `hibernate_sequence` VALUES (62);
+INSERT INTO `hibernate_sequence` VALUES (62);
+INSERT INTO `hibernate_sequence` VALUES (62);
+INSERT INTO `hibernate_sequence` VALUES (62);
+INSERT INTO `hibernate_sequence` VALUES (62);
+INSERT INTO `hibernate_sequence` VALUES (62);
 COMMIT;
 
 -- ----------------------------
@@ -476,6 +476,29 @@ CREATE TABLE `roles` (
 BEGIN;
 INSERT INTO `roles` VALUES (1, 'user', NULL, NULL);
 INSERT INTO `roles` VALUES (2, 'admin', NULL, NULL);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for supplier
+-- ----------------------------
+DROP TABLE IF EXISTS `supplier`;
+CREATE TABLE `supplier` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `updated_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of supplier
+-- ----------------------------
+BEGIN;
+INSERT INTO `supplier` VALUES (1, 'Công ty kim ngân', 'kimngan@gmail.com', '0706076999', '342/9B Thoại Ngọc Hầu, Tân phú, TP.HCM', '2020-06-26 00:00:00', NULL);
+INSERT INTO `supplier` VALUES (61, 'Công ty TNHH Xuân Bắc', 'xuanbac@gmail.com', '0706076888', '111B Hai Bà Trưng, Hà Nội', '2020-06-28 00:00:00', '2020-06-28 00:00:00');
 COMMIT;
 
 -- ----------------------------

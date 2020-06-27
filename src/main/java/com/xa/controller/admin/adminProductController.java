@@ -48,12 +48,12 @@ public class adminProductController {
     @Autowired
     private FileUploaderService fileUploaderService;
 
-    @GetMapping(value = {"/productManagement"})
-    public String producManagement(ModelMap model){
-        List<Products> listProducts = productsJpaRepo.findAll();
-        List<Categories> listCategories = categoriesJpaRepo.findAll();
+    @GetMapping(value = {"/productManagement/{id}"})
+    public String productManagement(ModelMap model, @PathVariable int id){
+        List<Products> listProducts = productsJpaRepo.findAllByCategoryId(id);
         model.addAttribute("listProducts", listProducts);
-        model.addAttribute("listCategories", listCategories);
+        Categories categories = categoriesJpaRepo.findById(id);
+        model.addAttribute("categories", categories);
         return adminPage + "product";
     }
 
@@ -67,8 +67,12 @@ public class adminProductController {
         return "redirect:/productManagement";
     }
 
+    @GetMapping(value = {"/productManagementDetail/{id}"})
+    public String productManagementDetail(){
+        return "";
+    }
+
     @GetMapping("deleteProduct/{id}")
-    @Transactional
     public String deleteProduct(HttpServletRequest request, @PathVariable int id, RedirectAttributes ra){
         Products p = productsJpaRepo.findById(id);
         productsJpaRepo.deleteById(id);

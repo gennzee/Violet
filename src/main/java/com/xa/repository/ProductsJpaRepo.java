@@ -20,7 +20,7 @@ public interface ProductsJpaRepo extends JpaRepository<Products, Integer>, JpaSp
 
     Products findById(int id);
 
-    List<Products> findAllByCategoryId(int categoryid, Pageable pageable);
+    List<Products> findAllByCategoryId(int categoryid);
 
     int countByCategoryId(int id);
 

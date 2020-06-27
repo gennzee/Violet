@@ -17,17 +17,17 @@
                 <a href="index.html">
                     <b class="logo-icon">
                         <!-- Dark Logo icon -->
-                        <img src="admin/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                        <img src="/admin/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
                         <!-- Light Logo icon -->
-                        <img src="admin/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+                        <img src="/admin/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
                     <span class="logo-text">
                                 <!-- dark Logo text -->
-                                <img src="admin/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                                <img src="/admin/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
                         <!-- Light Logo text -->
-                                <img src="admin/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                                <img src="/admin/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
                             </span>
                 </a>
             </div>
@@ -141,47 +141,20 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
-                <li class="nav-item d-none d-md-block">
-                    <a class="nav-link" href="javascript:void(0)">
-                        <div class="customize-input">
-                            <select
-                                    class="custom-select form-control bg-white custom-radius custom-shadow border-0">
-                                <option selected>EN</option>
-                                <option value="1">AB</option>
-                                <option value="2">AK</option>
-                                <option value="3">BE</option>
-                            </select>
-                        </div>
-                    </a>
-                </li>
             </ul>
             <!-- ============================================================== -->
             <!-- Right side toggle and nav items -->
             <!-- ============================================================== -->
             <ul class="navbar-nav float-right">
                 <!-- ============================================================== -->
-                <!-- Search -->
-                <!-- ============================================================== -->
-                <li class="nav-item d-none d-md-block">
-                    <a class="nav-link" href="javascript:void(0)">
-                        <form>
-                            <div class="customize-input">
-                                <input class="form-control custom-shadow custom-radius border-0 bg-white"
-                                       type="search" placeholder="Search" aria-label="Search">
-                                <i class="form-control-icon" data-feather="search"></i>
-                            </div>
-                        </form>
-                    </a>
-                </li>
-                <!-- ============================================================== -->
                 <!-- User profile and search -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        <img src="admin/assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
+                        <img src="/admin/assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
                              width="40">
-                        <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
+                        <span class="ml-2 d-none d-lg-inline-block"><span>Xin chào,</span> <span
                                 class="text-dark">${user.firstName} ${user.lastName}</span> <i data-feather="chevron-down"
                                                                       class="svg-icon"></i></span>
                     </a>
@@ -240,14 +213,27 @@
                 </li>
                 <li class="nav-small-cap"><span class="hide-menu">Quản lý sản phẩm</span></li>
 
-                <li class="sidebar-item"> <a class="sidebar-link" href="/productManagement"
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
                                              aria-expanded="false"><i data-feather="box" class="feather-icon"></i><span
                         class="hide-menu">Sản phẩm
                                 </span></a>
+                    <ul aria-expanded="false" class="collapse first-level base-level-line">
+                        <c:forEach var="c" items="${categoriesList}">
+                        <li class="sidebar-item"><a href="/productManagement/${c.id}" class="sidebar-link"><span
+                                class="hide-menu"> ${c.name} </span></a></li>
+                        </c:forEach>
+                    </ul>
                 </li>
                 <li class="sidebar-item"> <a class="sidebar-link" href="/newsManagement"
-                                             aria-expanded="false"><i data-feather="box" class="feather-icon"></i><span
+                                             aria-expanded="false"><i class="far fa-newspaper"></i><span
                         class="hide-menu">Tin tức
+                                </span></a>
+                </li>
+                <li class="nav-small-cap"><span class="hide-menu">Quản lý nguồn cung</span></li>
+
+                <li class="sidebar-item"> <a class="sidebar-link" href="/supplierManagement"
+                                             aria-expanded="false"><i class="fas fa-home"></i></i><span
+                        class="hide-menu">Nhà cung cấp
                                 </span></a>
                 </li>
                 <li class="nav-small-cap"><span class="hide-menu">Thông tin shop</span></li>
