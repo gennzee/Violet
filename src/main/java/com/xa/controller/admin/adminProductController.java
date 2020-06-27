@@ -63,8 +63,10 @@ public class adminProductController {
 
         Products p = productsJpaRepo.save(new Products(m.get("name"), m.get("description"), Integer.parseInt(m.get("category")), false, new Date(), new Date()));
         for(MultipartFile file : files) {
-            fileUploaderService.uploadFile(request, file);
-            productImageJpaRepo.save(new ProductImage(p.getId(), fileUploaderService.getImageName(), new Date()));
+            if(!file.isEmpty()){
+                fileUploaderService.uploadFile(request, file);
+                productImageJpaRepo.save(new ProductImage(p.getId(), fileUploaderService.getImageName(), new Date()));
+            }
         }
         return "redirect:"+referer;
     }
