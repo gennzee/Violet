@@ -537,6 +537,12 @@
     <%--<script src="admin/dist/js/pages/dashboards/dashboard1.js"></script>--%>
 <script>
     $(function () {
+
+        /*sse*/
+        var endPoint = "/getNewOrder";
+        var eventSource = new EventSource(endPoint);
+        /*end*/
+
         var totalProductSoldInMonth = [];
         var colorMark = [];
         <c:forEach var="tt" items="${totalProductSoldInMonth}">

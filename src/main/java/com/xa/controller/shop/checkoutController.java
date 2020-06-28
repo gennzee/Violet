@@ -8,21 +8,21 @@ import com.xa.model.Users;
 import com.xa.repository.OrderJpaRepo;
 import com.xa.repository.OrderProductJpaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static com.xa.service.ConstVariables.cozaShopPage;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Controller
 public class checkoutController {
@@ -35,6 +35,22 @@ public class checkoutController {
 
     @Autowired
     private OrderProductJpaRepo orderProductJpaRepo;
+
+    public List<SseEmitter> emitters = new CopyOnWriteArrayList<>();
+
+    @GetMapping(value = {"/getNewOrder"})
+    public SseEmitter getNewOrder(){
+        SseEmitter sseEmitter = new SseEmitter(30000L);
+        try {
+            sseEmitter.send(SseEmitter.event().name("INIT"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        emitters.add(sseEmitter);
+        sseEmitter.onCompletion(() -> emitters.remove(sseEmitter));
+        sseEmitter.onTimeout(() -> emitters.remove(sseEmitter));
+        return sseEmitter;
+    }
 
     @GetMapping(value = {"/checkout"})
     public String checkout(HttpSession session, ModelMap modelMap){
@@ -74,7 +90,15 @@ public class checkoutController {
         //remove cart session
         session.removeAttribute("cartTotalPrice");
         session.removeAttribute("shoppingCarts");
-        
+
+        for (SseEmitter sseEmitter : emitters){
+            try {
+                sseEmitter.send(SseEmitter.event().name("checkoutPage").data("New Order : "+ order.getId()));
+            } catch (Exception e) {
+                emitters.remove(sseEmitter);
+            }
+        }
+
         return cozaShopPage + "confirmation";
     }
 
