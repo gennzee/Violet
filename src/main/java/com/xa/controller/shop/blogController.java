@@ -47,10 +47,8 @@ public class blogController {
         Page<News> newsList = newsJpaRepo.findAll(PageRequest.of((page - 1), itemPerPage));
         modelMap.addAttribute("newsList", newsList.getContent());
 
-        int totalProducts = newsList.getContent().size();
-        int totalPage = (totalProducts % itemPerPage != 0) ? ((totalProducts / itemPerPage) + 1) : (totalProducts / itemPerPage);
         modelMap.addAttribute("currentPage", page);
-        modelMap.addAttribute("totalPage", totalPage);
+        modelMap.addAttribute("totalPage", newsList.getTotalPages());
 
         return cozaShopPage+"blog";
     }

@@ -41,7 +41,7 @@ public class News {
     @JoinColumn(name = "category_id", insertable = false, updatable = false)
     private Categories categories;
 
-    @OneToMany(mappedBy = "newId")
+    @OneToMany(mappedBy = "newId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comments> commentsList;
 
     public News() {

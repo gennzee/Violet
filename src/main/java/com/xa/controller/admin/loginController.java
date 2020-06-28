@@ -34,7 +34,7 @@ public class loginController {
         Users user = (Users) session.getAttribute("user");
         if(user != null){
             if(user.getRoles().getName().equals("admin")){
-                return adminPage + "index";
+                return "redirect:/admin";
             }else{
                 return cozaShopPage + "index";
             }
@@ -48,7 +48,7 @@ public class loginController {
         if(user != null){
             session.setAttribute("user", user);
             if(user.getRoles().getName().equals("admin")){
-                return adminPage + "index";
+                return "redirect:/admin";
             }else{
                 return "redirect:/checkout";
             }

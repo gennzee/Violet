@@ -111,7 +111,99 @@
                                          alt="Card image cap">
                                     <div class="card-body">
                                         <h4 class="card-title ellipsis-text">${n.name}</h4>
-                                        <a href="javascript:void(0)" class="btn btn-primary">Xem chi tiết</a>
+                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#editNewsModal${n.id}" class="btn btn-primary">Sửa</a>
+                                        <a href="/deleteNews/${n.id}" class="btn btn-danger">Xoá</a>
+                                            <%--modal--%>
+                                        <div id="editNewsModal${n.id}" class="modal fade" role="dialog" aria-labelledby="myModalLabel${n.id}" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-xl">
+                                                <form class="mt-4" action="/updateNews" method="post" enctype="multipart/form-data">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myModalLabel${n.id}">Sửa tin tức</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <input type="hidden" value="${n.id}" name="id"/>
+                                                            <div class="form-group">
+                                                                <label class="mr-sm-2" for="inlineFormCustomSelect${n.id}">Danh mục</label>
+                                                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect${n.id}" name="category">
+                                                                    <option value="" selected="">Chọn...</option>
+                                                                    <c:forEach var="c" items="${listCategories}">
+                                                                        <c:choose>
+                                                                            <c:when test="${n.categoryId eq c.id}">
+                                                                                <option selected value="${c.id}">${c.name}</option>
+                                                                            </c:when>
+                                                                            <c:otherwise>
+                                                                                <option value="${c.id}">${c.name}</option>
+                                                                            </c:otherwise>
+                                                                        </c:choose>
+                                                                    </c:forEach>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Tiêu đề</label>
+                                                                <input type="text" class="form-control" value="${n.name}" name="title">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">Hình ảnh trước</span>
+                                                                    </div>
+                                                                    <div class="custom-file">
+                                                                        <input type="file" class="custom-file-input" id="inputGroupFile01${n.id}" name="thumb_image">
+                                                                        <label class="custom-file-label" for="inputGroupFile01${n.id}">Chọn hình ảnh</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">Hình ảnh nội dung</span>
+                                                                    </div>
+                                                                    <div class="custom-file">
+                                                                        <input type="file" class="custom-file-input" id="inputGroupFile02${n.id}" name="content_image">
+                                                                        <label class="custom-file-label" for="inputGroupFile02${n.id}">Chọn hình ảnh</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Nội dung</label>
+                                                                <textarea id="textarea${n.id}" class="form-control" name="content">${n.content}</textarea>
+                                                                <script>
+                                                                    var id = '<c:out value="${n.id}"/>';
+                                                                    CKEDITOR.replace("textarea"+id, {
+                                                                        height: 400,
+                                                                        extraAllowedContent: 'section(*)'
+                                                                    });
+                                                                    CKEDITOR.config.contentsCss = [
+                                                                        "/coza/vendor/bootstrap/css/bootstrap.min.css",
+                                                                        "/coza/fonts/font-awesome-4.7.0/css/font-awesome.min.css",
+                                                                        "/coza/fonts/iconic/css/material-design-iconic-font.min.css",
+                                                                        "/coza/fonts/linearicons-v1.0.0/icon-font.min.css",
+                                                                        "/coza/vendor/animate/animate.css",
+                                                                        "/coza/vendor/css-hamburgers/hamburgers.min.css",
+                                                                        "/coza/vendor/animsition/css/animsition.min.css",
+                                                                        "/coza/vendor/select2/select2.min.css",
+                                                                        "/coza/vendor/daterangepicker/daterangepicker.css",
+                                                                        "/coza/vendor/slick/slick.css",
+                                                                        "/coza/vendor/MagnificPopup/magnific-popup.css",
+                                                                        "/coza/vendor/perfect-scrollbar/perfect-scrollbar.css",
+                                                                        "https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap",
+                                                                        "/coza/css/util.css",
+                                                                        "/coza/css/main.css"
+                                                                    ];
+                                                                </script>
+                                                            </div>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary">Sửa</button>
+                                                        <button type="button" class="btn btn-light" data-dismiss="modal">Đóng</button>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                                </form>
+                                            </div><!-- /.modal-dialog -->
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- Card -->
@@ -123,7 +215,7 @@
                     </div>
                 </div>
                 <%--modal--%>
-                <div id="addNewsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div id="addNewsModal" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
