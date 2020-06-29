@@ -1,21 +1,12 @@
 package com.xa.controller.admin;
 
-import com.xa.model.Categories;
-import com.xa.model.ProductImage;
-import com.xa.model.ProductStorage;
-import com.xa.model.Products;
-import com.xa.repository.CategoriesJpaRepo;
-import com.xa.repository.ProductImageJpaRepo;
-import com.xa.repository.ProductStorageJpaRepo;
-import com.xa.repository.ProductsJpaRepo;
+import com.xa.model.*;
+import com.xa.repository.*;
 import com.xa.service.FileUploaderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -46,6 +37,12 @@ public class adminProductController {
     private ProductStorageJpaRepo productStorageJpaRepo;
 
     @Autowired
+    private ProductColorJpaRepo productColorJpaRepo;
+
+    @Autowired
+    private ProductSizeJpaRepo productSizeJpaRepo;
+
+    @Autowired
     private FileUploaderService fileUploaderService;
 
     @GetMapping(value = {"/productManagement/{id}"})
@@ -55,6 +52,41 @@ public class adminProductController {
         Categories categories = categoriesJpaRepo.findById(id);
         model.addAttribute("categories", categories);
         return adminPage + "product";
+    }
+
+    @GetMapping(value = {"/productManagement/detail/{id}"})
+    public String productManagementDetail(@PathVariable int id, ModelMap modelMap){
+
+        List<ProductStorage> productStorageList = productStorageJpaRepo.findAllByProductId(id);
+        modelMap.addAttribute("productStorageList", productStorageList);
+
+        List<ProductColor> productColorList = productColorJpaRepo.findAllByCategoryId(productStorageList.get(0).getProducts().getCategoryId());
+        modelMap.addAttribute("productColorList", productColorList);
+
+        List<ProductSize> productSizeList = productSizeJpaRepo.findAllByCategoryId(productStorageList.get(0).getProducts().getCategoryId());
+        modelMap.addAttribute("productSizeList", productSizeList);
+
+        return adminPage + "productDetail";
+    }
+
+    @PostMapping(value = {"/productManagement/isProductDetailNotExisting"})
+    @ResponseBody
+    public String isProductDetailExisting(@RequestParam Map<String, String> m){
+        ProductStorage ps = productStorageJpaRepo.findByProductIdAndColorIdAndSizeId(Integer.parseInt(m.get("productId")), Integer.parseInt(m.get("color")), Integer.parseInt(m.get("size")));
+        if(ps != null){
+            return String.valueOf(ps.getId());
+        }
+        return null;
+    }
+
+    @PostMapping(value = {"/productManagement/addProductDetail"})
+    public String addProductDetail(HttpServletRequest request, @RequestParam Map<String, String> m){
+        String referer = request.getHeader("Referer");
+
+        ProductStorage productStorage = new ProductStorage(Integer.parseInt(m.get("productId")), Float.parseFloat(m.get("price")), Float.parseFloat(m.get("discount")), Integer.parseInt(m.get("color")), Integer.parseInt(m.get("size")), Integer.parseInt(m.get("quantity")), 0);
+        productStorageJpaRepo.save(productStorage);
+
+        return "redirect:"+referer;
     }
 
     @PostMapping(value = {"/addProduct"})
@@ -69,11 +101,6 @@ public class adminProductController {
             }
         }
         return "redirect:"+referer;
-    }
-
-    @GetMapping(value = {"/productManagementDetail/{id}"})
-    public String productManagementDetail(){
-        return "";
     }
 
     @GetMapping("deleteProduct/{id}")
