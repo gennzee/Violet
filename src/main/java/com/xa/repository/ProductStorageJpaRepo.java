@@ -19,8 +19,8 @@ import java.util.Map;
 public interface ProductStorageJpaRepo extends JpaRepository<ProductStorage, Integer> {
 
     @Modifying
-    @Query(value = "update ProductStorage ps set ps.quantity = (ps.quantity + ?1), ps.price = ?3, ps.discount = ?4 where ps.id = ?2")
-    void appendQuantity(int quantity, int productStorageId, float price, float discount);
+    @Query(value = "update ProductStorage ps set ps.quantity = ?1, ps.price = ?3, ps.discount = ?4 where ps.id = ?2")
+    int updateProductDetail(int quantity, int productStorageId, float price, float discount);
 
     List<ProductStorage> findAllByProductId(int productId);
 

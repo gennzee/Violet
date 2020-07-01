@@ -108,8 +108,82 @@
                                                 <td>${p.productColor.name}</td>
                                                 <td>${p.productSize.name}</td>
                                                 <td>${p.quantity}</td>
-                                                <td><a href="/deleteProduct/${p.id}"><i class="fas fa-trash-alt"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pencil-alt"></i></a></td>
+                                                <td><a href="/productManagement/productDetail/delete/${p.id}"><i class="fas fa-trash-alt"></i></a></td>
+                                                <td><a href="#"><i class="fas fa-pencil-alt" data-toggle="modal" data-target="#editProductDetailModal${p.id}"></i></a></td>
+                                                    <%--modal--%>
+                                                <div id="editProductDetailModal${p.id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editMyModalLabel" aria-hidden="true" style="display: none;">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <form id="editProductDetailForm${p.id}" class="mt-4" action="/productManagement/editProductDetail" method="post">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title" id="editMyModalLabel">Sửa sản phẩm mới trong mẫu <b>ESD${p.products.id}</b></h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <input type="hidden" value="${p.products.id}" name="productId"/>
+                                                                    <input type="hidden" value="${p.id}" name="id"/>
+                                                                    <div class="form-group">
+                                                                        <label>Giá</label>
+                                                                        <input type="search" class="form-control" value="${p.price}" name="price">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Giảm giá</label>
+                                                                        <input type="search" class="form-control" value="${p.discount}" name="discount">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="mr-sm-2" for="colorSelectEditModal">Màu</label>
+                                                                        <select disabled class="custom-select mr-sm-2" id="colorSelectEditModal" name="color">
+                                                                            <c:forEach var="c" items="${productColorList}">
+                                                                                <c:choose>
+                                                                                    <c:when test="${c.id eq p.productColor.id}">
+                                                                                        <option selected value="${c.id}">${c.name}</option>
+                                                                                    </c:when>
+                                                                                    <c:otherwise>
+                                                                                        <option value="${c.id}">${c.name}</option>
+                                                                                    </c:otherwise>
+                                                                                </c:choose>
+                                                                            </c:forEach>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="mr-sm-2" for="sizeSelect">Kích cỡ</label>
+                                                                        <select disabled class="custom-select mr-sm-2" id="sizeSelect" name="size">
+                                                                            <option selected value="">Chọn...</option>
+                                                                            <c:forEach var="s" items="${productSizeList}">
+                                                                                <c:choose>
+                                                                                    <c:when test="${s.id eq p.productSize.id}">
+                                                                                        <option selected value="${s.id}">${s.name}</option>
+                                                                                    </c:when>
+                                                                                    <c:otherwise>
+                                                                                        <option value="${s.id}">${s.name}</option>
+                                                                                    </c:otherwise>
+                                                                                </c:choose>
+                                                                            </c:forEach>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Số lượng</label>
+                                                                        <input type="search" class="form-control" value="${p.quantity}" name="quantity">
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" class="btn btn-primary">Sửa</button>
+                                                                    <button type="button" class="btn btn-light" data-dismiss="modal">Đóng</button>
+                                                                </div>
+                                                            </form>
+                                                            <script>
+                                                                $(function () {
+                                                                    var productId = '<c:out value="${p.id}"/>';
+                                                                    $("#editProductDetailForm"+productId).on("submit", function (event) {
+                                                                        $(this).submitForm();
+                                                                    });
+                                                                });
+                                                            </script>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal-dialog -->
+                                                </div>
+                                                    <%--end modal--%>
                                             </tr>
                                         </c:forEach>
                                         </tbody>
@@ -232,19 +306,33 @@
     <!--This page plugins -->
     <script src="/admin/assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="/admin/dist/js/pages/datatable/datatable-basic.init.js"></script>
+    <script src="/coza/vendor/sweetalert/sweetalert.min.js"></script>
     <script>
-        $("#addProductDetailForm").on("submit", function (event) {
-            event.preventDefault();
-            var formData = $(this).serializeArray();
-            $.post('/productManagement/isProductDetailNotExisting',formData,function (data, status, jqXHR) {
-                if(data !== "" && data != 0 && status === "success"){
-                    alert("Sản phẩm đã tồn tại !!! Vui lòng sửa thay vì thêm mới.");
-                }else{
-                    $.post('/productManagement/addProductDetail',formData,function (data, status, jqXHR) {
-                        location.reload();
-                    })
-                }
+        $(function () {
+            $("#addProductDetailForm").on("submit", function (event) {
+                $(this).submitForm();
             });
+
+            $.fn.submitForm = function() {
+                event.preventDefault();
+                var form = this;
+                var formData = $(form).serializeArray();
+                $.post('/productManagement/isProductDetailNotExisting',formData,function (data, status, jqXHR) {
+                    if((data !== "" && data != 0 && status === "success") && "addProductDetailForm" === $(form).attr("id")){
+                        swal("Sản phẩm đã tồn tại.", "Vui lòng sửa thay vì thêm mới !", "error");
+                    }else{
+                        if("addProductDetailForm" === $(form).attr("id")){
+                            $.post('/productManagement/addProductDetail',formData,function (data, status, jqXHR) {
+                                location.reload();
+                            });
+                        }else{
+                            $.post('/productManagement/editProductDetail',formData,function (data, status, jqXHR) {
+                                location.reload();
+                            });
+                        }
+                    }
+                });
+            };
         });
     </script>
 </body>

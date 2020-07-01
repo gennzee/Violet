@@ -1,9 +1,13 @@
 package com.xa.controller.admin;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xa.model.*;
 import com.xa.repository.*;
 import com.xa.service.FileUploaderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -71,12 +75,13 @@ public class adminProductController {
 
     @PostMapping(value = {"/productManagement/isProductDetailNotExisting"})
     @ResponseBody
-    public String isProductDetailExisting(@RequestParam Map<String, String> m){
+    public String isProductDetailExisting(@RequestParam Map<String, String> m) throws Exception{
         ProductStorage ps = productStorageJpaRepo.findByProductIdAndColorIdAndSizeId(Integer.parseInt(m.get("productId")), Integer.parseInt(m.get("color")), Integer.parseInt(m.get("size")));
         if(ps != null){
-            return String.valueOf(ps.getId());
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.writeValueAsString(ps);
         }
-        return null;
+        return "";
     }
 
     @PostMapping(value = {"/productManagement/addProductDetail"})
@@ -85,6 +90,26 @@ public class adminProductController {
 
         ProductStorage productStorage = new ProductStorage(Integer.parseInt(m.get("productId")), Float.parseFloat(m.get("price")), Float.parseFloat(m.get("discount")), Integer.parseInt(m.get("color")), Integer.parseInt(m.get("size")), Integer.parseInt(m.get("quantity")), 0);
         productStorageJpaRepo.save(productStorage);
+
+        return "redirect:"+referer;
+    }
+
+    @Transactional
+    @PostMapping(value = {"/productManagement/editProductDetail"})
+    public String editProductDetail(HttpServletRequest request, @RequestParam Map<String, String> m){
+        String referer = request.getHeader("Referer");
+
+        ProductStorage productStorage = new ProductStorage(Integer.parseInt(m.get("productId")), Float.parseFloat(m.get("price")), Float.parseFloat(m.get("discount")), Integer.parseInt(m.get("color")), Integer.parseInt(m.get("size")), Integer.parseInt(m.get("quantity")), 0);
+        productStorageJpaRepo.updateProductDetail(productStorage.getQuantity(), Integer.parseInt(m.get("id")), productStorage.getPrice(), productStorage.getDiscount());
+
+        return "redirect:"+referer;
+    }
+
+    @GetMapping(value = {"/productManagement/productDetail/delete/{productId}"})
+    public String removeProductDetail(HttpServletRequest request, @PathVariable int productId){
+        String referer = request.getHeader("Referer");
+
+        productStorageJpaRepo.deleteById(productId);
 
         return "redirect:"+referer;
     }

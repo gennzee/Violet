@@ -1,5 +1,7 @@
 package com.xa.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -30,6 +32,7 @@ public class ProductStorage {
 
     @ManyToOne
     @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    @JsonIgnore
     private Products products;
 
     @ManyToOne
@@ -117,6 +120,7 @@ public class ProductStorage {
         this.sold = sold;
     }
 
+    @JsonIgnore
     public Products getProducts() {
         return products;
     }
