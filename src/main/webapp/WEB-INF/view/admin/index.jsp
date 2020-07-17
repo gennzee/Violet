@@ -593,17 +593,18 @@
         // ==============================================================
         var labels = ['Th.1', 'Th.2', 'Th.3', 'Th.4', 'Th.5', 'Th.6', 'Th.7', 'Th.8', 'Th.9', 'Th.10', 'Th.11', 'Th.12'];
         var labelsData = [];
-        var data = [];
+        var datas = [];
         var dataSeries = [];
         var date = new Date();
+        var month = date.getMonth()+1;//date month from 0 ~ 11
         <c:forEach var="p" items="${getSoldProductInYear}">
-            data.push("${p}");
+            datas.push("${p}");
         </c:forEach>
-        if(date.getMonth() <= 6 && date.getMonth() !== 0){
+        if(month <= 6 && month !== 0){
             for(var i = 1; i <= 6; i++){
                 labelsData[i-1] = labels[i-1];
-                for(var ii = 0; ii < data.length; ii++){
-                    var dataTemp = data[ii].split(",");
+                for(var ii = 0; ii < datas.length; ii++){
+                    var dataTemp = datas[ii].split(",");
                     if(dataTemp[0] == i){
                         dataSeries[i-1] = dataTemp[1];
                         break;
@@ -612,14 +613,14 @@
                     }
                 }
             }
-            console.log("month", date.getMonth());
+            console.log("month", month);
             console.log("data", dataSeries);
-        }else if(date.getMonth() >= 7 || date.getMonth() === 0){
-            var datee = (date.getMonth() === 0) ? 12 : date.getMonth();
+        }else if(month >= 7 || month === 0){
+            var datee = (month === 0) ? 12 : month;
             for(var i = (datee - 5) ; i <= datee; i++){
                 labelsData[i-(datee - 5)] = labels[i-1];
-                for(var ii = 0; ii < data.length; ii++){
-                    var dataTemp = data[ii].split(",");
+                for(var ii = 0; ii < datas.length; ii++){
+                    var dataTemp = datas[ii].split(",");
                     if(dataTemp[0] == i){
                         dataSeries[i-(datee - 5)] = dataTemp[1];
                         break;

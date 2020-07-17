@@ -87,6 +87,28 @@
 						<div class="p-t-33">
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-203 flex-c-m respon6">
+									Chiều Cao
+								</div>
+
+								<div class="size-204 respon6-next">
+									<div class="rs1-select2 bor8 bg0">
+										<select class="js-select2" name="height">
+											<option value="0">Chọn chiều cao</option>
+											<c:forEach var="height" items="${productHeightList}">
+												<c:if test="${height.key == product.id}">
+													<c:forEach var="heightValue" items="${height.value}">
+														<option value="${heightValue.key}">${heightValue.value}</option>
+													</c:forEach>
+												</c:if>
+											</c:forEach>
+										</select>
+										<div class="dropDownSelect2"></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="flex-w flex-r-m p-b-10">
+								<div class="size-203 flex-c-m respon6">
 									Kích cỡ
 								</div>
 

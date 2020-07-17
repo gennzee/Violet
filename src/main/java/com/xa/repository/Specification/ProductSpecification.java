@@ -19,7 +19,7 @@ import java.util.Date;
  */
 public class ProductSpecification {
 
-    public static Specification<Products> filterConditions(int categoryId, String sortBy, String price1, String price2, String color, String size){
+    public static Specification<Products> filterConditions(int categoryId, String sortBy, String price1, String price2, String height, String color, String size){
         return new Specification<Products>() {
             @Nullable
             @Override
@@ -42,6 +42,10 @@ public class ProductSpecification {
                     Predicate secondPrice = criteriaBuilder.lessThanOrEqualTo(prodDetail.get("price"), Float.valueOf(price2));
                     predicates.add(firstPrice);
                     predicates.add(secondPrice);
+                }
+                if(!height.equals("")){
+                    Predicate colorPredicate = criteriaBuilder.equal(prodDetail.get("heightId"), Integer.valueOf(height));
+                    predicates.add(colorPredicate);
                 }
                 if(!color.equals("")){
                     Predicate colorPredicate = criteriaBuilder.equal(prodDetail.get("colorId"), Integer.valueOf(color));

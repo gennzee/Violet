@@ -24,20 +24,15 @@ public interface ProductStorageJpaRepo extends JpaRepository<ProductStorage, Int
 
     List<ProductStorage> findAllByProductId(int productId);
 
-    ProductStorage findByProductIdAndColorIdAndSizeId(int id, int colorId, int sizeId);
+    ProductStorage findByProductIdAndColorIdAndSizeIdAndHeightId(int id, int colorId, int sizeId, int height);
 
-    @Query(value = "select (sum(o.quantity)*ps.price) as total\n" +
-            "from product_storage ps\n" +
-            "inner join products p on p.id = ps.product_id\n" +
-            "inner join order_product o on o.product_storage_id = ps.id\n" +
-            "inner join orderr orr on orr.id = o.order_id\n" +
-            "where month(orr.order_date) = ?1 and year(orr.order_date) = ?2\n" +
-            "GROUP BY ps.id", nativeQuery = true)
+    @Query(value = "select sum(total) total\n" +
+            "from orderr\n" +
+            "where month(order_date) = ?1 and year(order_date) = ?2", nativeQuery = true)
     List<Integer> findIncomeInMonth(int month, int year);
 
-    @Query(value = "select sum(ps.quantity) as totalProduct \n" +
+    @Query(value = "select sum(ps.quantity) totalProduct \n" +
             "from product_storage ps\n" +
-            "inner join products p on p.id = ps.product_id\n" +
-            "where month(p.created_date) = ?1 and year(p.created_date) = ?2", nativeQuery = true)
-    int findTotalProduct(int month, int year);
+            "inner join products p on p.id = ps.product_id", nativeQuery = true)
+    String findTotalProduct();
 }

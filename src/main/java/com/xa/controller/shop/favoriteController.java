@@ -54,13 +54,16 @@ public class favoriteController {
     @PostMapping(value = {"/removeFavoriteAjax/{productId}"})
     @ResponseBody
     public boolean removeFavoriteAjax(@PathVariable int productId, HttpSession session){
-        Map<Integer, Favorite> favoriteCarts = (Map<Integer, Favorite>) session.getAttribute("favoriteCarts");
-        favoriteCarts.remove(productId);
+        Map<String, Favorite> favoriteCarts = (Map<String, Favorite>) session.getAttribute("favoriteCarts");
 
-        Users u = (Users) session.getAttribute("user");
-        if(u != null){
-
+        for(Favorite favorite : favoriteCarts.values()){
+            if(favorite.getProductId() == productId){
+                favoriteCarts.remove(favorite.getProducts().getProductImageList().get(0).getName());
+                favoriteJpaRepo.delete(favorite);
+                break;
+            }
         }
+
         return true;
     }
 

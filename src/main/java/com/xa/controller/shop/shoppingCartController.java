@@ -44,11 +44,12 @@ public class shoppingCartController {
     @ResponseBody
     public boolean addProductToCartAjax(HttpSession session, @RequestParam Map<String, String> m, HttpServletRequest request){
         int id = Integer.parseInt(m.get("id"));
+        int height = Integer.parseInt(m.get("height"));
         int color = Integer.parseInt(m.get("color"));
         int size = Integer.parseInt(m.get("size"));
         int quantity = Integer.parseInt(m.get("num-product"));
 
-        ProductStorage productStorage = productStorageJpaRepo.findByProductIdAndColorIdAndSizeId(id, color, size);
+        ProductStorage productStorage = productStorageJpaRepo.findByProductIdAndColorIdAndSizeIdAndHeightId(id, color, size, height);
         if(productStorage == null){
             return false;
         }

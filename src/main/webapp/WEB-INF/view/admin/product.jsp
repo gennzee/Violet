@@ -107,7 +107,7 @@
                                                 <td><img src="/images/${p.productImageList[0].name}" style="height: 185px;width: 105px;object-fit: cover;"/></td>
                                                 <%--<td>${p.sold}</td>--%>
                                                 <%--<td>${p.quantity}</td>--%>
-                                                <td><a href="/productManagement/detail/${p.id}">Chi tiết</a> </td>
+                                                <td><a href="/productManagement/${p.categoryId}/${p.id}">Chi tiết</a> </td>
                                                 <td><a href="/deleteProduct/${p.id}"><i class="fas fa-trash-alt"></i></a></td>
                                                 <td><a href="#"><i class="fas fa-pencil-alt"></i></a></td>
                                             </tr>

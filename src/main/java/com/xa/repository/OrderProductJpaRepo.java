@@ -21,7 +21,7 @@ public interface OrderProductJpaRepo extends JpaRepository<OrderProduct, Integer
             "from order_product o\n" +
             "inner join orderr orr on orr.id = o.order_id\n" +
             "where month(orr.order_date) = ?1 and year(orr.order_date) = ?2", nativeQuery = true)
-    int findSoldProduct(int month, int year);
+    String findSoldProduct(int month, int year);
 
     @Query(value = "select month(orr.order_date), sum(o.quantity)\n" +
             "from orderr orr\n" +

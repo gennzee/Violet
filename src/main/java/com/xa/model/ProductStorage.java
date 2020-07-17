@@ -25,6 +25,8 @@ public class ProductStorage {
     private int colorId;
     @Column(name = "size_id")
     private int sizeId;
+    @Column(name = "height_id")
+    private int heightId;
     @Column
     private int quantity;
     @Column
@@ -34,6 +36,10 @@ public class ProductStorage {
     @JoinColumn(name = "product_id", insertable = false, updatable = false)
     @JsonIgnore
     private Products products;
+
+    @ManyToOne
+    @JoinColumn(name = "height_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private ProductHeight productHeight;
 
     @ManyToOne
     @JoinColumn(name = "color_id", referencedColumnName = "id", insertable = false, updatable = false)
@@ -46,12 +52,13 @@ public class ProductStorage {
     public ProductStorage() {
     }
 
-    public ProductStorage(int productId, float price, float discount, int colorId, int sizeId, int quantity, int sold) {
+    public ProductStorage(int productId, float price, float discount, int colorId, int sizeId, int heightId, int quantity, int sold) {
         this.productId = productId;
         this.price = price;
         this.discount = discount;
         this.colorId = colorId;
         this.sizeId = sizeId;
+        this.heightId = heightId;
         this.quantity = quantity;
         this.sold = sold;
     }
@@ -104,6 +111,14 @@ public class ProductStorage {
         this.sizeId = sizeId;
     }
 
+    public int getHeightId() {
+        return heightId;
+    }
+
+    public void setHeightId(int heightId) {
+        this.heightId = heightId;
+    }
+
     public int getQuantity() {
         return quantity;
     }
@@ -143,5 +158,13 @@ public class ProductStorage {
 
     public void setProductSize(ProductSize productSize) {
         this.productSize = productSize;
+    }
+
+    public ProductHeight getProductHeight() {
+        return productHeight;
+    }
+
+    public void setProductHeight(ProductHeight productHeight) {
+        this.productHeight = productHeight;
     }
 }

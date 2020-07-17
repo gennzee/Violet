@@ -173,9 +173,9 @@
                                                                               class="svg-icon mr-2 ml-1"></i>
                             Account Setting</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="logout"><i data-feather="power"
+                        <a class="dropdown-item" href="/logout"><i data-feather="power"
                                                                   class="svg-icon mr-2 ml-1"></i>
-                            Logout</a>
+                            Đăng xuất</a>
                         <div class="dropdown-divider"></div>
                         <div class="pl-4 p-3"><a href="javascript:void(0)" class="btn btn-sm btn-info">View
                             Profile</a></div>

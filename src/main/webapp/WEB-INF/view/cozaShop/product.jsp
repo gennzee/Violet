@@ -130,6 +130,29 @@
 
 						<div class="filter-col3 p-r-15 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
+								Chiều cao
+							</div>
+
+							<ul>
+								<li class="p-b-6">
+									<a href="/category/${currentCategory}/${currentPage}?sortBy=${sortBy}&price=${price}&color=${color}&size=${size}" class="filter-link stext-106 trans-04 <c:if test="${empty height}">filter-link-active</c:if>">
+										Tất cả
+									</a>
+								</li>
+
+
+								<c:forEach var="h" items="${heightList}">
+									<li class="p-b-6">
+										<a href="/category/${currentCategory}/${currentPage}?sortBy=${sortBy}&price=${price}&height=${h.id}&color=${color}&size=${size}" class="filter-link stext-106 trans-04 <c:if test="${height eq h.id}">filter-link-active</c:if>">
+												${h.name}
+										</a>
+									</li>
+								</c:forEach>
+							</ul>
+						</div>
+
+						<div class="filter-col4 p-r-15 p-b-27">
+							<div class="mtext-102 cl2 p-b-15">
 								Màu sắc
 							</div>
 
@@ -159,7 +182,7 @@
 							</ul>
 						</div>
 
-						<div class="filter-col4 p-b-27">
+						<div class="filter-col5 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
 								Kích cỡ
 							</div>
@@ -190,6 +213,9 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
+							<div style="position: absolute;top: 25px;right: 25px;z-index: 1;">
+								<span style="background-color: #888; border-radius: 30px; padding: 3px 16px; color: white;">NEW</span>
+							</div>
 							<a href="/product/${p.id}">
 								<img src="/images/${p.productImageList[0].name}" width="270" height="330" alt="IMG-PRODUCT" style="object-fit: cover;">
 							</a>
@@ -206,14 +232,23 @@
 								</a>
 
 								<span class="stext-105 cl3">
-									<fmt:formatNumber type = "number" value = "${p.productStorageList[0].price}" /> VNĐ
+									<c:choose>
+										<c:when test="${p.productStorageList[0].discount eq 0}">
+											<fmt:formatNumber type = "number" value = "${p.productStorageList[0].price}" /> VNĐ
+										</c:when>
+										<c:otherwise>
+											<del><fmt:formatNumber type = "number" value = "${p.productStorageList[0].price}" /> VNĐ</del>
+											<fmt:formatNumber type = "number" value = "${p.productStorageList[0].price - p.productStorageList[0].discount}" /> VNĐ
+										</c:otherwise>
+									</c:choose>
+
 								</span>
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<c:set var="contains" value="false" />
 								<c:forEach var="item" items="${favoriteCarts}">
-									<c:if test="${item.value.products.id eq p.id}">
+									<c:if test="${item.value.productId eq p.id}">
 										<c:set var="contains" value="true" />
 									</c:if>
 								</c:forEach>

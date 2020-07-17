@@ -60,7 +60,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
                                     <li class="breadcrumb-item"><a href="dashboard" class="text-muted">Trang chủ</a></li>
-                                    <li class="breadcrumb-item text-muted active" aria-current="page">Danh sách sản phẩm trong mẫu <b>ESD${productStorageList[0].products.id}</b></li>
+                                    <li class="breadcrumb-item text-muted active" aria-current="page">Danh sách sản phẩm trong mẫu <b>ESD${productId}</b></li>
                                 </ol>
                             </nav>
                         </div>
@@ -93,6 +93,7 @@
                                                 <th>Giá</th>
                                                 <th>Giảm giá</th>
                                                 <th>Màu</th>
+                                                <th>Chiều cao</th>
                                                 <th>Kích cỡ</th>
                                                 <th>Số lượng</th>
                                                 <th></th>
@@ -106,6 +107,7 @@
                                                 <td><fmt:formatNumber type = "number" value = "${p.price}" /> VNĐ</td>
                                                 <td><fmt:formatNumber type = "number" value = "${p.discount}" /> VNĐ</td>
                                                 <td>${p.productColor.name}</td>
+                                                <td>${p.productHeight.name}</td>
                                                 <td>${p.productSize.name}</td>
                                                 <td>${p.quantity}</td>
                                                 <td><a href="/productManagement/productDetail/delete/${p.id}"><i class="fas fa-trash-alt"></i></a></td>
@@ -146,8 +148,23 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label class="mr-sm-2" for="sizeSelect">Kích cỡ</label>
-                                                                        <select disabled class="custom-select mr-sm-2" id="sizeSelect" name="size">
+                                                                        <label class="mr-sm-2" for="heightSelectEditModal">Chiều cao</label>
+                                                                        <select disabled class="custom-select mr-sm-2" id="heightSelectEditModal" name="height">
+                                                                            <c:forEach var="h" items="${productHeightList}">
+                                                                                <c:choose>
+                                                                                    <c:when test="${h.id eq p.productHeight.id}">
+                                                                                        <option selected value="${h.id}">${h.name}</option>
+                                                                                    </c:when>
+                                                                                    <c:otherwise>
+                                                                                        <option value="${h.id}">${h.name}</option>
+                                                                                    </c:otherwise>
+                                                                                </c:choose>
+                                                                            </c:forEach>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="mr-sm-2" for="sizeSelectEditModal">Kích cỡ</label>
+                                                                        <select disabled class="custom-select mr-sm-2" id="sizeSelectEditModal" name="size">
                                                                             <option selected value="">Chọn...</option>
                                                                             <c:forEach var="s" items="${productSizeList}">
                                                                                 <c:choose>
@@ -212,11 +229,11 @@
                         <div class="modal-content">
                             <form id="addProductDetailForm" class="mt-4" action="/productManagement/addProductDetail" method="post">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="myModalLabel">Thêm sản phẩm mới trong mẫu <b>ESD${productStorageList[0].products.id}</b></h4>
+                                <h4 class="modal-title" id="myModalLabel">Thêm sản phẩm mới trong mẫu <b>ESD${productId}</b></h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                    <input type="hidden" value="${productStorageList[0].products.id}" name="productId"/>
+                                    <input type="hidden" value="${productId}" name="productId"/>
                                     <div class="form-group">
                                         <label>Giá</label>
                                         <input type="search" class="form-control" value="" name="price">
@@ -231,6 +248,15 @@
                                             <option selected value="">Chọn...</option>
                                             <c:forEach var="c" items="${productColorList}">
                                                 <option value="${c.id}">${c.name}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mr-sm-2" for="heightSelect">Chiều cao</label>
+                                        <select class="custom-select mr-sm-2" id="heightSelect" name="height">
+                                            <option selected value="">Chọn...</option>
+                                            <c:forEach var="h" items="${productHeightList}">
+                                                <option value="${h.id}">${h.name}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
@@ -316,6 +342,9 @@
             $.fn.submitForm = function() {
                 event.preventDefault();
                 var form = this;
+                $(":disabled").each(function(e) {
+                    $(this).removeAttr('disabled');
+                });//remove all disabled fields to pass data to backend
                 var formData = $(form).serializeArray();
                 $.post('/productManagement/isProductDetailNotExisting',formData,function (data, status, jqXHR) {
                     if((data !== "" && data != 0 && status === "success") && "addProductDetailForm" === $(form).attr("id")){

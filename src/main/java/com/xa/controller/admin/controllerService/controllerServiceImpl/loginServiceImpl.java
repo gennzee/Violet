@@ -1,36 +1,39 @@
-package com.xa.controller.admin;
+package com.xa.controller.admin.controllerService.controllerServiceImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.xa.controller.admin.controllerService.loginService;
+import com.xa.model.Favorite;
 import com.xa.model.Users;
+import com.xa.repository.FavoriteJpaRepo;
 import com.xa.repository.UsersJpaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static com.xa.service.ConstVariables.adminPage;
 import static com.xa.service.ConstVariables.cozaShopPage;
 
 /**
- * Created by anhnx on 13/04/2020.
+ * Created by anhnx on 17/07/2020.
  */
-@Controller
-public class loginController {
+@Service
+public class loginServiceImpl implements loginService {
 
     @Autowired
     private UsersJpaRepo usersJpaRepo;
 
-    @GetMapping(value = {"/login"})
-    public String login(HttpSession session){
+    @Autowired
+    private FavoriteJpaRepo favoriteJpaRepo;
+
+
+    @Override
+    public String loginPage(HttpSession session) {
         Users user = (Users) session.getAttribute("user");
         if(user != null){
             if(user.getRoles().getName().equals("admin")){
@@ -42,8 +45,8 @@ public class loginController {
         return adminPage + "login";
     }
 
-    @PostMapping(value = {"/postLogin"})
-    public String redirectLogin(@Param("uname") String uname, @Param("pwd") String pwd, HttpSession session){
+    @Override
+    public String redirectLogin(HttpSession session, String uname, String pwd) {
         Users user = usersJpaRepo.findByUsernameAndPassword(uname, pwd);
         if(user != null){
             session.setAttribute("user", user);
@@ -56,26 +59,23 @@ public class loginController {
         return adminPage + "login";
     }
 
-    @PostMapping(value = {"/postLoginAjax"})
-    @ResponseBody
-    public Users loginAjax(@Param("uname") String uname, @Param("pwd") String pwd, HttpSession session){
+    @Override
+    public Users loginUsingAjax(HttpSession session, String uname, String pwd) {
         Users user = usersJpaRepo.findByUsernameAndPassword(uname, pwd);
         if(user != null){
             session.setAttribute("user", user);
+
+            List<Favorite> favoriteList = favoriteJpaRepo.findAllByUserId(user.getId(), null);
+
+            Map<String, Favorite> favoriteCarts = favoriteList.stream().collect(Collectors.toMap(x -> x.getProducts().getProductImageList().get(0).getName(), x -> x));
+            session.setAttribute("favoriteCarts", favoriteCarts);
             return user;
         }
         return null;
     }
 
-    @GetMapping(value = {"/register"})
-    public String register(){
-        return adminPage + "register";
-    }
-
-    @PostMapping(value = {"/postRegisterAjax"})
-    @ResponseBody
-    public boolean postRegisterAjax(HttpSession session, @RequestParam Map<String,String> m){
-
+    @Override
+    public boolean postRegisterAjax(HttpSession session, Map<String, String> m) {
         final Users users = new ObjectMapper().convertValue(m, Users.class);
         users.setRoleId("1");
         users.setCreatedDate(new Date());
@@ -88,15 +88,14 @@ public class loginController {
         return false;
     }
 
-    @GetMapping(value = {"/logout"})
-    public String logout(HttpSession session){
+    @Override
+    public void logout(HttpSession session) {
         session.removeAttribute("user");
-        return "redirect:/";
     }
 
-    @PostMapping(value = {"/postLogoutAjax"})
-    @ResponseBody
-    public boolean logoutAjax(HttpSession session){
+    @Override
+    public boolean logoutUsingAjax(HttpSession session) {
+        session.removeAttribute("favoriteCarts");
         session.removeAttribute("user");
         return true;
     }

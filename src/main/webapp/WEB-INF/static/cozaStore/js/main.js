@@ -224,6 +224,11 @@
                 $("#productCartDetail").load(" #productCartDetail");
                 $("#iconHeaderDesktop").load(" #iconHeaderDesktop");
                 $("#iconHeaderMobile").load(" #iconHeaderMobile");
+                $("#productFavoriteDetail").load(" #productFavoriteDetail");
+                $(".addProductToFavorite").each(function (i, v) {
+                    if(v.id === id)
+                        v.classList.remove("js-addedwish-b2");
+                });
             });
         }else{
             $('.js-panel-favorite').removeClass('show-header-cart');
@@ -370,7 +375,7 @@
     });
 
     /*add-product-to-favorite-handler*/
-    $(".addProductToFavorite").on( "click", function( event ) {
+    $("body").on( "click", ".addProductToFavorite", function( event ) {
         var id = event.currentTarget.id;
         if(!event.currentTarget.classList.contains("js-addedwish-b2")){
             $.post('/addtoFavoriteAjax/'+id,{},function (data, status, jqXHR) {
@@ -382,7 +387,7 @@
                     swal("", "Đã được thêm vào mục yêu thích !", "success");
                 }else{
                     $('.js-modal0').addClass('show-modal1');
-                    swal("", "Lỗi !", "error");
+                    swal("", "Vui lòng đăng nhập trước !", "error");
                 }
             });
         }else{
@@ -392,7 +397,7 @@
                     $("#iconHeaderDesktop").load(" #iconHeaderDesktop");
                     $("#iconHeaderMobile").load(" #iconHeaderMobile");
                     event.currentTarget.classList.remove("js-addedwish-b2");
-                    swal("", "Ngon !", "success");
+                    swal("", "Đã được xóa khỏi mục yêu thích !", "success");
                 }else{
                     swal("", "Lỗi !", "error");
                 }
@@ -432,7 +437,7 @@
         var formData = $(this).serializeArray();
         $.post('/postRegisterAjax',formData,function (data, status, jqXHR) {
             if(data !== "" && data != 0 && status === "success"){
-                swal("Thơm", "Vui lòng kiểm tra hòm thư email của bạn !", "success");
+                swal("Thành công", "Vui lòng kiểm tra hòm thư email của bạn !", "success");
                 $('.js-modal0').removeClass('show-modal1');
             }else{
                 swal("", "Vui lòng điền đầy đủ thông tin yêu cầu !", "error");
