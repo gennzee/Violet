@@ -11,9 +11,9 @@ public class ConstVariables {
 
     public static final String BLANK = "";
 
-    public static final String MY_EMAIL = "yourEmail@gmail.com";
+    public static final String MY_EMAIL = "anhnx@anhnx.tk";
 
-    public static final String MY_PASSWORD = "yourPassword";
+    public static final String MY_PASSWORD = "Genn@123";
 
-    public static final String FRIEND_EMAIL = "yourFriend@gmail.com";
+    public static final String FRIEND_EMAIL = "tanks.museum2@gmail.com";
 }

@@ -19,7 +19,7 @@ public class MailConfig {
     @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("smtp.anhnx.tk");
+        mailSender.setHost("anhnx.tino.org");
         mailSender.setPort(587);
 
         mailSender.setUsername(MY_EMAIL);
