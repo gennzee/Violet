@@ -19,6 +19,7 @@ import java.io.File;
 import java.util.*;
 
 import static com.xa.service.ConstVariables.FRIEND_EMAIL;
+import static com.xa.service.ConstVariables.MY_EMAIL;
 import static com.xa.service.ConstVariables.cozaShopPage;
 
 @Component
@@ -54,10 +55,10 @@ public class indexController implements indexApi {
         System.out.println("free space left on your vps (disk)" + file.getFreeSpace() / 1000000000.00 + " mb");
 
         SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(MY_EMAIL);
         message.setTo(FRIEND_EMAIL);
         message.setSubject("Test Simple Email");
         message.setText("Hello, Im testing Simple Email");
-
         // Send Message!
         this.context.getBean(JavaMailSender.class).send(message);
 
