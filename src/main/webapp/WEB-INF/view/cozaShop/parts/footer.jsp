@@ -100,24 +100,9 @@
 
         <div class="p-t-40">
             <div class="flex-c-m flex-w p-b-18">
+                Website is developed by&nbsp;
                 <a href="#" class="m-all-1">
-                    <img src="/coza/images/icons/icon-pay-01.png" alt="ICON-PAY">
-                </a>
-
-                <a href="#" class="m-all-1">
-                    <img src="/coza/images/icons/icon-pay-02.png" alt="ICON-PAY">
-                </a>
-
-                <a href="#" class="m-all-1">
-                    <img src="/coza/images/icons/icon-pay-03.png" alt="ICON-PAY">
-                </a>
-
-                <a href="#" class="m-all-1">
-                    <img src="/coza/images/icons/icon-pay-04.png" alt="ICON-PAY">
-                </a>
-
-                <a href="#" class="m-all-1">
-                    <img src="/coza/images/icons/icon-pay-05.png" alt="ICON-PAY">
+                    Genn's Team.
                 </a>
             </div>
 

@@ -40,6 +40,11 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
+    public List<News> findAll(PageRequest pageRequest) {
+        return newsJpaRepo.findAll(pageRequest).getContent();
+    }
+
+    @Override
     public Page<News> getNewsWithPagination(PageRequest pageRequest) {
         return newsJpaRepo.findAll(pageRequest);
     }

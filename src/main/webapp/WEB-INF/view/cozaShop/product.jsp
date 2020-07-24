@@ -220,7 +220,7 @@
 								<img src="/images/${p.productImageList[0].name}" width="270" height="330" alt="IMG-PRODUCT" style="object-fit: cover;">
 							</a>
 
-							<a id="${p.id}" href="#" class="productId block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a id="${p.id}" href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Xem trước
 							</a>
 						</div>
@@ -241,7 +241,6 @@
 											<fmt:formatNumber type = "number" value = "${p.productStorageList[0].price - p.productStorageList[0].discount}" /> VNĐ
 										</c:otherwise>
 									</c:choose>
-
 								</span>
 							</div>
 
@@ -266,7 +265,6 @@
 										</a>
 									</c:otherwise>
 								</c:choose>
-
 							</div>
 						</div>
 					</div>

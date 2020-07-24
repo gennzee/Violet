@@ -22,20 +22,10 @@ import java.util.List;
 public class shopServiceImpl implements shopService {
 
     @Autowired
-    private NewsJpaRepo newsJpaRepo;
-
-    @Autowired
     private ProductsJpaRepo productsJpaRepo;
 
     @Override
-    public List<Products> initIndex(HttpSession session, ModelMap modelMap) {
-        List<News> newsList = newsJpaRepo.findAll(PageRequest.of(0, 3)).getContent();
-        modelMap.addAttribute("newsList", newsList);
-
-        Date date = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.add(Calendar.MONTH, -3);
-        return productsJpaRepo.findAllByUpdatedDateAfter(calendar.getTime(), PageRequest.of(0,8));
+    public List<Products> initIndex(HttpSession session, ModelMap modelMap, PageRequest pageRequest) {
+        return productsJpaRepo.findAllNewProductIn3Months(pageRequest);
     }
 }

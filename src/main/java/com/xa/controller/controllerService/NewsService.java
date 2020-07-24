@@ -19,6 +19,8 @@ public interface NewsService {
 
     List<News> findAll();
 
+    List<News> findAll(PageRequest pageRequest);
+
     Page<News> getNewsWithPagination(PageRequest pageRequest);
 
     News getNewById(int id);

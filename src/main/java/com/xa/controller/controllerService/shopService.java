@@ -1,6 +1,7 @@
 package com.xa.controller.controllerService;
 
 import com.xa.model.Products;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.ui.ModelMap;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,6 @@ import java.util.List;
  */
 public interface shopService {
 
-    List<Products> initIndex(HttpSession session, ModelMap modelMap);
+    List<Products> initIndex(HttpSession session, ModelMap modelMap, PageRequest pageRequest);
 
 }
