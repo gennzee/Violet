@@ -11,7 +11,13 @@ public class ConstVariables {
 
     public static final String BLANK = "";
 
+    //mail server
+
+    public static final String MY_HOST = "anhnx.tk";
+
     public static final String MY_EMAIL = "anhnx@anhnx.tk";
+
+    public static final String MY_USER = "anhnx";
 
     public static final String MY_PASSWORD = "Genn@123";
 

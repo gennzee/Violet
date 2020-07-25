@@ -8,6 +8,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import java.util.Properties;
 
 import static com.xa.service.ConstVariables.MY_EMAIL;
+import static com.xa.service.ConstVariables.MY_HOST;
 import static com.xa.service.ConstVariables.MY_PASSWORD;
 
 /**
@@ -19,7 +20,7 @@ public class MailConfig {
     @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("anhnx.tino.org");
+        mailSender.setHost(MY_HOST);
         mailSender.setPort(587);
 
         mailSender.setUsername(MY_EMAIL);
