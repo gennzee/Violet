@@ -45,7 +45,7 @@ public class adminServiceImpl implements adminService {
     public void compareIncomeInCurrentMonthAndLastMonth(ModelMap modalMap, int year, int month, int lastMonth) {
         List<Integer> incomeList = productStorageJpaRepo.findIncomeInMonth(month, year);
         List<Integer> incomeListLastMonth = productStorageJpaRepo.findIncomeInMonth(lastMonth, year);
-        int income = incomeList.stream().reduce(0, Integer::sum);
+        int income = (incomeList != null && incomeList.get(0) != null) ? incomeList.stream().reduce(0, Integer::sum) : 0;
         int incomeLastMonth = incomeListLastMonth.stream().reduce(0, Integer::sum);
         float incomePercent = (incomeLastMonth == 0) ? 0 : ((income - incomeLastMonth) * 100) / incomeLastMonth;
         modalMap.addAttribute("income", income);
@@ -61,6 +61,9 @@ public class adminServiceImpl implements adminService {
     @Override
     public void getTotalProductSoldInMonth(ModelMap modelMap, int month, int year) {
         List<String> totalProductSoldInMonth = categoriesJpaRepo.findSoldProductByCategory(month, year);
+        if(totalProductSoldInMonth.isEmpty() || totalProductSoldInMonth.size() == 0){
+            totalProductSoldInMonth = categoriesJpaRepo.getSoldProductForNewMonth(month, year);
+        }
         modelMap.addAttribute("totalProductSoldInMonth", totalProductSoldInMonth);
     }
 

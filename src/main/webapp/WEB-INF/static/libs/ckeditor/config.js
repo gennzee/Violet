@@ -9,4 +9,5 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.uiColor = '#AADC6E';
     config.language = "vi";
     config.allowedContent = true;
+    config.uiColor = '#AADC6E';
 };

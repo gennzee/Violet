@@ -14,7 +14,7 @@
             <!-- ============================================================== -->
             <div class="navbar-brand">
                 <!-- Logo icon -->
-                <a href="index.html">
+                <a href="/admin">
                     <b class="logo-icon">
                         <!-- Dark Logo icon -->
                         <img src="/admin/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
@@ -209,6 +209,13 @@
                 <li class="sidebar-item"> <a class="sidebar-link" href="/listClient"
                                              aria-expanded="false"><i class="icon-people"></i><span
                         class="hide-menu">Khách hàng
+                                </span></a>
+                </li>
+                <li class="nav-small-cap"><span class="hide-menu">Quản lý hòm thư</span></li>
+
+                <li class="sidebar-item"> <a class="sidebar-link" href="/mailManagement"
+                                             aria-expanded="false"><i class="fas fa-envelope"></i><span
+                        class="hide-menu">Hòm thư
                                 </span></a>
                 </li>
                 <li class="nav-small-cap"><span class="hide-menu">Quản lý sản phẩm</span></li>

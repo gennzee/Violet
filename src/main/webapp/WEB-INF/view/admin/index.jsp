@@ -180,7 +180,7 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Tổng số bán ra</h4>
+                                <h4 class="card-title">Tổng số bán ra trong tháng</h4>
                                 <div id="campaign-v2" class="mt-2" style="height:283px; width:100%;"></div>
                                 <ul class="list-style-none mb-0">
                                     <c:set var="totalSoldProductInMonthByCategory" value="${0}"/>

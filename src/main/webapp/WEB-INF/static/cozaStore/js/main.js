@@ -445,4 +445,19 @@
         });
     });
 
+    /*send-response-contact-page*/
+    $("#responseForm").on("submit", function (event) {
+        event.preventDefault();
+        var formData = $(this).serializeArray();
+        var that = this;
+        $.post('/sendResponse',formData,function (data, status, jqXHR) {
+            if(data !== "" && data != 0 && status === "success"){
+                swal("Thành công", "Phản hồi của bạn đã được gửi tới chúng tôi !", "success");
+                that.reset();
+            }else{
+                swal("", "Vui lòng điền đầy đủ thông tin yêu cầu !", "error");
+            }
+        });
+    });
+
 })(jQuery);

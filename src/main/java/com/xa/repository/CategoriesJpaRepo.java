@@ -27,4 +27,7 @@ public interface CategoriesJpaRepo extends JpaRepository<Categories, Integer> {
             "group by c.id", nativeQuery = true)
     List<String> findSoldProductByCategory(int month, int year);
 
+    @Query(value = "select c.name, 0, c.colorMark from Categories c")
+    List<String> getSoldProductForNewMonth(int month, int year);
+
 }
