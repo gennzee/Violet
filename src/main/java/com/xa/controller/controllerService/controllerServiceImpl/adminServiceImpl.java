@@ -46,7 +46,7 @@ public class adminServiceImpl implements adminService {
         List<Integer> incomeList = productStorageJpaRepo.findIncomeInMonth(month, year);
         List<Integer> incomeListLastMonth = productStorageJpaRepo.findIncomeInMonth(lastMonth, year);
         int income = (incomeList != null && incomeList.get(0) != null) ? incomeList.stream().reduce(0, Integer::sum) : 0;
-        int incomeLastMonth = incomeListLastMonth.stream().reduce(0, Integer::sum);
+        int incomeLastMonth =(incomeListLastMonth != null && incomeListLastMonth.get(0) != null) ? incomeListLastMonth.stream().reduce(0, Integer::sum) : 0;
         float incomePercent = (incomeLastMonth == 0) ? 0 : ((income - incomeLastMonth) * 100) / incomeLastMonth;
         modalMap.addAttribute("income", income);
         modalMap.addAttribute("incomePercent", incomePercent);
