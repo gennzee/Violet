@@ -16,7 +16,7 @@
     <!-- This page plugin CSS -->
     <link href="admin/assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="admin/dist/css/style.min.css" rel="stylesheet">
+    <link href="admin/dist/css/style.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -62,15 +62,6 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="col-5 align-self-center">
-                        <div class="customize-input float-right">
-                            <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
-                                <option selected>Aug 19</option>
-                                <option value="1">July 19</option>
-                                <option value="2">Jun 19</option>
-                            </select>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -88,17 +79,13 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Zero Configuration</h4>
-                                <h6 class="card-subtitle">DataTables has most features enabled by default, so all you
-                                    need to do to use it with your own tables is to call the construction
-                                    function:<code> $().DataTable();</code>. You can refer full documentation from here
-                                    <a href="https://datatables.net/">Datatables</a></h6>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered no-wrap">
                                         <thead>
                                             <tr>
                                                 <th>Tên</th>
                                                 <th>Địa chỉ</th>
+                                                <th>SĐT</th>
                                                 <th>Giới tính</th>
                                                 <th>Tuổi</th>
                                                 <th>Ngày tạo tài khoản</th>
@@ -107,8 +94,9 @@
                                         <tbody>
                                         <c:forEach var="user" items="${listClient}">
                                             <tr>
-                                                <td>${user.name}</td>
+                                                <td>${user.firstName} ${user.lastName}</td>
                                                 <td>${user.address}</td>
+                                                <td>${user.phone}</td>
                                                 <c:choose>
                                                     <c:when test="${user.gender == true}">
                                                         <td>Nữ</td>
@@ -126,6 +114,7 @@
                                             <tr>
                                                 <th>Tên</th>
                                                 <th>Địa chỉ</th>
+                                                <th>SĐT</th>
                                                 <th>Giới tính</th>
                                                 <th>Tuổi</th>
                                                 <th>Ngày tạo tài khoản</th>

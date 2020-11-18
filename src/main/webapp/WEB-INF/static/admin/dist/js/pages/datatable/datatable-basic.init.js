@@ -8,7 +8,12 @@
 /****************************************
  *       Basic Table                   *
  ****************************************/
-$('#zero_config').DataTable();
+$('#zero_config').dataTable({
+    "aaSorting": [],
+    "language": {
+        "url": "/admin/assets/extra-libs/datatables.net/json/lang/Vietnamese.json"
+    }
+});
 
 /****************************************
  *       Default Order Table           *

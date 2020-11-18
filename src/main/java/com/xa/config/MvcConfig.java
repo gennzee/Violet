@@ -29,7 +29,9 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/shop/**").addResourceLocations("/WEB-INF/static/shop/");
         registry.addResourceHandler("/admin/**").addResourceLocations("/WEB-INF/static/admin/");
+        registry.addResourceHandler("/coza/**").addResourceLocations("/WEB-INF/static/cozaStore/");
         registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/static/fileStorage/images/");
+        registry.addResourceHandler("/libs/**").addResourceLocations("/WEB-INF/static/libs/");
     }
 
 }

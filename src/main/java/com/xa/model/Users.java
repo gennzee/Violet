@@ -17,34 +17,51 @@ public class Users {
     private String username;
     @Column
     private String password;
-    @Column
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
     @Column
     private String address;
+    @Column
+    private String email;
+    @Column
+    private String phone;
     @Column
     private boolean gender;
     @Column
     private int age;
     @Column
     private String image;
-    @Column
-    private String role;
-    @Column(name = "createdDate")
+    @Column(name = "role_id")
+    private String roleId;
+    @Column(name = "created_date")
     @Temporal(TemporalType.DATE)
     private Date createdDate;
+    @Column(name = "updated_date")
+    @Temporal(TemporalType.DATE)
+    private Date updatedDate;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id", insertable = false, updatable = false)
+    private Roles roles;
 
     public Users(){}
 
-    public Users(String username, String password, String name, String address, boolean gender, int age, String image, String role, Date createdDate) {
+    public Users(String username, String password, String firstName, String lastName, String address, String email, String phone, boolean gender, int age, String image, String roleId, Date createdDate, Date updatedDate) {
         this.username = username;
         this.password = password;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.address = address;
+        this.email = email;
+        this.phone = phone;
         this.gender = gender;
         this.age = age;
         this.image = image;
-        this.role = role;
+        this.roleId = roleId;
         this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
     }
 
     public int getId() {
@@ -71,12 +88,20 @@ public class Users {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getAddress() {
@@ -85,6 +110,22 @@ public class Users {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public boolean isGender() {
@@ -111,12 +152,12 @@ public class Users {
         this.image = image;
     }
 
-    public String getRole() {
-        return role;
+    public String getRoleId() {
+        return roleId;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
 
     public Date getCreatedDate() {
@@ -125,5 +166,21 @@ public class Users {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+    public Roles getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Roles roles) {
+        this.roles = roles;
     }
 }

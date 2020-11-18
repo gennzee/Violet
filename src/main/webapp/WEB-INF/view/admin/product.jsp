@@ -12,12 +12,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="admin/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/admin/assets/images/favicon.png">
     <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
     <!-- This page plugin CSS -->
-    <link href="admin/assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="/admin/assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="admin/dist/css/style.min.css" rel="stylesheet">
+    <link href="/admin/dist/css/style.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -25,7 +25,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
     <%--jquery --%>
-    <script src="admin/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/admin/assets/libs/jquery/dist/jquery.min.js"></script>
 </head>
 
 <body>
@@ -65,15 +65,6 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="col-5 align-self-center">
-                        <div class="customize-input float-right">
-                            <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
-                                <option selected>Aug 19</option>
-                                <option value="1">July 19</option>
-                                <option value="2">Jun 19</option>
-                            </select>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -98,12 +89,12 @@
                                     <table id="zero_config" class="table table-striped table-bordered no-wrap">
                                         <thead>
                                             <tr>
-                                                <th>Danh mục</th>
+                                                <th>Mã sản phẩm</th>
                                                 <th>Tên</th>
                                                 <th>Hình</th>
-                                                <th>Giá</th>
-                                                <th>Giảm giá</th>
-                                                <th>SL bán ra</th>
+                                                <%--<th>Đã bán ra</th>--%>
+                                                <%--<th>Trong kho</th>--%>
+                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                             </tr>
@@ -111,18 +102,12 @@
                                         <tbody>
                                         <c:forEach var="p" items="${listProducts}">
                                             <tr>
-                                                <td>
-                                                    <c:forEach var="c" items="${listCategories}">
-                                                        <c:if test="${c.id eq p.categoryId}">
-                                                            ${c.name}
-                                                        </c:if>
-                                                    </c:forEach>
-                                                </td>
+                                                <td>ESD${p.id}</td>
                                                 <td>${p.name}</td>
-                                                <td><img src="/images/${p.image}" style="height: 60px;"/></td>
-                                                <td><fmt:formatNumber value = "${p.price}" type = "number"/> VNĐ</td>
-                                                <td><fmt:formatNumber value = "${p.discounts}" type = "number"/> VNĐ</td>
-                                                <td>${p.sold}</td>
+                                                <td><img src="/images/${p.productImageList[0].name}" style="height: 185px;width: 105px;object-fit: cover;"/></td>
+                                                <%--<td>${p.sold}</td>--%>
+                                                <%--<td>${p.quantity}</td>--%>
+                                                <td><a href="/productManagement/${p.categoryId}/${p.id}">Chi tiết</a> </td>
                                                 <td><a href="/deleteProduct/${p.id}"><i class="fas fa-trash-alt"></i></a></td>
                                                 <td><a href="#"><i class="fas fa-pencil-alt"></i></a></td>
                                             </tr>
@@ -130,12 +115,12 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>Danh mục</th>
+                                                <th>Mã sản phẩm</th>
                                                 <th>Tên</th>
                                                 <th>Hình</th>
-                                                <th>Giá</th>
-                                                <th>Giảm giá</th>
-                                                <th>SL bán ra</th>
+                                                <%--<th>Đã bán ra</th>--%>
+                                                <%--<th>Trong kho</th>--%>
+                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                             </tr>
@@ -156,7 +141,7 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <form id="addProductForm" class="mt-4" action="addProduct" method="post" enctype="multipart/form-data">
+                                <form id="addProductForm" class="mt-4" action="/addProduct" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label>Tên sản phẩm</label>
                                         <input type="search" class="form-control" value="" name="name">
@@ -164,28 +149,12 @@
                                     <div class="form-group">
                                         <label class="mr-sm-2" for="inlineFormCustomSelect">Danh mục</label>
                                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="category">
-                                            <option selected="">Choose...</option>
-                                            <c:forEach var="c" items="${listCategories}">
-                                            <option value="${c.id}">${c.name}</option>
-                                            </c:forEach>
+                                            <option selected value="${categories.id}">${categories.name}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>Giá</label>
-                                        <input type="search" class="form-control" value="" name="price">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Giảm giá</label>
-                                        <input type="search" class="form-control" value="" name="discounts">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Hình ảnh</span>
-                                        </div>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile01" name="image">
-                                            <label class="custom-file-label" for="inputGroupFile01">Chọn hình ảnh</label>
-                                        </div>
+                                        <label>Hình ảnh</label>
+                                        <input type="file" name="image" id="upload" multiple>
                                     </div>
                                     <div class="form-group">
                                         <label>Mô tả</label>
@@ -236,24 +205,24 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="admin/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="admin/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/admin/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/admin/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- apps -->
     <!-- apps -->
-    <script src="admin/dist/js/app-style-switcher.js"></script>
-    <script src="admin/dist/js/feather.min.js"></script>
+    <script src="/admin/dist/js/app-style-switcher.js"></script>
+    <script src="/admin/dist/js/feather.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="admin/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="admin/assets/extra-libs/sparkline/sparkline.js"></script>
+    <script src="/admin/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/admin/assets/extra-libs/sparkline/sparkline.js"></script>
     <!--Wave Effects -->
     <!-- themejs -->
     <!--Menu sidebar -->
-    <script src="admin/dist/js/sidebarmenu.js"></script>
+    <script src="/admin/dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="admin/dist/js/custom.min.js"></script>
+    <script src="/admin/dist/js/custom.min.js"></script>
     <!--This page plugins -->
-    <script src="admin/assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="admin/dist/js/pages/datatable/datatable-basic.init.js"></script>
+    <script src="/admin/assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/admin/dist/js/pages/datatable/datatable-basic.init.js"></script>
 </body>
 
 </html>
