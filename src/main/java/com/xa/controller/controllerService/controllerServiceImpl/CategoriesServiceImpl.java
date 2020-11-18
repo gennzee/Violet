@@ -78,10 +78,11 @@ public class CategoriesServiceImpl implements CategoriesService {
             temporaryMapHeight = new HashMap<>();
             for(ProductStorage pt : p.getProductStorageList()){
                 temporaryMapSize.put(pt.getSizeId(), pt.getProductSize().getName());
+                if(pt.getProducts().getCategories().getId() != 2){
+                    temporaryMapColor.put(pt.getColorId(), pt.getProductColor().getName());
 
-                temporaryMapColor.put(pt.getColorId(), pt.getProductColor().getName());
-
-                temporaryMapHeight.put(pt.getHeightId(), pt.getProductHeight().getName());
+                    temporaryMapHeight.put(pt.getHeightId(), pt.getProductHeight().getName());
+                }
             }
             //put to main Map
             productSize.put(p.getId(), temporaryMapSize);

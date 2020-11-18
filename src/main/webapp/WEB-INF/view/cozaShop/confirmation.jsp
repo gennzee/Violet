@@ -114,6 +114,19 @@
 						</table>
 					</div>
 				</div>
+				<div class="col-lg-6 col-lx-4">
+					<div class="single_confirmation_details">
+						<h4 class="p-b-20">Thông tin vận chuyển</h4>
+						<table style="width: 100%;">
+							<tr>
+								<td style="width:50%;">Trạng thái đơn hàng</td><td>: ${orderInfo["orderStatus"]}</td>
+							</tr>
+							<tr>
+								<td>Đơn vị vận chuyển</td><td>: Bưu điện</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12">

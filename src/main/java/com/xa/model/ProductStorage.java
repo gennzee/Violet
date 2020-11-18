@@ -3,7 +3,7 @@ package com.xa.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.List;
 
 /**
  * Created by anhnx on 12/05/2020.
@@ -14,23 +14,23 @@ public class ProductStorage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     @Column(name = "product_id")
-    private int productId;
+    private Integer productId;
     @Column
-    private float price;
+    private Float price;
     @Column
-    private float discount;
+    private Float discount;
     @Column(name = "color_id")
-    private int colorId;
+    private Integer colorId;
     @Column(name = "size_id")
-    private int sizeId;
+    private Integer sizeId;
     @Column(name = "height_id")
-    private int heightId;
+    private Integer heightId;
     @Column
-    private int quantity;
+    private Integer quantity;
     @Column
-    private int sold;
+    private Integer sold;
 
     @ManyToOne
     @JoinColumn(name = "product_id", insertable = false, updatable = false)
@@ -49,10 +49,13 @@ public class ProductStorage {
     @JoinColumn(name = "size_id", referencedColumnName = "id", insertable = false, updatable = false)
     private ProductSize productSize;
 
+    @OneToMany(mappedBy = "productStorageId", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderProduct> orderProductList;
+
     public ProductStorage() {
     }
 
-    public ProductStorage(int productId, float price, float discount, int colorId, int sizeId, int heightId, int quantity, int sold) {
+    public ProductStorage(Integer productId, Float price, Float discount, Integer colorId, Integer sizeId, Integer heightId, Integer quantity, Integer sold) {
         this.productId = productId;
         this.price = price;
         this.discount = discount;
@@ -63,75 +66,75 @@ public class ProductStorage {
         this.sold = sold;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getProductId() {
+    public Integer getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
-    public float getDiscount() {
+    public Float getDiscount() {
         return discount;
     }
 
-    public void setDiscount(float discount) {
+    public void setDiscount(Float discount) {
         this.discount = discount;
     }
 
-    public int getColorId() {
+    public Integer getColorId() {
         return colorId;
     }
 
-    public void setColorId(int colorId) {
+    public void setColorId(Integer colorId) {
         this.colorId = colorId;
     }
 
-    public int getSizeId() {
+    public Integer getSizeId() {
         return sizeId;
     }
 
-    public void setSizeId(int sizeId) {
+    public void setSizeId(Integer sizeId) {
         this.sizeId = sizeId;
     }
 
-    public int getHeightId() {
+    public Integer getHeightId() {
         return heightId;
     }
 
-    public void setHeightId(int heightId) {
+    public void setHeightId(Integer heightId) {
         this.heightId = heightId;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public int getSold() {
+    public Integer getSold() {
         return sold;
     }
 
-    public void setSold(int sold) {
+    public void setSold(Integer sold) {
         this.sold = sold;
     }
 
@@ -166,5 +169,13 @@ public class ProductStorage {
 
     public void setProductHeight(ProductHeight productHeight) {
         this.productHeight = productHeight;
+    }
+
+    public List<OrderProduct> getOrderProductList() {
+        return orderProductList;
+    }
+
+    public void setOrderProductList(List<OrderProduct> orderProductList) {
+        this.orderProductList = orderProductList;
     }
 }

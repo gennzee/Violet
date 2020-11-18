@@ -5,6 +5,7 @@ import com.xa.controller.controllerService.loginService;
 import com.xa.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -42,8 +43,8 @@ public class loginController implements loginApi {
     }
 
     @Override
-    public boolean postRegisterAjax(HttpSession session, Map<String,String> m){
-        return loginService.postRegisterAjax(session, m);
+    public Map<String, String> postRegisterAjax(HttpSession session, Map<String,String> m, ModelMap modelMap){
+        return loginService.postRegisterAjax(session, m, modelMap);
     }
 
     @Override

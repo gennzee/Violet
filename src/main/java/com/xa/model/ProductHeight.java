@@ -26,6 +26,10 @@ public class ProductHeight {
     @Temporal(TemporalType.DATE)
     private Date updatedDate;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id", insertable = false, updatable = false)
+    private Categories categories;
+
     public ProductHeight() {
     }
 
@@ -83,5 +87,13 @@ public class ProductHeight {
 
     public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public Categories getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Categories categories) {
+        this.categories = categories;
     }
 }

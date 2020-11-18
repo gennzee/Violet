@@ -48,4 +48,21 @@ public interface ProductService {
 
     void calculateTotalPrice(Map<Integer, ShoppingCart> shoppingCarts, HttpSession session);
 
+    String getColorList(HttpServletRequest request, ModelMap modelMap);
+
+    void addNewColor(ProductColor productColor);
+
+    void editColor(int colorId, String name, String hex);
+
+    String getSizeList(HttpServletRequest request, ModelMap modelMap);
+
+    void addNewSize(ProductSize productSize);
+
+    void editSize(int sizeId, String name);
+
+    String getHeightList(HttpServletRequest request, ModelMap modelMap);
+
+    void addNewHight(ProductHeight productHeight);
+
+    void editHeight(int heightId, String name);
 }

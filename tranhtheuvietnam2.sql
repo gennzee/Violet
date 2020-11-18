@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Local instance MySQL80
+ Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 50728
+ Source Server Version : 80022
  Source Host           : localhost:3306
  Source Schema         : tranhtheuvietnam2
 
  Target Server Type    : MySQL
- Target Server Version : 50728
+ Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 17/07/2020 15:34:04
+ Date: 18/11/2020 19:49:27
 */
 
 SET NAMES utf8mb4;
@@ -22,7 +22,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `aboutus`;
 CREATE TABLE `aboutus`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `content` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
@@ -40,7 +40,7 @@ INSERT INTO `aboutus` VALUES (21, '<section class=\"bg0 p-t-75 p-b-120\">\r\n<di
 -- ----------------------------
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `removed_flag` bit(1) NULL DEFAULT NULL,
   `created_date` datetime(0) NULL DEFAULT NULL,
@@ -60,8 +60,8 @@ INSERT INTO `categories` VALUES (2, 'Tranh thêu', b'0', NULL, NULL, '#5f76e8');
 -- ----------------------------
 DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `new_id` int(11) NULL DEFAULT NULL,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `new_id` int(0) NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `mobile_number` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -73,20 +73,11 @@ CREATE TABLE `comments`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 84 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of comments
--- ----------------------------
-INSERT INTO `comments` VALUES (49, 48, 'xuân anh', 'tanks.museum98@gmail.com', '0706076517', 'test', '2020-06-24 00:00:00');
-INSERT INTO `comments` VALUES (50, 48, 'xuân anh 2', 'tanks.museum98@gmail.com', '07 06 076 517', 'test phát nữa', '2020-06-24 00:00:00');
-INSERT INTO `comments` VALUES (51, 48, 'xuân anh', 'tanks.museum98@gmail.com', '0706076517', 'test lấy cái date', '2020-06-24 00:00:00');
-INSERT INTO `comments` VALUES (54, 52, 'xuân anh', 'test@gmail.com', '0706076517', 'test bình luận', '2020-06-24 00:00:00');
-INSERT INTO `comments` VALUES (83, 48, '3131313', '313131', '3131313', '213131', '2020-07-06 00:00:00');
-
--- ----------------------------
 -- Table structure for contact
 -- ----------------------------
 DROP TABLE IF EXISTS `contact`;
 CREATE TABLE `contact`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `mobile_number` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -107,54 +98,48 @@ INSERT INTO `contact` VALUES (7, '342/111B Thoại Ngọc Hầu, Tân Phú, TP. 
 -- ----------------------------
 DROP TABLE IF EXISTS `favorite`;
 CREATE TABLE `favorite`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NULL DEFAULT NULL,
-  `product_id` int(11) NULL DEFAULT NULL,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `user_id` int(0) NULL DEFAULT NULL,
+  `product_id` int(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKrd09pqm0vasylahjcnagd0c7o`(`product_id`) USING BTREE,
   INDEX `FKa2lwa7bjrnbti5v12mga2et1y`(`user_id`) USING BTREE,
   CONSTRAINT `FKa2lwa7bjrnbti5v12mga2et1y` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FKrd09pqm0vasylahjcnagd0c7o` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 134 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of favorite
--- ----------------------------
-INSERT INTO `favorite` VALUES (132, 86, 1);
-INSERT INTO `favorite` VALUES (133, 86, 3);
+) ENGINE = InnoDB AUTO_INCREMENT = 138 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for hibernate_sequence
 -- ----------------------------
 DROP TABLE IF EXISTS `hibernate_sequence`;
 CREATE TABLE `hibernate_sequence`  (
-  `next_val` bigint(20) NULL DEFAULT NULL
+  `next_val` bigint(0) NULL DEFAULT NULL
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of hibernate_sequence
 -- ----------------------------
-INSERT INTO `hibernate_sequence` VALUES (94);
-INSERT INTO `hibernate_sequence` VALUES (94);
-INSERT INTO `hibernate_sequence` VALUES (94);
-INSERT INTO `hibernate_sequence` VALUES (94);
-INSERT INTO `hibernate_sequence` VALUES (94);
-INSERT INTO `hibernate_sequence` VALUES (94);
-INSERT INTO `hibernate_sequence` VALUES (94);
-INSERT INTO `hibernate_sequence` VALUES (94);
+INSERT INTO `hibernate_sequence` VALUES (163);
+INSERT INTO `hibernate_sequence` VALUES (163);
+INSERT INTO `hibernate_sequence` VALUES (163);
+INSERT INTO `hibernate_sequence` VALUES (163);
+INSERT INTO `hibernate_sequence` VALUES (163);
+INSERT INTO `hibernate_sequence` VALUES (163);
+INSERT INTO `hibernate_sequence` VALUES (163);
+INSERT INTO `hibernate_sequence` VALUES (163);
 
 -- ----------------------------
 -- Table structure for news
 -- ----------------------------
 DROP TABLE IF EXISTS `news`;
 CREATE TABLE `news`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `category_id` int(11) NULL DEFAULT NULL,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `category_id` int(0) NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `thumb_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `content_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `content` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `user_id` int(11) NULL DEFAULT NULL,
+  `user_id` int(0) NULL DEFAULT NULL,
   `created_date` datetime(0) NULL DEFAULT NULL,
   `updated_date` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
@@ -162,7 +147,7 @@ CREATE TABLE `news`  (
   INDEX `FKi09n75txtudw1kawj5o7i8xag`(`user_id`) USING BTREE,
   CONSTRAINT `FK6itmfjj4ma8lfpj10jx24mhvx` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FKi09n75txtudw1kawj5o7i8xag` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 94 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 162 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of news
@@ -176,69 +161,25 @@ INSERT INTO `news` VALUES (53, 1, 'Các kiểu áo dài học sinh cấp 3 đẹ
 -- ----------------------------
 DROP TABLE IF EXISTS `order_product`;
 CREATE TABLE `order_product`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `order_id` int(11) NULL DEFAULT NULL,
-  `product_storage_id` int(11) NULL DEFAULT NULL,
-  `quantity` int(11) NULL DEFAULT NULL,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `order_id` int(0) NULL DEFAULT NULL,
+  `product_storage_id` int(0) NULL DEFAULT NULL,
+  `quantity` int(0) NULL DEFAULT NULL,
   `price` float(11, 0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FK5drbvt4x6num52s0w58uiixtc`(`product_storage_id`) USING BTREE,
   INDEX `FK4uojhkcodf6b07m2upka3c8wt`(`order_id`) USING BTREE,
   CONSTRAINT `FK4uojhkcodf6b07m2upka3c8wt` FOREIGN KEY (`order_id`) REFERENCES `orderr` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FK5drbvt4x6num52s0w58uiixtc` FOREIGN KEY (`product_storage_id`) REFERENCES `product_storage` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 103 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of order_product
--- ----------------------------
-INSERT INTO `order_product` VALUES (8, 83, 3, 1, 1000000);
-INSERT INTO `order_product` VALUES (9, 84, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (10, 84, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (11, 85, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (12, 85, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (13, 86, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (14, 86, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (15, 87, 1, 2, 100000);
-INSERT INTO `order_product` VALUES (16, 87, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (17, 88, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (18, 88, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (19, 89, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (20, 89, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (21, 90, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (22, 90, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (23, 91, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (24, 91, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (25, 92, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (26, 92, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (27, 93, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (28, 93, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (29, 94, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (30, 94, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (31, 95, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (32, 95, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (33, 96, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (34, 96, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (35, 97, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (36, 97, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (37, 98, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (38, 99, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (39, 98, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (40, 99, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (41, 100, 1, 5, 100000);
-INSERT INTO `order_product` VALUES (42, 100, 5, 5, 1000);
-INSERT INTO `order_product` VALUES (82, 101, 9, 1, 3000);
-INSERT INTO `order_product` VALUES (87, 102, 5, 1, 1000);
-INSERT INTO `order_product` VALUES (88, 103, 5, 10, 1000000);
-INSERT INTO `order_product` VALUES (89, 104, 1, 1, 100000);
-INSERT INTO `order_product` VALUES (102, 82, 5, 1, 1000);
+) ENGINE = InnoDB AUTO_INCREMENT = 153 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for orderr
 -- ----------------------------
 DROP TABLE IF EXISTS `orderr`;
 CREATE TABLE `orderr`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NULL DEFAULT NULL,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `user_id` int(0) NULL DEFAULT NULL,
   `order_date` datetime(0) NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -247,203 +188,125 @@ CREATE TABLE `orderr`  (
   `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `total` float(11, 0) NULL DEFAULT NULL,
+  `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKfvpvq5dp6hxw3our9oaqy6e2c`(`user_id`) USING BTREE,
   CONSTRAINT `FKfvpvq5dp6hxw3our9oaqy6e2c` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 105 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of orderr
--- ----------------------------
-INSERT INTO `orderr` VALUES (82, 2, '2020-06-15 00:00:00', 'nghiemx xuan anh', '342/11B Thoại Ngọc Hầu, Tân Phú, TP. Hồ Chí Minh', 'Hồ Chí Minh', 'tanks.museum98@gmail.com', '123131313', '12313131', 1000);
-INSERT INTO `orderr` VALUES (83, 2, '2020-06-15 00:00:00', 'nghiem xuan anh anh', '342/11B Thoại Ngọc Hầu, Tân Phú, TP. Hồ Chí Minh', 'Hồ Chí Minh', 'tanks.museum98@gmail.com', '0706076517', '1231313', 1000000);
-INSERT INTO `orderr` VALUES (84, 1, '2020-06-15 00:00:00', 'nghiem xuan anh anh', '練馬区早宮３丁目', 'Hồ Chí Minh', 'tanks.museum98@gmail.com', '12332', '131313', 101000);
-INSERT INTO `orderr` VALUES (85, 1, '2020-06-15 00:00:00', 'nghiem xuan anh anh', '川崎市高津区', 'Hồ Chí Minh', 'tanks.museum98@gmail.com', '12323213', '13131', 101000);
-INSERT INTO `orderr` VALUES (86, 1, '2020-06-15 00:00:00', '12312 3131', '練馬区早宮３丁目', 'Hồ Chí Minh', 'tanks.museum98@gmail.com', '123123', '131313', 101000);
-INSERT INTO `orderr` VALUES (87, 2, '2020-06-15 00:00:00', 'nghiem xuan anh', '342/111B Thoại Ngọc Hầu, Tân Phú, TP. Hồ Chí Minh', 'Hồ Chí Minh', 'tanks.museum98@gmail.com', '0706076517', '1231313', 101000);
-INSERT INTO `orderr` VALUES (88, 2, '2020-06-15 00:00:00', 'nghiem xuan anh', '342/111B Thoại Ngọc Hầu, Tân Phú, TP. Hồ Chí Minh', 'Hồ Chí Minh', 'tanks.museum98@gmail.com', '0706076517', '1231313', 101000);
-INSERT INTO `orderr` VALUES (89, 2, '2020-06-15 00:00:00', '123123 12313', '342/11B Thoại Ngọc Hầu, Tân Phú, TP. Hồ Chí Minh', 'Hồ Chí Minh', 'tanks.museum98@gmail.com', '0706076517', '123123213', 101000);
-INSERT INTO `orderr` VALUES (90, 2, '2020-06-15 00:00:00', '123 1313', '1313', 'Hồ Chí Minh', '131', '331', '31313', 101000);
-INSERT INTO `orderr` VALUES (91, 2, '2020-06-15 00:00:00', '123 1231', '3131', 'Hồ Chí Minh', '313', '131', '313', 101000);
-INSERT INTO `orderr` VALUES (92, 2, '2020-06-15 00:00:00', '123123 1232131', '3131', 'Hồ Chí Minh', '3131', '313', '1313', 101000);
-INSERT INTO `orderr` VALUES (93, 2, '2020-06-15 00:00:00', '123 1231', '313', 'Hồ Chí Minh', '131', '13', '1313', 101000);
-INSERT INTO `orderr` VALUES (94, 2, '2020-06-15 00:00:00', '123 123', '1313', 'Hồ Chí Minh', '31', '313', '1313', 101000);
-INSERT INTO `orderr` VALUES (95, 2, '2020-06-15 00:00:00', '123 1313', '131', 'Hồ Chí Minh', '313', '133', '1313', 101000);
-INSERT INTO `orderr` VALUES (96, 2, '2020-06-15 00:00:00', '123 123', '131', 'Hồ Chí Minh', '131', '313', '13', 101000);
-INSERT INTO `orderr` VALUES (97, 2, '2020-06-15 00:00:00', '123 213', '1313', 'Hà Nội', '13', '1313', '131313', 101000);
-INSERT INTO `orderr` VALUES (98, 2, '2020-06-18 00:00:00', '121212 12121212', '121212', 'Hồ Chí Minh', '121212', '121212', '1212121212', 101000);
-INSERT INTO `orderr` VALUES (99, 2, '2020-06-18 00:00:00', '121212 12121212', '121212', 'Hồ Chí Minh', '121212', '121212', '1212121212', 101000);
-INSERT INTO `orderr` VALUES (100, 1, '2020-05-20 00:00:00', '121212 12121212', '123213', 'Hồ Chí Minh', '123123@g', '123123', '12312321313', 505000);
-INSERT INTO `orderr` VALUES (101, 1, '2020-07-02 00:00:00', 'Xuan Anh', '342/9B Thoai Ngoc Hau', 'Hồ Chí Minh', 'tanks.museum98@gmail.com', '1313', '123', 3000);
-INSERT INTO `orderr` VALUES (102, 86, '2020-07-14 00:00:00', '1232 13', '131', 'Hà Nội', '313', '131', '31313', 1000);
-INSERT INTO `orderr` VALUES (103, 86, '2020-07-14 00:00:00', '123 1313', '1313', 'Hồ Chí Minh', '133', '131', '3133', 10000000);
-INSERT INTO `orderr` VALUES (104, 86, '2020-07-15 00:00:00', '12312 313', '12312', 'Hà Nội', '3131', '3131', '313123', 100000);
+) ENGINE = InnoDB AUTO_INCREMENT = 130 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for product_color
 -- ----------------------------
 DROP TABLE IF EXISTS `product_color`;
 CREATE TABLE `product_color`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `hex` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `removed_flag` bit(1) NULL DEFAULT NULL,
   `created_date` datetime(0) NULL DEFAULT NULL,
   `updated_date` datetime(0) NULL DEFAULT NULL,
-  `category_id` int(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of product_color
--- ----------------------------
-INSERT INTO `product_color` VALUES (1, 'Trắng', '#FFFFFF', b'0', NULL, NULL, 1);
-INSERT INTO `product_color` VALUES (2, 'Đen', '#000000', b'0', NULL, NULL, 1);
-INSERT INTO `product_color` VALUES (3, 'Nâu', '#A52A2A', b'0', NULL, NULL, 1);
+  `category_id` int(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `FKtj0obeyxdwfe2fgiviexyjpxq`(`category_id`) USING BTREE,
+  CONSTRAINT `FKtj0obeyxdwfe2fgiviexyjpxq` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 155 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for product_height
 -- ----------------------------
 DROP TABLE IF EXISTS `product_height`;
 CREATE TABLE `product_height`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `category_id` int(11) NULL DEFAULT NULL,
+  `category_id` int(0) NULL DEFAULT NULL,
   `removed_flag` bit(1) NULL DEFAULT NULL,
   `created_date` datetime(0) NULL DEFAULT NULL,
   `updated_date` datetime(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `FKkfdi65v18mae06jx1utn0oa28`(`category_id`) USING BTREE,
+  CONSTRAINT `FKkfdi65v18mae06jx1utn0oa28` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of product_height
--- ----------------------------
-INSERT INTO `product_height` VALUES (1, '1m50 - 1m55', 1, b'0', NULL, NULL);
-INSERT INTO `product_height` VALUES (2, '1m56 - 1m62', 1, b'0', NULL, NULL);
-INSERT INTO `product_height` VALUES (3, '1m63 - 1m70', 1, b'0', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for product_image
 -- ----------------------------
 DROP TABLE IF EXISTS `product_image`;
 CREATE TABLE `product_image`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) NULL DEFAULT NULL,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `product_id` int(0) NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `uploaded_date` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FK1n91c4vdhw8pa4frngs4qbbvs`(`product_id`) USING BTREE,
   CONSTRAINT `FK1n91c4vdhw8pa4frngs4qbbvs` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of product_image
--- ----------------------------
-INSERT INTO `product_image` VALUES (1, 1, 'XswhGYbeJ6iDFrBzOJ7CBWdYrBKIAb4q7bgE41JlvslzL.jpg', NULL);
-INSERT INTO `product_image` VALUES (2, 1, 'XswhGYbeJ6iDFrBzOJ7CBWdYrBKIAb4q7bgE41JlvslzL.jpg', NULL);
-INSERT INTO `product_image` VALUES (3, 1, 'XswhGYbeJ6iDFrBzOJ7CBWdYrBKIAb4q7bgE41JlvslzL.jpg', NULL);
-INSERT INTO `product_image` VALUES (4, 1, 'm53ZGnyGwqUTv4Inb7qJQrkEa0VFxQZYYbsT1R0q99jYS.jpg', NULL);
-INSERT INTO `product_image` VALUES (5, 1, 'm53ZGnyGwqUTv4Inb7qJQrkEa0VFxQZYYbsT1R0q99jYS.jpg', NULL);
-INSERT INTO `product_image` VALUES (6, 2, 'd5PpHgGhrWHFRrRK2QxP8YEhQXY4oW1svllVbMyWrVxN9.jpg', NULL);
-INSERT INTO `product_image` VALUES (7, 2, 'd5PpHgGhrWHFRrRK2QxP8YEhQXY4oW1svllVbMyWrVxN9.jpg', NULL);
-INSERT INTO `product_image` VALUES (8, 2, 'd5PpHgGhrWHFRrRK2QxP8YEhQXY4oW1svllVbMyWrVxN9.jpg', NULL);
-INSERT INTO `product_image` VALUES (9, 3, 'd5PpHgGhrWHFRrRK2QxP8YEhQXY4oW1svllVbMyWrVxN9.jpg', NULL);
-INSERT INTO `product_image` VALUES (10, 4, 'd5PpHgGhrWHFRrRK2QxP8YEhQXY4oW1svllVbMyWrVxN9.jpg', NULL);
+) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for product_size
 -- ----------------------------
 DROP TABLE IF EXISTS `product_size`;
 CREATE TABLE `product_size`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `removed_flag` bit(1) NULL DEFAULT NULL,
   `created_date` datetime(0) NULL DEFAULT NULL,
   `updated_date` datetime(0) NULL DEFAULT NULL,
-  `category_id` int(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of product_size
--- ----------------------------
-INSERT INTO `product_size` VALUES (1, 'S', b'0', NULL, NULL, 1);
-INSERT INTO `product_size` VALUES (2, 'M', b'0', NULL, NULL, 1);
-INSERT INTO `product_size` VALUES (3, 'L', b'0', NULL, NULL, 1);
-INSERT INTO `product_size` VALUES (4, 'XL', b'0', NULL, NULL, 1);
-INSERT INTO `product_size` VALUES (5, 'XXL', b'0', NULL, NULL, 1);
+  `category_id` int(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `FK370cfcymkhbjb9h2dmjtnhq79`(`category_id`) USING BTREE,
+  CONSTRAINT `FK370cfcymkhbjb9h2dmjtnhq79` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for product_storage
 -- ----------------------------
 DROP TABLE IF EXISTS `product_storage`;
 CREATE TABLE `product_storage`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) NULL DEFAULT NULL,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `product_id` int(0) NULL DEFAULT NULL,
   `price` float(11, 0) NULL DEFAULT NULL,
   `discount` float(11, 0) NULL DEFAULT NULL,
-  `color_id` int(11) NULL DEFAULT NULL,
-  `size_id` int(11) NULL DEFAULT NULL,
-  `height_id` int(11) NULL DEFAULT NULL,
-  `quantity` int(11) NULL DEFAULT NULL,
-  `sold` int(11) NULL DEFAULT NULL,
+  `color_id` int(0) NULL DEFAULT NULL,
+  `size_id` int(0) NULL DEFAULT NULL,
+  `height_id` int(0) NULL DEFAULT NULL,
+  `quantity` int(0) NULL DEFAULT NULL,
+  `sold` int(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKf7j08rvmvhxqmjlg6o78xv09n`(`color_id`) USING BTREE,
   INDEX `FKo4u4ed7f5ko15oj1sfu2s435x`(`size_id`) USING BTREE,
   INDEX `FKr9q9ev01c37jihsx2a287jsbt`(`product_id`) USING BTREE,
+  INDEX `FK56mxua118rnshnumj2038ap3c`(`height_id`) USING BTREE,
+  CONSTRAINT `FK56mxua118rnshnumj2038ap3c` FOREIGN KEY (`height_id`) REFERENCES `product_height` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FKf7j08rvmvhxqmjlg6o78xv09n` FOREIGN KEY (`color_id`) REFERENCES `product_color` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FKo4u4ed7f5ko15oj1sfu2s435x` FOREIGN KEY (`size_id`) REFERENCES `product_size` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FKr9q9ev01c37jihsx2a287jsbt` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 85 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of product_storage
--- ----------------------------
-INSERT INTO `product_storage` VALUES (1, 1, 100000, 100000, 1, 1, 1, 1000, 0);
-INSERT INTO `product_storage` VALUES (3, 2, 1000000, 0, 1, 1, 1, 10, 0);
-INSERT INTO `product_storage` VALUES (4, 2, 1500000, 0, 2, 2, 1, 15, 0);
-INSERT INTO `product_storage` VALUES (5, 3, 1000000, 1000, 2, 1, 1, 1, 0);
-INSERT INTO `product_storage` VALUES (6, 3, 1500, 1000, 2, 2, 1, 1, 0);
-INSERT INTO `product_storage` VALUES (7, 3, 2000, 1000, 2, 3, 1, 1, 0);
-INSERT INTO `product_storage` VALUES (8, 3, 2500, 1000, 2, 4, 1, 1, 0);
-INSERT INTO `product_storage` VALUES (9, 3, 3000, 1000, 2, 5, 1, 1, 0);
-INSERT INTO `product_storage` VALUES (64, 1, 123, 123, 1, 5, 1, 123, 0);
-INSERT INTO `product_storage` VALUES (67, 1, 1231, 31313, 2, 4, 1, 123, 0);
-INSERT INTO `product_storage` VALUES (76, 1, 299999, 100000, 2, 2, 1, 1010, 0);
-INSERT INTO `product_storage` VALUES (84, 1, 100000, 5000, 1, 1, 2, 100, 0);
+) ENGINE = InnoDB AUTO_INCREMENT = 154 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for products
 -- ----------------------------
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `description` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `category_id` int(11) NULL DEFAULT NULL,
+  `category_id` int(0) NULL DEFAULT NULL,
   `removed_flag` bit(1) NULL DEFAULT NULL,
   `created_date` datetime(0) NULL DEFAULT NULL,
   `updated_date` datetime(0) NULL DEFAULT NULL,
+  `status` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKog2rp4qthbtt2lfyhfo32lsw9`(`category_id`) USING BTREE,
   CONSTRAINT `FKog2rp4qthbtt2lfyhfo32lsw9` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of products
--- ----------------------------
-INSERT INTO `products` VALUES (1, 'Áo dài', 'ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ok chưa.. được chưa ? ', 1, b'0', '2020-06-19 00:00:00', '2020-06-19 00:00:00');
-INSERT INTO `products` VALUES (2, 'Tranh hoa anh đào', 'ổn áp chưa :))', 2, b'0', '2020-06-19 00:00:00', '2020-06-19 00:00:00');
-INSERT INTO `products` VALUES (3, 'Tranh hoa anh đào', 'ổn áp chưa :)) Áo Dài', 1, b'0', '2020-06-19 00:00:00', '2020-06-19 00:00:00');
-INSERT INTO `products` VALUES (4, 'Tranh hoa anh đào', 'ổn áp chưa :)) Áo Dài', 2, b'0', '2020-06-19 00:00:00', '2020-06-19 00:00:00');
+) ENGINE = InnoDB AUTO_INCREMENT = 121 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for reviews
 -- ----------------------------
 DROP TABLE IF EXISTS `reviews`;
 CREATE TABLE `reviews`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) NULL DEFAULT NULL,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `product_id` int(0) NULL DEFAULT NULL,
   `rating` float(11, 0) NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -454,19 +317,11 @@ CREATE TABLE `reviews`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 56 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of reviews
--- ----------------------------
-INSERT INTO `reviews` VALUES (43, 3, 4, '123123', '123213', '123123');
-INSERT INTO `reviews` VALUES (44, 3, 5, 'duoc phet day', 'xuananh@gmail.com', 'xuan anh');
-INSERT INTO `reviews` VALUES (45, 1, 3, 'tét nhẹ cho thái coi', 'test@gmail.com', 'xuân anh');
-INSERT INTO `reviews` VALUES (55, 3, 0, 'test', '123123@g', 'Test');
-
--- ----------------------------
 -- Table structure for roles
 -- ----------------------------
 DROP TABLE IF EXISTS `roles`;
 CREATE TABLE `roles`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `created_date` datetime(0) NULL DEFAULT NULL,
   `updated_date` datetime(0) NULL DEFAULT NULL,
@@ -484,7 +339,7 @@ INSERT INTO `roles` VALUES (2, 'admin', NULL, NULL);
 -- ----------------------------
 DROP TABLE IF EXISTS `supplier`;
 CREATE TABLE `supplier`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -504,7 +359,7 @@ INSERT INTO `supplier` VALUES (62, 'Công ty TNHH Xuân Bắc', 'xuanbac@gmail.c
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `first_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -513,24 +368,19 @@ CREATE TABLE `users`  (
   `phone` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `gender` bit(1) NULL DEFAULT NULL,
-  `age` int(11) NULL DEFAULT NULL,
+  `age` int(0) NULL DEFAULT NULL,
   `image` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `role_id` int(11) NULL DEFAULT NULL,
+  `role_id` int(0) NULL DEFAULT NULL,
   `created_date` datetime(0) NULL DEFAULT NULL,
   `updated_date` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKp56c1712k691lhsyewcssf40f`(`role_id`) USING BTREE,
   CONSTRAINT `FKp56c1712k691lhsyewcssf40f` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 91 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 134 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 'admin', 'admin', 'Xuân Anh', NULL, NULL, NULL, '342/9B Thoại Ngọc Hầu', b'0', 22, NULL, 2, NULL, NULL);
-INSERT INTO `users` VALUES (2, 'user', '123', 'Xuann Anhh', NULL, NULL, NULL, '342/9B Thoại Ngọc Hầu', b'0', 22, NULL, 1, NULL, NULL);
-INSERT INTO `users` VALUES (59, 'Admin1', 'admin', 'Xuan', 'Anh', '123123@g', '123123', '123213', b'0', 0, NULL, 1, '2020-06-26 00:00:00', '2020-06-26 00:00:00');
-INSERT INTO `users` VALUES (81, '1313', '3131', '123', '131313', '3131', '313', '1231', b'0', 0, NULL, 1, '2020-07-02 00:00:00', '2020-07-02 00:00:00');
-INSERT INTO `users` VALUES (86, 'test', 'test', 'test', 'test', 'tanks.museum98@gmail.com', '0706076517', '342/9B Thoai Ngoc Hau', b'0', 0, NULL, 1, '2020-07-14 00:00:00', '2020-07-14 00:00:00');
-INSERT INTO `users` VALUES (90, 'anhnx', 'Genn@123', '美弥', '福富', 'tanks.museum98@gmail.com', '0706076517', '342/9B Thoai Ngoc Hau', b'0', 0, NULL, 1, '2020-07-15 00:00:00', '2020-07-15 00:00:00');
 
 SET FOREIGN_KEY_CHECKS = 1;

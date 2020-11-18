@@ -132,36 +132,38 @@
                                                                         <label>Giảm giá</label>
                                                                         <input type="search" class="form-control" value="${p.discount}" name="discount">
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <label class="mr-sm-2" for="colorSelectEditModal">Màu</label>
-                                                                        <select disabled class="custom-select mr-sm-2" id="colorSelectEditModal" name="color">
-                                                                            <c:forEach var="c" items="${productColorList}">
-                                                                                <c:choose>
-                                                                                    <c:when test="${c.id eq p.productColor.id}">
-                                                                                        <option selected value="${c.id}">${c.name}</option>
-                                                                                    </c:when>
-                                                                                    <c:otherwise>
-                                                                                        <option value="${c.id}">${c.name}</option>
-                                                                                    </c:otherwise>
-                                                                                </c:choose>
-                                                                            </c:forEach>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="mr-sm-2" for="heightSelectEditModal">Chiều cao</label>
-                                                                        <select disabled class="custom-select mr-sm-2" id="heightSelectEditModal" name="height">
-                                                                            <c:forEach var="h" items="${productHeightList}">
-                                                                                <c:choose>
-                                                                                    <c:when test="${h.id eq p.productHeight.id}">
-                                                                                        <option selected value="${h.id}">${h.name}</option>
-                                                                                    </c:when>
-                                                                                    <c:otherwise>
-                                                                                        <option value="${h.id}">${h.name}</option>
-                                                                                    </c:otherwise>
-                                                                                </c:choose>
-                                                                            </c:forEach>
-                                                                        </select>
-                                                                    </div>
+                                                                    <c:if test="${p.products.categoryId != 2}">
+                                                                        <div class="form-group">
+                                                                            <label class="mr-sm-2" for="colorSelectEditModal">Màu</label>
+                                                                            <select disabled class="custom-select mr-sm-2" id="colorSelectEditModal" name="color">
+                                                                                <c:forEach var="c" items="${productColorList}">
+                                                                                    <c:choose>
+                                                                                        <c:when test="${c.id eq p.productColor.id}">
+                                                                                            <option selected value="${c.id}">${c.name}</option>
+                                                                                        </c:when>
+                                                                                        <c:otherwise>
+                                                                                            <option value="${c.id}">${c.name}</option>
+                                                                                        </c:otherwise>
+                                                                                    </c:choose>
+                                                                                </c:forEach>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="mr-sm-2" for="heightSelectEditModal">Chiều cao</label>
+                                                                            <select disabled class="custom-select mr-sm-2" id="heightSelectEditModal" name="height">
+                                                                                <c:forEach var="h" items="${productHeightList}">
+                                                                                    <c:choose>
+                                                                                        <c:when test="${h.id eq p.productHeight.id}">
+                                                                                            <option selected value="${h.id}">${h.name}</option>
+                                                                                        </c:when>
+                                                                                        <c:otherwise>
+                                                                                            <option value="${h.id}">${h.name}</option>
+                                                                                        </c:otherwise>
+                                                                                    </c:choose>
+                                                                                </c:forEach>
+                                                                            </select>
+                                                                        </div>
+                                                                    </c:if>
                                                                     <div class="form-group">
                                                                         <label class="mr-sm-2" for="sizeSelectEditModal">Kích cỡ</label>
                                                                         <select disabled class="custom-select mr-sm-2" id="sizeSelectEditModal" name="size">
@@ -242,24 +244,26 @@
                                         <label>Giảm giá</label>
                                         <input type="search" class="form-control" value="" name="discount">
                                     </div>
-                                    <div class="form-group">
-                                        <label class="mr-sm-2" for="colorSelect">Màu</label>
-                                        <select class="custom-select mr-sm-2" id="colorSelect" name="color">
-                                            <option selected value="">Chọn...</option>
-                                            <c:forEach var="c" items="${productColorList}">
-                                                <option value="${c.id}">${c.name}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="mr-sm-2" for="heightSelect">Chiều cao</label>
-                                        <select class="custom-select mr-sm-2" id="heightSelect" name="height">
-                                            <option selected value="">Chọn...</option>
-                                            <c:forEach var="h" items="${productHeightList}">
-                                                <option value="${h.id}">${h.name}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
+                                    <c:if test="${productStorageList[0].products.categoryId != 2}">
+                                        <div class="form-group">
+                                            <label class="mr-sm-2" for="colorSelect">Màu</label>
+                                            <select class="custom-select mr-sm-2" id="colorSelect" name="color">
+                                                <option selected value="">Chọn...</option>
+                                                <c:forEach var="c" items="${productColorList}">
+                                                    <option value="${c.id}">${c.name}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="mr-sm-2" for="heightSelect">Chiều cao</label>
+                                            <select class="custom-select mr-sm-2" id="heightSelect" name="height">
+                                                <option selected value="">Chọn...</option>
+                                                <c:forEach var="h" items="${productHeightList}">
+                                                    <option value="${h.id}">${h.name}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                    </c:if>
                                     <div class="form-group">
                                         <label class="mr-sm-2" for="sizeSelect">Kích cỡ</label>
                                         <select class="custom-select mr-sm-2" id="sizeSelect" name="size">

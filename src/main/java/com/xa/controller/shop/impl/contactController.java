@@ -44,7 +44,7 @@ public class contactController implements contactApi {
 
     @Override
     public boolean sendResponse(Map<String, String> m) {
-        mailService.sendSimpleMail(m.get("email"), MY_EMAIL, "Phản hồi của khách hàng "+m.get("email"), m.get("msg"));
+        //mailService.sendSimpleMail(m.get("email"), MY_EMAIL, "Phản hồi của khách hàng "+m.get("email"), m.get("msg"));
         return true;
     }
 

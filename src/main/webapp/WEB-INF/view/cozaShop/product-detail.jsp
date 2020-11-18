@@ -55,7 +55,8 @@
 								<c:forEach var="p" items="${product.productImageList}">
 								<div class="item-slick3" data-thumb="/images/${p.name}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="/images/${p.name}" alt="IMG-PRODUCT" width="515" height="635" style="object-fit: cover;">
+										<img src="/images/${p.name}" alt="IMG-PRODUCT" width="515" height="635" style="object-fit: cover; position: absolute; filter: blur(10px);">
+										<img src="/images/${p.name}" alt="IMG-PRODUCT" width="515" height="635" style="object-fit: contain; position: relative;">
 
 										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/images/${p.name}">
 											<i class="fa fa-expand"></i>
@@ -408,7 +409,7 @@
 
 
 	<!-- Related Products -->
-	<section class="sec-relate-product bg0 p-t-45 p-b-105">
+	<%--<section class="sec-relate-product bg0 p-t-45 p-b-105">
 		<div class="container">
 			<div class="p-b-45">
 				<h3 class="ltext-106 cl5 txt-center">
@@ -677,7 +678,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>--%>
 
 
 	<!-- Footer -->

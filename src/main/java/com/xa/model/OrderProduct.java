@@ -1,5 +1,7 @@
 package com.xa.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -24,6 +26,7 @@ public class OrderProduct {
 
     @ManyToOne
     @JoinColumn(name = "product_storage_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonIgnore
     private ProductStorage productStorage;
 
     public OrderProduct() {
@@ -76,6 +79,7 @@ public class OrderProduct {
         this.price = price;
     }
 
+    @JsonIgnore
     public ProductStorage getProductStorage() {
         return productStorage;
     }

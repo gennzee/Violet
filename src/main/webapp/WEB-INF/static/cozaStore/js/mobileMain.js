@@ -1,9 +1,6 @@
 /**
  * Created by anhnx on 09/05/2020.
  */
-/**
- * Created by anhnx on 09/05/2020.
- */
 
 (function ($) {
     "use strict";
@@ -15,20 +12,6 @@
         $('.js-modal0').addClass('show-modal1');
     });
     /*==================================================================
-     [ AJAX ]*/
-    /*login using ajax*/
-    $("#loginForm").on( "submit", function( event ) {
-        event.preventDefault();
-        $.post('/postLoginAjax',{uname: $("#uname").val(), pwd: $("#pwd").val()},function (data, status, jqXHR) {
-            if(data !== "" && status === "success"){
-                $("#iconHeaderMobile").load(" #iconHeaderMobile");
-                swal($("#uname").val(), "đã đăng nhập thành công !", "success");
-                $('.js-modal0').removeClass('show-modal1');
-            }else{
-                swal("", "Thông tin tài khoản hoặc mật khẩu không đúng !", "error");
-            }
-        });
-    });
     /*logout using ajax*/
     $('#iconHeaderMobile').on('click', '#logoutBtn', function(){
         $.post('/postLogoutAjax',{},function (data, status, jqXHR) {

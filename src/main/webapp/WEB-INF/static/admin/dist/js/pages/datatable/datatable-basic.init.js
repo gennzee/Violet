@@ -9,7 +9,10 @@
  *       Basic Table                   *
  ****************************************/
 $('#zero_config').dataTable({
-    "aaSorting": []
+    "aaSorting": [],
+    "language": {
+        "url": "/admin/assets/extra-libs/datatables.net/json/lang/Vietnamese.json"
+    }
 });
 
 /****************************************

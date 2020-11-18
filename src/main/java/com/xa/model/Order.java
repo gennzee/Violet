@@ -33,6 +33,8 @@ public class Order {
     private String comment;
     @Column
     private float total;
+    @Column
+    private String status;
 
     @ManyToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
@@ -44,7 +46,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(String name, int userId, Date orderDate, String address, String city, String email, String phone, String comment, float total) {
+    public Order(String name, int userId, Date orderDate, String address, String city, String email, String phone, String comment, float total, String status) {
         this.name = name;
         this.userId = userId;
         this.orderDate = orderDate;
@@ -54,6 +56,7 @@ public class Order {
         this.phone = phone;
         this.comment = comment;
         this.total = total;
+        this.status = status;
     }
 
     public int getId() {
@@ -150,5 +153,13 @@ public class Order {
 
     public void setOrderProducts(List<OrderProduct> orderProducts) {
         this.orderProducts = orderProducts;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

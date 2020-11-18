@@ -51,7 +51,7 @@
             <!-- ============================================================== -->
             <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
                 <!-- Notification -->
-                <li class="nav-item dropdown">
+                <%--<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)"
                        id="bell" role="button" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false">
@@ -140,7 +140,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
-                </li>
+                </li>--%>
             </ul>
             <!-- ============================================================== -->
             <!-- Right side toggle and nav items -->
@@ -159,7 +159,7 @@
                                                                       class="svg-icon"></i></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-                        <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user"
+                        <%--<a class="dropdown-item" href="javascript:void(0)"><i data-feather="user"
                                                                               class="svg-icon mr-2 ml-1"></i>
                             My Profile</a>
                         <a class="dropdown-item" href="javascript:void(0)"><i data-feather="credit-card"
@@ -172,13 +172,13 @@
                         <a class="dropdown-item" href="javascript:void(0)"><i data-feather="settings"
                                                                               class="svg-icon mr-2 ml-1"></i>
                             Account Setting</a>
-                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-divider"></div>--%>
                         <a class="dropdown-item" href="/logout"><i data-feather="power"
                                                                   class="svg-icon mr-2 ml-1"></i>
                             Đăng xuất</a>
-                        <div class="dropdown-divider"></div>
+                        <%--<div class="dropdown-divider"></div>
                         <div class="pl-4 p-3"><a href="javascript:void(0)" class="btn btn-sm btn-info">View
-                            Profile</a></div>
+                            Profile</a></div>--%>
                     </div>
                 </li>
                 <!-- ============================================================== -->
@@ -200,60 +200,91 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/dashboard"
-                                             aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                        class="hide-menu">Thống kê</span></a></li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link sidebar-link" href="/dashboard" aria-expanded="false">
+                        <i data-feather="home" class="feather-icon"></i><span class="hide-menu">Thống kê</span>
+                    </a>
+                </li>
+
                 <li class="list-divider"></li>
+
                 <li class="nav-small-cap"><span class="hide-menu">Quản lý khách hàng</span></li>
-
-                <li class="sidebar-item"> <a class="sidebar-link" href="/listClient"
-                                             aria-expanded="false"><i class="icon-people"></i><span
-                        class="hide-menu">Khách hàng
-                                </span></a>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/listClient" aria-expanded="false">
+                        <i class="icon-people"></i><span class="hide-menu">Khách hàng</span>
+                    </a>
                 </li>
-                <li class="nav-small-cap"><span class="hide-menu">Quản lý hòm thư</span></li>
 
-                <li class="sidebar-item"> <a class="sidebar-link" href="/mailManagement"
-                                             aria-expanded="false"><i class="fas fa-envelope"></i><span
-                        class="hide-menu">Hòm thư
-                                </span></a>
+                <li class="nav-small-cap"><span class="hide-menu">Quản lý đơn hàng</span></li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <i class="fas fa-envelope"></i><span class="hide-menu">Quản lý đơn hàng</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level base-level-line">
+                        <li class="sidebar-item">
+                            <a href="/orderUnprocess" class="sidebar-link"><span class="hide-menu"> Chưa được xử lý </span></a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="/orderProcessing" class="sidebar-link"><span class="hide-menu"> Đang vận chuyển </span></a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="/orderProcessed" class="sidebar-link"><span class="hide-menu"> Hoàn thành </span></a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="/orderCancelled" class="sidebar-link"><span class="hide-menu"> Đã bị hủy </span></a>
+                        </li>
+                    </ul>
                 </li>
+
+                <li class="nav-small-cap"><span class="hide-menu">Quản lý màu, kích cỡ, chiều cao</span></li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/getColorList" aria-expanded="false"><i class="icon-pencil"></i><span class="hide-menu">Màu</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/getSizeList" aria-expanded="false"><i class="icon-crop"></i><span class="hide-menu">Kích cỡ</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/getHeightList" aria-expanded="false"><i class="icon-arrow-up-circle"></i><span class="hide-menu">Chiều cao</span>
+                    </a>
+                </li>
+
                 <li class="nav-small-cap"><span class="hide-menu">Quản lý sản phẩm</span></li>
-
-                <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                             aria-expanded="false"><i data-feather="box" class="feather-icon"></i><span
-                        class="hide-menu">Sản phẩm
-                                </span></a>
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow" href="javascript:void(0)"aria-expanded="false">
+                        <i data-feather="box" class="feather-icon"></i><span class="hide-menu">Sản phẩm</span>
+                    </a>
                     <ul aria-expanded="false" class="collapse first-level base-level-line">
                         <c:forEach var="c" items="${categoriesList}">
-                        <li class="sidebar-item"><a href="/productManagement/${c.id}" class="sidebar-link"><span
-                                class="hide-menu"> ${c.name} </span></a></li>
+                        <li class="sidebar-item">
+                            <a href="/productManagement/${c.id}" class="sidebar-link"><span class="hide-menu"> ${c.name} </span></a>
+                        </li>
                         </c:forEach>
                     </ul>
                 </li>
-                <li class="sidebar-item"> <a class="sidebar-link" href="/newsManagement"
-                                             aria-expanded="false"><i class="far fa-newspaper"></i><span
-                        class="hide-menu">Tin tức
-                                </span></a>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/newsManagement" aria-expanded="false"><i class="far fa-newspaper"></i><span class="hide-menu">Tin tức</span>
+                    </a>
                 </li>
+
                 <li class="nav-small-cap"><span class="hide-menu">Quản lý nguồn cung</span></li>
-
-                <li class="sidebar-item"> <a class="sidebar-link" href="/supplierManagement"
-                                             aria-expanded="false"><i class="fas fa-home"></i></i><span
-                        class="hide-menu">Nhà cung cấp
-                                </span></a>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/supplierManagement" aria-expanded="false">
+                        <i class="fas fa-home"></i></i><span class="hide-menu">Nhà cung cấp</span>
+                    </a>
                 </li>
+
                 <li class="nav-small-cap"><span class="hide-menu">Thông tin shop</span></li>
-
-                <li class="sidebar-item"> <a class="sidebar-link" href="/contactManagement"
-                                             aria-expanded="false"><i class="icon-location-pin"></i><span
-                        class="hide-menu">Liên hệ
-                                </span></a>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/contactManagement"aria-expanded="false">
+                        <i class="icon-location-pin"></i><span class="hide-menu">Liên hệ</span>
+                    </a>
                 </li>
-                <li class="sidebar-item"> <a class="sidebar-link" href="/aboutus"
-                                             aria-expanded="false"><i class="icon-user"></i><span
-                        class="hide-menu">Về chúng tôi
-                                </span></a>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/aboutus" aria-expanded="false">
+                        <i class="icon-user"></i><span class="hide-menu">Về chúng tôi</span>
+                    </a>
                 </li>
 
             </ul>

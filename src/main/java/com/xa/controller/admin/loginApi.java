@@ -3,6 +3,7 @@ package com.xa.controller.admin;
 import com.xa.model.Users;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,7 +33,7 @@ public interface loginApi {
 
     @PostMapping(value = {"/postRegisterAjax"})
     @ResponseBody
-    boolean postRegisterAjax(HttpSession session, @RequestParam Map<String,String> m);
+    Map<String, String> postRegisterAjax(HttpSession session, @RequestParam Map<String,String> m, ModelMap modelMap);
 
     @GetMapping(value = {"/logout"})
     String logout(HttpSession session);

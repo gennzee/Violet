@@ -188,31 +188,34 @@
                             ${p.description}
                         </p>
 
-                        <!--  -->
                         <form class="addProductToCart" action="#" method="get" id="${p.id}">
                         <div class="p-t-33">
-                            <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-203 flex-c-m respon6">
-                                    Chiều cao
-                                </div>
+                            <%--chiều cao--%>
+                            <c:if test="${currentCategory != 2}">
+                                <div class="flex-w flex-r-m p-b-10">
+                                    <div class="size-203 flex-c-m respon6">
+                                        Chiều cao
+                                    </div>
 
-                                <div class="size-204 respon6-next">
-                                    <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2" name="height">
-                                            <option value="0">Chọn chiều cao</option>
-                                            <c:forEach var="height" items="${productHeightList}">
-                                                <c:if test="${height.key == p.id}">
-                                                    <c:forEach var="heightValue" items="${height.value}">
-                                                        <option value="${heightValue.key}">${heightValue.value}</option>
-                                                    </c:forEach>
-                                                </c:if>
-                                            </c:forEach>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
+                                    <div class="size-204 respon6-next">
+                                        <div class="rs1-select2 bor8 bg0">
+                                            <select class="js-select2" name="height">
+                                                <option value="0">Chọn chiều cao</option>
+                                                <c:forEach var="height" items="${productHeightList}">
+                                                    <c:if test="${height.key == p.id}">
+                                                        <c:forEach var="heightValue" items="${height.value}">
+                                                            <option value="${heightValue.key}">${heightValue.value}</option>
+                                                        </c:forEach>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </c:if>
 
+                            <%--kích cỡ--%>
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-203 flex-c-m respon6">
                                     Kích cỡ
@@ -235,27 +238,30 @@
                                 </div>
                             </div>
 
-                            <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-203 flex-c-m respon6">
-                                    Màu
-                                </div>
+                            <%--màu--%>
+                            <c:if test="${currentCategory != 2}">
+                                <div class="flex-w flex-r-m p-b-10">
+                                    <div class="size-203 flex-c-m respon6">
+                                        Màu
+                                    </div>
 
-                                <div class="size-204 respon6-next">
-                                    <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2" name="color">
-                                            <option value="0">Chọn màu</option>
-                                            <c:forEach var="color" items="${productColorList}">
-                                                <c:if test="${color.key == p.id}">
-                                                    <c:forEach var="colorValue" items="${color.value}">
-                                                        <option value="${colorValue.key}">${colorValue.value}</option>
-                                                    </c:forEach>
-                                                </c:if>
-                                            </c:forEach>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
+                                    <div class="size-204 respon6-next">
+                                        <div class="rs1-select2 bor8 bg0">
+                                            <select class="js-select2" name="color">
+                                                <option value="0">Chọn màu</option>
+                                                <c:forEach var="color" items="${productColorList}">
+                                                    <c:if test="${color.key == p.id}">
+                                                        <c:forEach var="colorValue" items="${color.value}">
+                                                            <option value="${colorValue.key}">${colorValue.value}</option>
+                                                        </c:forEach>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </c:if>
 
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-204 flex-w flex-m respon6-next">
@@ -369,12 +375,14 @@
                             <div class="form-group row">
                                 <div class="col-md-6">
                                     <label for="first_name" class="text-black">Họ <span class="text-danger">*</span></label>
+                                    <p class="firstName" style="color:red;font-size: 12px;"></p>
                                     <div id="first_name" class="bor8 bg0 m-b-12">
                                         <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="firstName" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="last_name" class="text-black">Tên <span class="text-danger">*</span></label>
+                                    <p class="lastName" style="color:red;font-size: 12px;"></p>
                                     <div id="last_name" class="bor8 bg0 m-b-12">
                                         <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="lastName" placeholder="">
                                     </div>
@@ -382,12 +390,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="username" class="text-black">Tài khoản <span class="text-danger">*</span></label>
+                                <p class="username" style="color:red;font-size: 12px;"></p>
                                 <div id="username" class="bor8 bg0 m-b-12">
                                     <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="username" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-black">Mật khẩu <span class="text-danger">*</span></label>
+                                <p class="password" style="color:red;font-size: 12px;"></p>
                                 <div id="password" class="bor8 bg0 m-b-12">
                                     <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="password" name="password" placeholder="">
                                 </div>
@@ -410,13 +420,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="email" class="text-black">Email <span class="text-danger">*</span></label>
+                                <label for="email" class="text-black">Email </label>
+                                <p class="email" style="color:red;font-size: 12px;"></p>
                                 <div id="email" class="bor8 bg0 m-b-12">
                                     <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="phone" class="text-black">Số điện thoại <span class="text-danger">*</span></label>
+                                <p class="phonee" style="color:red;font-size: 12px;"></p>
                                 <div id="phone" class="bor8 bg0 m-b-12">
                                     <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" placeholder="">
                                 </div>

@@ -26,6 +26,10 @@ public class ProductSize {
     @Temporal(TemporalType.DATE)
     private Date updatedDate;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id", insertable = false, updatable = false)
+    private Categories categories;
+
     public ProductSize() {
     }
 
@@ -83,5 +87,13 @@ public class ProductSize {
 
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public Categories getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Categories categories) {
+        this.categories = categories;
     }
 }

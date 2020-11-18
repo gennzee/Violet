@@ -8,12 +8,15 @@ import com.xa.repository.FavoriteJpaRepo;
 import com.xa.repository.UsersJpaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
 import javax.servlet.http.HttpSession;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static com.xa.service.ConstVariables.adminPage;
@@ -75,17 +78,36 @@ public class loginServiceImpl implements loginService {
     }
 
     @Override
-    public boolean postRegisterAjax(HttpSession session, Map<String, String> m) {
-        final Users users = new ObjectMapper().convertValue(m, Users.class);
-        users.setRoleId("1");
-        users.setCreatedDate(new Date());
-        users.setUpdatedDate(new Date());
-
-        Users u = usersJpaRepo.save(users);
-        if(u != null){
-            return true;
+    public Map<String, String> postRegisterAjax(HttpSession session, Map<String, String> m, ModelMap modelMap) {
+        Map<String, String> errorMap = new HashMap<>();
+        Pattern emailPattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+        for(Map.Entry<String, String> entry : m.entrySet()){
+            if(!entry.getKey().equals("address") && !entry.getKey().equals("gender") && !entry.getKey().equals("email")){//those fields are not required fields.
+                if(entry.getValue().equals("")){
+                    errorMap.put(entry.getKey(), "Không được để trống");
+                }else if(entry.getKey().equals("username") && entry.getValue().length() < 5){
+                    errorMap.put(entry.getKey(), "Tài khoản phải nhiều hơn 4 kí tự");
+                }else if(entry.getKey().equals("username") && usersJpaRepo.findByUsername(entry.getValue().toLowerCase()) != null){//check if username is existing in system.
+                    errorMap.put(entry.getKey(), "Tên tài khoản đã tồn tại");
+                }else if(entry.getKey().equals("password") && entry.getValue().length() < 7){
+                    errorMap.put(entry.getKey(), "Mật khẩu phải nhiều hơn 6 kí tự");
+                }else if(entry.getKey().equals("phone") && entry.getValue().length() <= 8){
+                    errorMap.put(entry.getKey(), "Số điện thoại không đúng");
+                }
+            }
+            if(entry.getKey().equals("email") && !entry.getValue().equals("") && !emailPattern.matcher(entry.getValue()).find()){//check email format if user want to register with email.
+                errorMap.put(entry.getKey(), "Email không đúng định dạng");
+            }
         }
-        return false;
+        if(errorMap.isEmpty()){
+            Users users = new ObjectMapper().convertValue(m, Users.class);
+            users.setRoleId("1");
+            users.setCreatedDate(new Date());
+            users.setUpdatedDate(new Date());
+            usersJpaRepo.save(users);
+            return null;
+        }
+        return errorMap;
     }
 
     @Override

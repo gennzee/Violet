@@ -10,7 +10,7 @@
     <!-- Header desktop -->
     <div class="container-menu-desktop">
         <!-- Topbar -->
-        <div class="top-bar">
+        <%--<div class="top-bar">
             <div class="content-topbar flex-sb-m h-full container">
                 <div class="left-top-bar">
                     Project is in developing.
@@ -27,14 +27,14 @@
 
                 </div>
             </div>
-        </div>
+        </div>--%>
 
         <div class="wrap-menu-desktop how-shadow1">
             <nav class="limiter-menu-desktop container">
 
                 <!-- Logo desktop -->
                 <a href="/" class="logo">
-                    <img src="/coza/images/icons/logo-01.png" alt="IMG-LOGO">
+                    <img src="/coza/images/icons/logo-thuha2.png" alt="IMG-LOGO">
                 </a>
 
                 <!-- Menu desktop -->

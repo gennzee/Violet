@@ -12,7 +12,7 @@
 <div class="wrap-header-mobile">
     <!-- Logo moblie -->
     <div class="logo-mobile">
-        <a href="/"><img src="/coza/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+        <a href="/"><img src="/coza/images/icons/logo-thuha2.png" alt="IMG-LOGO"></a>
     </div>
 
     <!-- Icon header -->
@@ -62,7 +62,7 @@
 
 <!-- Menu Mobile -->
 <div class="menu-mobile">
-    <ul class="topbar-mobile">
+    <%--<ul class="topbar-mobile">
         <li>
             <div class="left-top-bar">
                 Free shipping for standard order over $100
@@ -88,7 +88,7 @@
                 </a>
             </div>
         </li>
-    </ul>
+    </ul>--%>
 
     <ul class="main-menu-m">
         <li>

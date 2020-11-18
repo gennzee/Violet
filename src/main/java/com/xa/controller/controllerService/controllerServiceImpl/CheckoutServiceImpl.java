@@ -55,7 +55,7 @@ public class CheckoutServiceImpl implements CheckoutService {
 
         Users u = (Users) session.getAttribute("user");
 
-        Order order = orderJpaRepo.save(new Order(name, u.getId(), new Date(), m.get("address").trim(), m.get("city").trim(), email, phone, comment, total));
+        Order order = orderJpaRepo.save(new Order(name, u.getId(), new Date(), m.get("address").trim(), m.get("city").trim(), email, phone, comment, total, "Đang chờ xử lý"));
 
         Map<Integer, ShoppingCart> shoppingCarts = (Map<Integer, ShoppingCart>) session.getAttribute("shoppingCarts");
         List<OrderProduct> orderProductList = new ArrayList<>();
@@ -88,6 +88,7 @@ public class CheckoutServiceImpl implements CheckoutService {
         orderInformation.put("orderDate", dateFormat(order.getOrderDate()));
         orderInformation.put("orderAddress", order.getAddress());
         orderInformation.put("orderCity", order.getCity());
+        orderInformation.put("orderStatus", order.getStatus());
         modelMap.addAttribute("orderInfo", orderInformation);
         if(orderProductList != null){
             modelMap.addAttribute("orderProducts", orderProductList);

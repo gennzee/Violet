@@ -2,7 +2,8 @@ package com.xa.repository;
 
 import com.xa.model.ProductColor;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Component;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,5 +15,9 @@ import java.util.List;
 public interface ProductColorJpaRepo extends JpaRepository<ProductColor, Integer> {
 
     List<ProductColor> findAllByCategoryId(int categoryId);
+
+    @Modifying
+    @Query(value = "update ProductColor c set c.hex = ?3, c.name = ?2 where c.id = ?1")
+    void updateColor(int id, String name, String hex);
 
 }

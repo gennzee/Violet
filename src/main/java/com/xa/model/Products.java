@@ -1,11 +1,5 @@
 package com.xa.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -47,6 +41,9 @@ public class Products {
 
     @OneToMany(mappedBy = "productId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviewList;
+
+    @OneToMany(mappedBy = "productId", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Favorite> favoriteList;
 
     public Products() {
     }
@@ -146,5 +143,13 @@ public class Products {
 
     public void setReviewList(List<Review> reviewList) {
         this.reviewList = reviewList;
+    }
+
+    public List<Favorite> getFavoriteList() {
+        return favoriteList;
+    }
+
+    public void setFavoriteList(List<Favorite> favoriteList) {
+        this.favoriteList = favoriteList;
     }
 }

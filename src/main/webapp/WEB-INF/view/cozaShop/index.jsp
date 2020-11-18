@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Áo Dài Kim Ngân</title>
+	<title>Áo Dài Thu Hà</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -41,11 +41,11 @@
 		<!-- Header desktop -->
 		<div class="container-menu-desktop trans-03">
 			<div class="wrap-menu-desktop">
-				<nav class="limiter-menu-desktop p-l-45">
+				<nav class="limiter-menu-desktop p-l-25">
 
 					<!-- Logo desktop -->
-					<a href="/" class="logo">
-						<img src="/coza/images/icons/logo-01.png" alt="IMG-LOGO">
+					<a href="/" class="logo" rel="noreferrer">
+						<img src="/coza/images/icons/logo-thuha2.png" alt="IMG-LOGO">
 					</a>
 
 					<!-- Menu desktop -->

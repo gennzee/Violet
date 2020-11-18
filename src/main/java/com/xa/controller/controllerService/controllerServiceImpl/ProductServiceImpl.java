@@ -12,12 +12,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static com.xa.service.ConstVariables.BLANK;
+import static com.xa.service.ConstVariables.adminPage;
 
 /**
  * Created by anhnx on 17/07/2020.
@@ -101,7 +103,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public String checkProductIfExisting(Map<String, String> m) throws Exception {
-        ProductStorage ps = productStorageJpaRepo.findByProductIdAndColorIdAndSizeIdAndHeightId(Integer.parseInt(m.get("productId")), Integer.parseInt(m.get("color")), Integer.parseInt(m.get("size")), Integer.parseInt(m.get("height")));
+        Integer productId = null, color = null, size = null, height = null;
+        if(m.get("productId") != null && !m.get("productId").isEmpty()) productId = Integer.parseInt(m.get("productId"));
+        if(m.get("color") != null && !m.get("color").isEmpty()) color = Integer.parseInt(m.get("color"));
+        if(m.get("size") != null && !m.get("size").isEmpty()) size = Integer.parseInt(m.get("size"));
+        if(m.get("height") != null && !m.get("height").isEmpty()) height = Integer.parseInt(m.get("height"));
+        ProductStorage ps = productStorageJpaRepo.findByProductIdAndColorIdAndSizeIdAndHeightId(productId, color, size, height);
         if(ps != null){
             ObjectMapper objectMapper = new ObjectMapper();
             return objectMapper.writeValueAsString(ps);
@@ -111,7 +118,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void addProductDetail(Map<String, String> m) {
-        ProductStorage productStorage = new ProductStorage(Integer.parseInt(m.get("productId")), Float.parseFloat(m.get("price")), Float.parseFloat(m.get("discount")), Integer.parseInt(m.get("color")), Integer.parseInt(m.get("size")), Integer.parseInt(m.get("height")), Integer.parseInt(m.get("quantity")), 0);
+        Integer productId = null, color = null, size = null, height = null, quantity = null;
+        Float price = null, discount = null;
+        if(m.get("productId") != null && !m.get("productId").isEmpty()) productId = Integer.parseInt(m.get("productId"));
+        if(m.get("price") != null && !m.get("price").isEmpty()) price = Float.parseFloat(m.get("price"));
+        if(m.get("discount") != null && !m.get("discount").isEmpty()) discount = Float.parseFloat(m.get("discount"));
+        if(m.get("color") != null && !m.get("color").isEmpty()) color = Integer.parseInt(m.get("color"));
+        if(m.get("size") != null && !m.get("size").isEmpty()) size = Integer.parseInt(m.get("size"));
+        if(m.get("height") != null && !m.get("height").isEmpty()) height = Integer.parseInt(m.get("height"));
+        if(m.get("quantity") != null && !m.get("quantity").isEmpty()) quantity = Integer.parseInt(m.get("quantity"));
+        ProductStorage productStorage = new ProductStorage(productId, price, discount, color, size, height, quantity, 0);
         productStorageJpaRepo.save(productStorage);
     }
 
@@ -129,18 +145,18 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public boolean addProductToCartAjax(HttpSession session, Map<String, String> m) {
-        int id = Integer.parseInt(m.get("id"));
-        int height = Integer.parseInt(m.get("height"));
-        int color = Integer.parseInt(m.get("color"));
-        int size = Integer.parseInt(m.get("size"));
-        int quantity = Integer.parseInt(m.get("num-product"));
+        Integer id = Integer.parseInt(m.get("id"));
+        Integer height = m.get("height") != null ? Integer.parseInt(m.get("height")) : null;
+        Integer color = m.get("color") != null ? Integer.parseInt(m.get("color")) : null;
+        Integer size = m.get("size") != null ? Integer.parseInt(m.get("size")) : null;
+        Integer quantity = Integer.parseInt(m.get("num-product"));
 
         ProductStorage productStorage = productStorageJpaRepo.findByProductIdAndColorIdAndSizeIdAndHeightId(id, color, size, height);
         if(productStorage == null){
             return false;
         }
 
-        Products product = productsJpaRepo.findById(productStorage.getProductId());
+        Products product = productsJpaRepo.findById(productStorage.getProductId()).get();
 
         Map<Integer, ShoppingCart> shoppingCarts = (Map<Integer, ShoppingCart>) session.getAttribute("shoppingCarts");
         shoppingCarts.put(productStorage.getId(), new ShoppingCart(product.getName(), product.getProductImageList().get(0).getName(), productStorage, quantity));
@@ -154,7 +170,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void editProductDetail(Map<String, String> m) {
-        ProductStorage productStorage = new ProductStorage(Integer.parseInt(m.get("productId")), Float.parseFloat(m.get("price")), Float.parseFloat(m.get("discount")), Integer.parseInt(m.get("color")), Integer.parseInt(m.get("size")), Integer.parseInt(m.get("height")), Integer.parseInt(m.get("quantity")), 0);
+        Integer productId = null, color = null, size = null, height = null, quantity = null;
+        Float price = null, discount = null;
+        if(m.get("productId") != null && !m.get("productId").isEmpty()) productId = Integer.parseInt(m.get("productId"));
+        if(m.get("price") != null && !m.get("price").isEmpty()) price = Float.parseFloat(m.get("price"));
+        if(m.get("discount") != null && !m.get("discount").isEmpty()) discount = Float.parseFloat(m.get("discount"));
+        if(m.get("color") != null && !m.get("color").isEmpty()) color = Integer.parseInt(m.get("color"));
+        if(m.get("size") != null && !m.get("size").isEmpty()) size = Integer.parseInt(m.get("size"));
+        if(m.get("height") != null && !m.get("height").isEmpty()) height = Integer.parseInt(m.get("height"));
+        if(m.get("quantity") != null && !m.get("quantity").isEmpty()) quantity = Integer.parseInt(m.get("quantity"));
+        ProductStorage productStorage = new ProductStorage(productId, price, discount, color, size, height, quantity, 0);
         productStorageJpaRepo.updateProductDetail(productStorage.getQuantity(), Integer.parseInt(m.get("id")), productStorage.getPrice(), productStorage.getDiscount());
     }
 
@@ -210,6 +235,70 @@ public class ProductServiceImpl implements ProductService {
             cartTotalPrice += shoppingCarts.get(i).getQuantity()*shoppingCarts.get(i).getProductStorage().getPrice();
         }
         session.setAttribute("cartTotalPrice", cartTotalPrice);
+    }
+
+    @Override
+    public String getColorList(HttpServletRequest request, ModelMap modelMap) {
+        List<ProductColor> productColors = productColorJpaRepo.findAll();
+        modelMap.addAttribute("productColors", productColors);
+        modelMap.addAttribute("categories", categoriesJpaRepo.findAll());
+        return adminPage + "color";
+    }
+
+    @Override
+    public void addNewColor(ProductColor productColor) {
+        productColor.setRemovedFlag(false);
+        productColor.setCreatedDate(new Date());
+        productColor.setUpdatedDate(new Date());
+        productColorJpaRepo.save(productColor);
+    }
+
+    @Override
+    @Transactional
+    public void editColor(int colorId, String name, String hex) {
+        productColorJpaRepo.updateColor(colorId, name, hex);
+    }
+
+    @Override
+    public String getSizeList(HttpServletRequest request, ModelMap modelMap) {
+        modelMap.addAttribute("productSizes", productSizeJpaRepo.findAll());
+        modelMap.addAttribute("categories", categoriesJpaRepo.findAll());
+        return adminPage + "size";
+    }
+
+    @Override
+    public void addNewSize(ProductSize productSize) {
+        productSize.setRemovedFlag(false);
+        productSize.setCreatedDate(new Date());
+        productSize.setUpdatedDate(new Date());
+        productSizeJpaRepo.save(productSize);
+    }
+
+    @Override
+    @Transactional
+    public void editSize(int sizeId, String name) {
+        productSizeJpaRepo.updateSize(sizeId, name);
+    }
+
+    @Override
+    public String getHeightList(HttpServletRequest request, ModelMap modelMap) {
+        modelMap.addAttribute("productHeights", productHeightJpaRepo.findAll());
+        modelMap.addAttribute("categories", categoriesJpaRepo.findAll());
+        return adminPage + "height";
+    }
+
+    @Override
+    public void addNewHight(ProductHeight productHeight) {
+        productHeight.setRemovedFlag(0);
+        productHeight.setCreatedDate(new Date());
+        productHeight.setUpdatedDate(new Date());
+        productHeightJpaRepo.save(productHeight);
+    }
+
+    @Override
+    @Transactional
+    public void editHeight(int heightId, String name) {
+        productHeightJpaRepo.updateHeight(heightId, name);
     }
 
 }

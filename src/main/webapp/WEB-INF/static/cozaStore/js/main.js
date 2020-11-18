@@ -325,6 +325,21 @@
         $('.js-modal0').removeClass('show-modal1');
     });
 
+    /*login using ajax*/
+    $("#loginForm").on( "submit", function( event ) {
+        event.preventDefault();
+        $.post('/postLoginAjax',{uname: $("#uname").val(), pwd: $("#pwd").val()},function (data, status, jqXHR) {
+            if(data !== "" && status === "success"){
+                $("#iconHeaderMobile").load(" #iconHeaderMobile");
+                $("#iconHeaderDesktop").load(" #iconHeaderDesktop");
+                swal($("#uname").val(), "đã đăng nhập thành công !", "success");
+                $('.js-modal0').removeClass('show-modal1');
+            }else{
+                swal("", "Thông tin tài khoản hoặc mật khẩu không đúng !", "error");
+            }
+        });
+    });
+
     /*add-product-to-cart-handler*/
     $(".addProductToCart").on( "submit", function( event ) {
         event.preventDefault();
@@ -435,12 +450,24 @@
     $("#registerForm").on("submit", function (event) {
         event.preventDefault();
         var formData = $(this).serializeArray();
+        $(".firstName").empty();
+        $(".lastName").empty();
+        $(".username").empty();
+        $(".password").empty();
+        $(".email").empty();
+        $(".phonee").empty();
         $.post('/postRegisterAjax',formData,function (data, status, jqXHR) {
             if(data !== "" && data != 0 && status === "success"){
-                swal("Thành công", "Vui lòng kiểm tra hòm thư email của bạn !", "success");
-                $('.js-modal0').removeClass('show-modal1');
+                swal("", "Đăng ký không thành công !", "error");
+                $(".firstName").text(data.firstName);
+                $(".lastName").text(data.lastName);
+                $(".username").text(data.username);
+                $(".password").text(data.password);
+                $(".email").text(data.email);
+                $(".phonee").text(data.phone);
             }else{
-                swal("", "Vui lòng điền đầy đủ thông tin yêu cầu !", "error");
+                swal("Thành công", "Đăng ký thành công !", "success");
+                $('.js-modal0').removeClass('show-modal1');
             }
         });
     });
@@ -459,5 +486,70 @@
             }
         });
     });
+
+    /*checkout-form-validation*/
+    $("#checkoutSubmit").click(function() {
+        var checkoutForm = $("#checkoutForm");
+        var formData = checkoutForm.serializeArray();
+        var isError = false;
+        var emailRegex = /^\w+([-+.'][^\s]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        $(".city").empty();
+        $(".first_name").empty();
+        $(".last_name").empty();
+        $(".address").empty();
+        $(".email").empty();
+        $(".phone").empty();
+        $.each(formData, function( index, item ) {
+            switch (item.name){
+                case "city":
+                    if(item.value === ""){
+                        isError = true;
+                        $(".city").text("Không được để trống");
+                    }
+                    break;
+                case "first_name":
+                    if(item.value === ""){
+                        isError = true;
+                        $(".first_name").text("Không được để trống");
+                    }
+                    break;
+                case "last_name":
+                    if(item.value === ""){
+                        isError = true;
+                        $(".last_name").text("Không được để trống");
+                    }
+                    break;
+                case "address":
+                    if(item.value === ""){
+                        isError = true;
+                        $(".address").text("Không được để trống");
+                    }
+                    break;
+                case "email":
+                    if(item.value === ""){
+                        isError = true;
+                        $(".email").text("Không được để trống");
+                    }else if(!emailRegex.test(item.value)){
+                        isError = true;
+                        $(".email").text("Không tìm thấy email");
+                    }
+                    break;
+                case "phone":
+                    if(item.value === ""){
+                        isError = true;
+                        $(".phone").text("Không được để trống");
+                    }else if(item.value.length < 10){
+                        isError = true;
+                        $(".phone").text("Số điện thoại không đúng");
+                    }
+                    break;
+                default:
+                    break;
+            }
+        });
+        if(isError) return false;
+        checkoutForm.submit();
+    });
+
 
 })(jQuery);

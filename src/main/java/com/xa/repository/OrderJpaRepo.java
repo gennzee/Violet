@@ -2,6 +2,7 @@ package com.xa.repository;
 
 import com.xa.model.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -24,5 +25,11 @@ public interface OrderJpaRepo extends JpaRepository<Order, Integer> {
             "where year(orr.order_date) = ?1\n" +
             "group by month(orr.order_date)", nativeQuery = true)
     List<String> getSalaryInYear(int year);
+
+    @Modifying
+    @Query(value = "update Order ps set ps.status = ?2 where ps.id = ?1")
+    int updateOrderStatus(int orderId, String status);
+
+    List<Order> findAllByStatus(String status);
 
 }

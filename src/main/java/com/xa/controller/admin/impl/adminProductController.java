@@ -1,9 +1,9 @@
 package com.xa.controller.admin.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xa.controller.admin.adminProductApi;
 import com.xa.controller.controllerService.ProductService;
-import com.xa.model.Categories;
-import com.xa.model.Products;
+import com.xa.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
@@ -86,6 +86,66 @@ public class adminProductController implements adminProductApi {
         String referer = request.getHeader("Referer");
 
         adminProductService.deleteProduct(request, id);
+        return "redirect:"+referer;
+    }
+
+    @Override
+    public String getColorList(HttpServletRequest request, ModelMap modelMap) {
+        return adminProductService.getColorList(request, modelMap);
+    }
+
+    @Override
+    public String addNewColor(HttpServletRequest request, Map<String, String> m) {
+        String referer = request.getHeader("Referer");
+        ProductColor productColor = new ObjectMapper().convertValue(m, ProductColor.class);
+        adminProductService.addNewColor(productColor);
+        return "redirect:"+referer;
+    }
+
+    @Override
+    public String editColor(HttpServletRequest request, Map<String, String> m) {
+        String referer = request.getHeader("Referer");
+        adminProductService.editColor(Integer.parseInt(m.get("id")), m.get("name"), m.get("hex"));
+        return "redirect:"+referer;
+    }
+
+    @Override
+    public String getSizeList(HttpServletRequest request, ModelMap modelMap) {
+        return adminProductService.getSizeList(request, modelMap);
+    }
+
+    @Override
+    public String addNewSize(HttpServletRequest request, Map<String, String> m) {
+        String referer = request.getHeader("Referer");
+        ProductSize productSize = new ObjectMapper().convertValue(m, ProductSize.class);
+        adminProductService.addNewSize(productSize);
+        return "redirect:"+referer;
+    }
+
+    @Override
+    public String editSize(HttpServletRequest request, Map<String, String> m) {
+        String referer = request.getHeader("Referer");
+        adminProductService.editSize(Integer.parseInt(m.get("id")), m.get("name"));
+        return "redirect:"+referer;
+    }
+
+    @Override
+    public String getHeightList(HttpServletRequest request, ModelMap modelMap) {
+        return adminProductService.getHeightList(request, modelMap);
+    }
+
+    @Override
+    public String addNewHeight(HttpServletRequest request, Map<String, String> m) {
+        String referer = request.getHeader("Referer");
+        ProductHeight productHeight = new ObjectMapper().convertValue(m, ProductHeight.class);
+        adminProductService.addNewHight(productHeight);
+        return "redirect:"+referer;
+    }
+
+    @Override
+    public String editHeight(HttpServletRequest request, Map<String, String> m) {
+        String referer = request.getHeader("Referer");
+        adminProductService.editHeight(Integer.parseInt(m.get("id")), m.get("name"));
         return "redirect:"+referer;
     }
 

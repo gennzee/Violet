@@ -217,7 +217,8 @@
 								<span style="background-color: #888; border-radius: 30px; padding: 3px 16px; color: white;">NEW</span>
 							</div>
 							<a href="/product/${p.id}">
-								<img src="/images/${p.productImageList[0].name}" width="270" height="330" alt="IMG-PRODUCT" style="object-fit: cover;">
+								<img src="/images/${p.productImageList[0].name}" width="270" height="330" alt="IMG-PRODUCT" style="object-fit: cover; filter: blur(10px);position: absolute;">
+								<img src="/images/${p.productImageList[0].name}" width="270" height="330" alt="IMG-PRODUCT" style="object-fit: contain; position: relative;">
 							</a>
 
 							<a id="${p.id}" href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">

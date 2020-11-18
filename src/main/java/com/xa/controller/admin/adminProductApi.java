@@ -7,7 +7,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.transaction.Transactional;
 import java.util.Map;
 
 /**
@@ -40,5 +39,32 @@ public interface adminProductApi {
 
     @GetMapping("deleteProduct/{id}")
     String deleteProduct(HttpServletRequest request, @PathVariable int id, RedirectAttributes ra);
+
+    @GetMapping("/getColorList")
+    String getColorList(HttpServletRequest request, ModelMap modelMap);
+
+    @PostMapping("/addNewColor")
+    String addNewColor(HttpServletRequest request, @RequestParam Map<String, String> m);
+
+    @PostMapping("/editColor")
+    String editColor(HttpServletRequest request, @RequestParam Map<String, String> m);
+
+    @GetMapping("/getSizeList")
+    String getSizeList(HttpServletRequest request, ModelMap modelMap);
+
+    @PostMapping("/addNewSize")
+    String addNewSize(HttpServletRequest request, @RequestParam Map<String, String> m);
+
+    @PostMapping("/editSize")
+    String editSize(HttpServletRequest request, @RequestParam Map<String, String> m);
+
+    @GetMapping("/getHeightList")
+    String getHeightList(HttpServletRequest request, ModelMap modelMap);
+
+    @PostMapping("/addNewHeight")
+    String addNewHeight(HttpServletRequest request, @RequestParam Map<String, String> m);
+
+    @PostMapping("/editHeight")
+    String editHeight(HttpServletRequest request, @RequestParam Map<String, String> m);
 
 }

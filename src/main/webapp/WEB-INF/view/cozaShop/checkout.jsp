@@ -43,7 +43,7 @@
 		
 
 	<!-- Shoping Cart -->
-	<form action="/checkout" method="post" class="bg0 p-t-75 p-b-85">
+	<form id="checkoutForm" action="/checkout" method="post" class="bg0 p-t-75 p-b-85">
 		<div class="container">
 			<div class="row">
 				<div id="shipToAddressContent" class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
@@ -53,9 +53,11 @@
 							<div class="p-l-45 p-r-45 p-t-45 p-b-45 m-r--38 m-lr-0-xl border">
 								<div class="form-group">
 									<label for="c_country" class="text-black">Thành phố <span class="text-danger">*</span></label>
+									<p class="city" style="color:red;font-size: 12px;"></p>
+									<p></p>
 									<div id="c_country" class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
 										<select class="js-select2" name="city">
-											<option>Chọn thành phố...</option>
+											<option value="">Chọn thành phố...</option>
 											<option>Hà Nội</option>
 											<option>Hồ Chí Minh</option>
 										</select>
@@ -65,12 +67,14 @@
 								<div class="form-group row">
 									<div class="col-md-6">
 										<label for="first_name" class="text-black">Họ <span class="text-danger">*</span></label>
+										<p class="first_name" style="color:red;font-size: 12px;"></p>
 										<div id="first_name" class="bor8 bg0 m-b-12">
 											<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="first_name" placeholder="">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<label for="last_name" class="text-black">Tên <span class="text-danger">*</span></label>
+										<p class="last_name" style="color:red;font-size: 12px;"></p>
 										<div id="last_name" class="bor8 bg0 m-b-12">
 											<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="last_name" placeholder="">
 										</div>
@@ -78,18 +82,21 @@
 								</div>
 								<div class="form-group">
 									<label for="address" class="text-black">Địa chỉ <span class="text-danger">*</span></label>
+									<p class="address" style="color:red;font-size: 12px;"></p>
 									<div id="address" class="bor8 bg0 m-b-12">
 										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" placeholder="">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="email" class="text-black">Email <span class="text-danger">*</span></label>
+									<p class="email" style="color:red;font-size: 12px;"></p>
 									<div id="email" class="bor8 bg0 m-b-12">
 										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" placeholder="">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="phone" class="text-black">Số điện thoại <span class="text-danger">*</span></label>
+									<p class="phone" style="color:red;font-size: 12px;"></p>
 									<div id="phone" class="bor8 bg0 m-b-12">
 										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" placeholder="">
 									</div>
@@ -183,7 +190,7 @@
 							</div>
 						</div>
 
-						<button type="submit" ${disabled} class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+						<button id="checkoutSubmit" type="submit" ${disabled} class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 							Thanh toán
 						</button>
 					</div>
