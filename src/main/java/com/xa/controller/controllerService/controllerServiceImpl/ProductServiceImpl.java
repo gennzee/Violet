@@ -210,7 +210,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void addProduct(HttpServletRequest request, Map<String, String> m, MultipartFile[] files) {
-        Products p = productsJpaRepo.save(new Products(m.get("name"), m.get("description"), Integer.parseInt(m.get("category")), false, new Date(), new Date()));
+        String name = m.get("name");
+        String description = m.get("description").replaceAll("(\r\n|\n)", "<br />");
+        int category = Integer.parseInt(m.get("category"));
+        Products p = productsJpaRepo.save(new Products(name, description, category, false, new Date(), new Date()));
         for(MultipartFile file : files) {
             if(!file.isEmpty()){
                 fileUploaderService.uploadFile(request, file);
