@@ -116,7 +116,7 @@
                                                             <div class="form-group">
                                                                 <input type="hidden" value="${c.id}" name="id"/>
                                                                 <label>Tên màu</label>
-                                                                <input type="search" class="form-control" value="${c.name}" name="name">
+                                                                <input type="search" class="form-control" value="${c.name}" name="name" required>
                                                             </div>
                                                             <div>
                                                                 <label>Màu</label>
@@ -168,16 +168,16 @@
                 <!-- add color modal -->
                 <div id="addColorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog">
+                        <form id="addColorForm" class="mt-4" action="/addNewColor" method="post">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title" id="myModalLabel">Thêm màu mới</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <form id="addColorForm" class="mt-4" action="/addNewColor" method="post">
                                     <div class="form-group">
                                         <label>Tên màu</label>
-                                        <input type="search" class="form-control" value="" name="name">
+                                        <input type="search" class="form-control" value="" name="name" required>
                                     </div>
                                     <div>
                                         <label>Màu</label>
@@ -188,28 +188,22 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="mr-sm-2" for="categorySelect">Danh mục</label>
-                                        <select class="custom-select mr-sm-2" id="categorySelect" name="categoryId">
+                                        <select class="custom-select mr-sm-2" id="categorySelect" name="categoryId" required>
                                             <option selected value="">Chọn...</option>
                                             <c:forEach var="c" items="${categories}">
                                                 <option value="${c.id}">${c.name}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
-                                </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" id="submitAddColorModal" class="btn btn-primary">Tạo</button>
+                                <button type="submit" onclick="$('.cp-component-input').prop('disabled', false);" class="btn btn-primary">Tạo</button>
                                 <button type="button" class="btn btn-light" data-dismiss="modal">Đóng</button>
                             </div>
                         </div><!-- /.modal-content -->
+                        </form>
                     </div><!-- /.modal-dialog -->
                 </div>
-                <script>
-                    $( "#submitAddColorModal" ).click(function() {
-                        $(".cp-component-input").prop("disabled", false);
-                        $( "#addColorForm" ).submit();
-                    })
-                </script>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->

@@ -92,8 +92,6 @@
                                                 <th>Mã sản phẩm</th>
                                                 <th>Tên</th>
                                                 <th>Hình</th>
-                                                <%--<th>Đã bán ra</th>--%>
-                                                <%--<th>Trong kho</th>--%>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
@@ -105,11 +103,46 @@
                                                 <td>ESD${p.id}</td>
                                                 <td>${p.name}</td>
                                                 <td><img src="/images/${p.productImageList[0].name}" style="height: 185px;width: 105px;object-fit: cover;"/></td>
-                                                <%--<td>${p.sold}</td>--%>
-                                                <%--<td>${p.quantity}</td>--%>
                                                 <td><a href="/productManagement/${p.categoryId}/${p.id}">Chi tiết</a> </td>
                                                 <td><a href="/deleteProduct/${p.id}"><i class="fas fa-trash-alt"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pencil-alt"></i></a></td>
+                                                <td><a href="#"><i class="fas fa-pencil-alt" data-toggle="modal" data-target="#editProductModal${p.id}"></i></a></td>
+                                                <div id="editProductModal${p.id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                                    <div class="modal-dialog">
+                                                        <form class="mt-4" action="/editProduct" method="post" enctype="multipart/form-data">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Cập nhật sản phẩm</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                    <div class="form-group">
+                                                                        <label>Tên sản phẩm</label>
+                                                                        <input type="hidden" value="${p.id}" name="id"/>
+                                                                        <input type="search" class="form-control" value="${p.name}" name="name" required>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="mr-sm-2">Danh mục</label>
+                                                                        <select class="custom-select mr-sm-2" name="category">
+                                                                            <option selected value="${categories.id}">${categories.name}</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Hình ảnh</label>
+                                                                        <input type="file" name="image" multiple>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Mô tả</label>
+                                                                        <textarea class="form-control" rows="3" name="description" required>${p.description}</textarea>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                                                <button type="button" class="btn btn-light" data-dismiss="modal">Đóng</button>
+                                                            </div>
+                                                        </div><!-- /.modal-content -->
+                                                        </form>
+                                                    </div><!-- /.modal-dialog -->
+                                                </div>
                                             </tr>
                                         </c:forEach>
                                         </tbody>
@@ -118,8 +151,6 @@
                                                 <th>Mã sản phẩm</th>
                                                 <th>Tên</th>
                                                 <th>Hình</th>
-                                                <%--<th>Đã bán ra</th>--%>
-                                                <%--<th>Trong kho</th>--%>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
@@ -135,45 +166,40 @@
                 <%--modal--%>
                 <div id="addProductModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog">
+                        <form id="addProductForm" class="mt-4" action="/addProduct" method="post" enctype="multipart/form-data">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title" id="myModalLabel">Thêm sản phẩm mới</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <form id="addProductForm" class="mt-4" action="/addProduct" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label>Tên sản phẩm</label>
-                                        <input type="search" class="form-control" value="" name="name">
+                                        <input type="search" class="form-control" value="" name="name" required>
                                     </div>
                                     <div class="form-group">
                                         <label class="mr-sm-2" for="inlineFormCustomSelect">Danh mục</label>
-                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="category">
+                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="category" required>
                                             <option selected value="${categories.id}">${categories.name}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Hình ảnh</label>
-                                        <input type="file" name="image" id="upload" multiple>
+                                        <input type="file" name="image" id="upload" multiple required>
                                     </div>
                                     <div class="form-group">
                                         <label>Mô tả</label>
-                                        <textarea class="form-control" rows="3" name="description"></textarea>
+                                        <textarea class="form-control" rows="3" name="description" required></textarea>
                                     </div>
-                                </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" id="submitAddProductForm" class="btn btn-primary">Tạo</button>
+                                <button type="submit" class="btn btn-primary">Tạo</button>
                                 <button type="button" class="btn btn-light" data-dismiss="modal">Đóng</button>
                             </div>
                         </div><!-- /.modal-content -->
+                        </form>
                     </div><!-- /.modal-dialog -->
                 </div>
-                <script>
-                    $( "#submitAddProductForm" ).click(function() {
-                        $( "#addProductForm" ).submit();
-                    });
-                </script>
                 <%--end modal--%>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->

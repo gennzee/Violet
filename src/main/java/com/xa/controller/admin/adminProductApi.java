@@ -37,6 +37,9 @@ public interface adminProductApi {
     @PostMapping(value = {"/addProduct"})
     String addProduct(HttpServletRequest request, @RequestParam Map<String,String> m, @RequestParam("image") MultipartFile[] files, RedirectAttributes ra);
 
+    @PostMapping(value = {"/editProduct"})
+    String editProduct(HttpServletRequest request, @RequestParam Map<String,String> m, @RequestParam("image") MultipartFile[] files, RedirectAttributes ra);
+
     @GetMapping("deleteProduct/{id}")
     String deleteProduct(HttpServletRequest request, @PathVariable int id, RedirectAttributes ra);
 

@@ -44,6 +44,8 @@ public interface ProductService {
 
     void addProduct(HttpServletRequest request, Map<String,String> m, MultipartFile[] files);
 
+    void editProduct(HttpServletRequest request, Map<String,String> m, MultipartFile[] files);
+
     void deleteProduct(HttpServletRequest request, int id);
 
     void calculateTotalPrice(Map<Integer, ShoppingCart> shoppingCarts, HttpSession session);

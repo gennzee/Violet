@@ -100,7 +100,7 @@
                                                 <td>${h.name}</td>
                                                 <td>${h.categories.name}</td>
                                             </tr>
-                                            <!-- add height modal -->
+                                            <!-- edit height modal -->
                                             <div id="editHeightModal${h.id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel${h.id}" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog">
                                                     <form class="mt-4" action="/editHeight" method="post">
@@ -113,7 +113,7 @@
                                                             <div class="form-group">
                                                                 <input type="hidden" value="${h.id}" name="id"/>
                                                                 <label>Chiều cao</label>
-                                                                <input type="search" class="form-control" value="${h.name}" name="name">
+                                                                <input type="search" class="form-control" value="${h.name}" name="name" required>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label class="mr-sm-2">Danh mục</label>
@@ -157,40 +157,35 @@
                 <!-- add color modal -->
                 <div id="addHeightModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog">
+                        <form id="addHeightForm" class="mt-4" action="/addNewHeight" method="post">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title" id="myModalLabel">Thêm chiều cao mới</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <form id="addHeightForm" class="mt-4" action="/addNewHeight" method="post">
                                     <div class="form-group">
                                         <label>Chiều cao</label>
-                                        <input type="search" class="form-control" value="" name="name">
+                                        <input type="search" class="form-control" value="" name="name" required>
                                     </div>
                                     <div class="form-group">
                                         <label class="mr-sm-2" for="categorySelect">Danh mục</label>
-                                        <select class="custom-select mr-sm-2" id="categorySelect" name="categoryId">
+                                        <select class="custom-select mr-sm-2" id="categorySelect" name="categoryId" required>
                                             <option selected value="">Chọn...</option>
                                             <c:forEach var="c" items="${categories}">
                                                 <option value="${c.id}">${c.name}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
-                                </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" id="submitAddHeightModal" class="btn btn-primary">Tạo</button>
                                 <button type="button" class="btn btn-light" data-dismiss="modal">Đóng</button>
                             </div>
                         </div><!-- /.modal-content -->
+                        </form>
                     </div><!-- /.modal-dialog -->
                 </div>
-                <script>
-                    $( "#submitAddHeightModal" ).click(function() {
-                        $( "#addHeightForm" ).submit();
-                    })
-                </script>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->

@@ -82,6 +82,14 @@ public class adminProductController implements adminProductApi {
     }
 
     @Override
+    public String editProduct(HttpServletRequest request, Map<String, String> m, MultipartFile[] files, RedirectAttributes ra) {
+        String referer = request.getHeader("Referer");
+
+        adminProductService.editProduct(request, m, files);
+        return "redirect:"+referer;
+    }
+
+    @Override
     public String deleteProduct(HttpServletRequest request, int id, RedirectAttributes ra){
         String referer = request.getHeader("Referer");
 

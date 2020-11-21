@@ -86,6 +86,7 @@
 						<!--  -->
 						<form class="addProductToCart" action="#" method="get" id="${p.id}">
 						<div class="p-t-33">
+							<c:if test="${product.categoryId != 2}">
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-203 flex-c-m respon6">
 									Chiều Cao
@@ -107,6 +108,7 @@
 									</div>
 								</div>
 							</div>
+							</c:if>
 
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-203 flex-c-m respon6">
@@ -130,6 +132,7 @@
 								</div>
 							</div>
 
+							<c:if test="${product.categoryId != 2}">
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-203 flex-c-m respon6">
 									Màu
@@ -151,6 +154,7 @@
 									</div>
 								</div>
 							</div>
+							</c:if>
 
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-204 flex-w flex-m respon6-next">

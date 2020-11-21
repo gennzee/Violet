@@ -148,7 +148,8 @@
                                         <c:forEach var="image" items="${p.productImageList}">
                                             <div class="item-slick3" style="" data-thumb="/images/${image.name}">
                                                 <div class="wrap-pic-w pos-relative">
-                                                    <img src="/images/${image.name}" style="object-fit: cover;width: 600px;height: 742px;" alt="IMG-PRODUCT">
+                                                    <img src="/images/${image.name}" alt="IMG-PRODUCT" width="600" height="742" style="object-fit: cover; position: absolute; filter: blur(10px);">
+                                                    <img src="/images/${image.name}" alt="IMG-PRODUCT" width="600" height="742" style="object-fit: contain; position: relative;">
 
                                                     <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/images/${image.name}">
                                                         <i class="fa fa-expand"></i>
@@ -191,7 +192,7 @@
                         <form class="addProductToCart" action="#" method="get" id="${p.id}">
                         <div class="p-t-33">
                             <%--chiều cao--%>
-                            <c:if test="${currentCategory != 2}">
+                            <c:if test="${p.categoryId != 2}">
                                 <div class="flex-w flex-r-m p-b-10">
                                     <div class="size-203 flex-c-m respon6">
                                         Chiều cao
@@ -239,7 +240,7 @@
                             </div>
 
                             <%--màu--%>
-                            <c:if test="${currentCategory != 2}">
+                            <c:if test="${p.categoryId != 2}">
                                 <div class="flex-w flex-r-m p-b-10">
                                     <div class="size-203 flex-c-m respon6">
                                         Màu
