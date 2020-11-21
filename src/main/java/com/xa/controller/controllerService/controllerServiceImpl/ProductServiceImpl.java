@@ -99,6 +99,7 @@ public class ProductServiceImpl implements ProductService {
         modelMap.addAttribute("productHeightList", productHeightList);
 
         modelMap.addAttribute("productId", id);
+        modelMap.addAttribute("categoryId", categoryId);
     }
 
     @Override
@@ -210,11 +211,39 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void addProduct(HttpServletRequest request, Map<String, String> m, MultipartFile[] files) {
-        Products p = productsJpaRepo.save(new Products(m.get("name"), m.get("description"), Integer.parseInt(m.get("category")), false, new Date(), new Date()));
+        String name = m.get("name");
+        String description = m.get("description").replaceAll("(\r\n|\n)", "<br />");
+        int category = Integer.parseInt(m.get("category"));
+        Products p = productsJpaRepo.save(new Products(name, description, category, false, new Date(), new Date()));
         for(MultipartFile file : files) {
             if(!file.isEmpty()){
                 fileUploaderService.uploadFile(request, file);
                 productImageJpaRepo.save(new ProductImage(p.getId(), fileUploaderService.getImageName(), new Date()));
+            }
+        }
+    }
+
+    @Override
+    @Transactional
+    public void editProduct(HttpServletRequest request, Map<String, String> m, MultipartFile[] files) {
+        int id = Integer.parseInt(m.get("id"));
+        String name = m.get("name");
+        String description = m.get("description").replaceAll("(\r\n|\n)", "<br />");
+        //delete old images
+        if(!files[0].isEmpty()){
+            List<ProductImage> productImages = productImageJpaRepo.findAllByProductId(id);
+            for(ProductImage img : productImages){
+                fileUploaderService.deleteFile(request, img.getName());
+            }
+            productImageJpaRepo.deleteAllByProductId(id);
+        }
+        //edit product
+        productsJpaRepo.updateProductById(id, name, description, new Date());
+        //add new images
+        if(!files[0].isEmpty()){
+            for(MultipartFile file : files) {
+                fileUploaderService.uploadFile(request, file);
+                productImageJpaRepo.save(new ProductImage(id, fileUploaderService.getImageName(), new Date()));
             }
         }
     }

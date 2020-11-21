@@ -2,11 +2,10 @@ package com.xa.repository;
 
 import com.xa.model.Products;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -33,5 +32,9 @@ public interface ProductsJpaRepo extends JpaRepository<Products, Integer>, JpaSp
 
     @Query(value = "select count(*) from products where month(created_date) = ?1 and year(created_date) = ?2", nativeQuery = true)
     int findTotalProduct(int month, int year);
+
+    @Modifying
+    @Query("update Products p set p.name = ?2, p.description = ?3, p.updatedDate = ?4 where p.id = ?1")
+    void updateProductById(int productId, String name, String description, Date updatedDate);
 
 }

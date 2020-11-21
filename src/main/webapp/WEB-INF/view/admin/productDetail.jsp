@@ -238,16 +238,16 @@
                                     <input type="hidden" value="${productId}" name="productId"/>
                                     <div class="form-group">
                                         <label>Giá</label>
-                                        <input type="search" class="form-control" value="" name="price">
+                                        <input type="search" class="form-control" value="" name="price" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Giảm giá</label>
-                                        <input type="search" class="form-control" value="" name="discount">
+                                        <input type="search" class="form-control" value="" name="discount" required>
                                     </div>
-                                    <c:if test="${productStorageList[0].products.categoryId != 2}">
+                                    <c:if test="${categoryId != 2}">
                                         <div class="form-group">
                                             <label class="mr-sm-2" for="colorSelect">Màu</label>
-                                            <select class="custom-select mr-sm-2" id="colorSelect" name="color">
+                                            <select class="custom-select mr-sm-2" id="colorSelect" name="color" required>
                                                 <option selected value="">Chọn...</option>
                                                 <c:forEach var="c" items="${productColorList}">
                                                     <option value="${c.id}">${c.name}</option>
@@ -256,7 +256,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="mr-sm-2" for="heightSelect">Chiều cao</label>
-                                            <select class="custom-select mr-sm-2" id="heightSelect" name="height">
+                                            <select class="custom-select mr-sm-2" id="heightSelect" name="height" required>
                                                 <option selected value="">Chọn...</option>
                                                 <c:forEach var="h" items="${productHeightList}">
                                                     <option value="${h.id}">${h.name}</option>
@@ -266,7 +266,7 @@
                                     </c:if>
                                     <div class="form-group">
                                         <label class="mr-sm-2" for="sizeSelect">Kích cỡ</label>
-                                        <select class="custom-select mr-sm-2" id="sizeSelect" name="size">
+                                        <select class="custom-select mr-sm-2" id="sizeSelect" name="size" required>
                                             <option selected value="">Chọn...</option>
                                             <c:forEach var="s" items="${productSizeList}">
                                                 <option value="${s.id}">${s.name}</option>
@@ -275,9 +275,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Số lượng</label>
-                                        <input type="search" class="form-control" value="" name="quantity">
+                                        <input type="search" class="form-control" value="" name="quantity" required>
                                     </div>
-
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Tạo</button>
